@@ -113,6 +113,13 @@ img { display: block; max-width: 100%; }
   padding: 6px 12px; border: 1px solid var(--line); border-radius: var(--r); white-space: nowrap;
 }
 .login-link:hover { background: var(--surface); }
+.login-link.join { background: var(--primary-main); border-color: var(--primary-main); color: #fff; }
+.login-link.join:hover { background: var(--primary-hover); }
+@media (max-width: 479px) {
+  .header-right { gap: 4px; }
+  .header-right .icon-btn[title="내 일정"] { display: none; } /* 좁은 화면: 내 일정은 하단 메뉴에서 */
+  .login-link { padding: 6px 8px; }
+}
 .user-name { font-size: 13px; font-weight: 600; white-space: nowrap; }
 .logout-btn { background: none; border: 0; font-size: 12px; color: var(--ink-soft); cursor: pointer; text-decoration: underline; }
 

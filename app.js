@@ -71,7 +71,7 @@ function renderHeader() {
   const commLinks = COMMUNITY.map(c => `<a href="index.html#${c.id}" data-tab="${c.id}">${c.name}</a>`).join("");
   const account = user
     ? `<span class="user-name">${esc(user.name)}님</span><a class="icon-btn" href="mypage.html" title="마이페이지"><span class="icon">person</span></a><button class="logout-btn" id="logout-btn" type="button">로그아웃</button>`
-    : `<a class="login-link" href="login.html">로그인/회원가입</a>`;
+    : `<a class="login-link" href="login.html">로그인</a><a class="login-link join" href="join.html">회원가입</a>`;
 
   el.className = "site-header";
   el.innerHTML = `
