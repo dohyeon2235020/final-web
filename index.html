@@ -4,51 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>누구랑 | 게시판 연결 실습</title>
-  <style>
-    body { margin: 0; font-family: "Noto Sans KR", sans-serif; background: #FBF6F1; color: #2E2420; }
-    header { background: #B5563A; color: #fff; padding: 16px 24px; }
-    header h1 { margin: 0; font-size: 22px; }
-    main { max-width: 720px; margin: 32px auto; padding: 0 16px; }
-    h2 { border-left: 4px solid #B5563A; padding-left: 8px; font-size: 18px; }
-    .card { background: #fff; border: 1px solid #E3D6CC; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
-    .card a { color: #B5563A; font-weight: bold; text-decoration: none; }
-    .card a:hover { text-decoration: underline; }
-    .desc { color: #7A6A61; font-size: 14px; margin: 6px 0 0; }
-    footer { text-align: center; color: #7A6A61; font-size: 13px; padding: 24px; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>누구랑 · 게시판 연결 실습</h1>
-  </header>
+<nav>
+  <a href="board.html">게시판</a>
+  <a href="guestbook.html">방명록</a>
+</nav>
 
-  <main>
-    <h2>이슈 게시판 바로가기</h2>
-
-    <!-- 1. 이슈 게시판 목록으로 연결 -->
-    <div class="card">
-      <a href="https://github.com/dohyeon2235020/final-web/issues" target="_blank">📋 이슈 게시판 전체 보기</a>
-      <p class="desc">final-web 저장소의 이슈 게시판 목록으로 이동합니다.</p>
-    </div>
-
-    <!-- 2. 게시물(이슈 #1)로 연결 -->
-    <div class="card">
-      <a href="https://github.com/dohyeon2235020/final-web/issues/1" target="_blank">#1 [누구랑] 게시판 연결 실습 글</a>
-      <p class="desc">이슈 게시판에 올린 실습용 게시물로 이동합니다.</p>
-    </div>
-
-    <!-- 3. 새 게시물 작성 화면으로 연결 -->
-    <div class="card">
-      <a href="https://github.com/dohyeon2235020/final-web/issues/new" target="_blank">✏️ 새 게시물 작성하기</a>
-      <p class="desc">이슈 게시판에 새 글을 작성하는 화면으로 이동합니다.</p>
-    </div>
-
-    <!-- 4. 방명록(giscus) 페이지로 연결 -->
-    <div class="card">
-      <a href="guestbook.html">💬 방명록 가기</a>
-      <p class="desc">GitHub Discussions(giscus)로 연결된 방명록 페이지로 이동합니다.</p>
-    </div>
-  </main>
+<a class="card" href="guestbook.html">
+  <strong>💬 방명록</strong>
+  <p>누구랑에 한마디 남겨주세요.</p>
+</a>
 
   <footer>제작 2235020_이도현</footer>
 </body>
