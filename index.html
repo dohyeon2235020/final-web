@@ -3,8 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>누구랑 | 게시판 연결 실습</title>
-<hr>
-  <a href = "https://github.com/dohyeon2235020/final-web/issues/1#issue-6411959304"> 이슈 게시판 </a>
+  <title>누구랑 | 함께 가는 사람에 맞춰 고르는 체험·클래스</title>
+  <style>
+    body { margin: 0; font-family: "Noto Sans KR", sans-serif; background: #FBF6F1; color: #2E2420; }
+    header { background: #B5563A; color: #fff; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { margin: 0; font-size: 24px; }
+    header nav a { color: #fff; text-decoration: none; margin-left: 16px; font-size: 14px; }
+    header nav a:hover { text-decoration: underline; }
+    .hero { text-align: center; padding: 56px 16px 32px; }
+    .hero h2 { font-size: 28px; margin: 0 0 8px; }
+    .hero p { color: #7A6A61; margin: 0; }
+    main { max-width: 720px; margin: 0 auto; padding: 0 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card { display: block; background: #fff; border: 1px solid #E3D6CC; border-radius: 8px; padding: 20px; text-decoration: none; color: #2E2420; }
+    .card:hover { border-color: #B5563A; }
+    .card strong { color: #B5563A; font-size: 17px; }
+    .card p { color: #7A6A61; font-size: 14px; margin: 6px 0 0; }
+    footer { text-align: center; color: #7A6A61; font-size: 13px; padding: 32px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>누구랑</h1>
+    <nav>
+      <a href="board.html">게시판</a>
+      <a href="guestbook.html">방명록</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>누구랑 가세요?</h2>
+    <p>함께 가는 사람에 맞춰 고르는 공방 · 체험 · 클래스</p>
+  </section>
+
+  <main>
+    <a class="card" href="board.html">
+      <strong>📋 게시판</strong>
+      <p>이슈 게시판 글을 확인해요.</p>
+    </a>
+    <a class="card" href="guestbook.html">
+      <strong>💬 방명록</strong>
+      <p>누구랑에 한마디 남겨주세요.</p>
+    </a>
+  </main>
+
+  <footer>제작 2235020_이도현</footer>
 </body>
 </html>
