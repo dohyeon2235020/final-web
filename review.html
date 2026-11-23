@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동행 후기 | 누구랑</title>
+  <meta name="description" content="실제 예약한 동행의 공방·클래스·체험·강의 후기를 동행 유형별로 보고, 이용을 마친 예약의 후기를 남기세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<!-- MAIN CANVAS -->
+<div class="flex-1 w-full max-w-7xl mx-auto px-space-md md:px-gutter-lg py-space-lg md:py-space-xl"><div class="flex flex-col w-full">
+<!-- BREADCRUMB & PAGE HEADER -->
+<section class="relative mb-space-lg">
+<div class="flex items-center gap-1.5 text-label-md font-label-md text-outline mb-space-sm">
+<a href="index.html" class="hover:text-primary transition-colors">홈</a>
+<span class="text-outline-variant">/</span>
+<a href="index.html#notice" class="hover:text-primary transition-colors">커뮤니티</a>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-semibold">솔직 동행 후기</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm mb-space-xs shadow-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+          100% 실제 예약 수강자 인증
+        </div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight mt-1 mb-2">
+          동행과 함께 만든 특별한 순간, 솔직 동행 후기
+        </h1>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+          광고·협찬 없는 100% 실제 예약 방문자 인증 리뷰. 나와 같은 동행(연인, 친구, 부모님, 아이)이 남긴 진짜 경험과 생생한 분위기를 확인하세요.
+        </p>
+</div>
+<!-- Quick Write Jump Anchor -->
+<a class="inline-flex items-center gap-2 px-space-md py-3 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary-container transition-all active:scale-98 whitespace-nowrap" href="#review-write-section">
+<span class="material-symbols-outlined text-[20px]">rate_review</span>
+<span>솔직 후기 작성하기</span>
+</a>
+</div>
+<!-- ELIGIBLE BOOKING NOTICE BANNER -->
+<div id="rv-pending" class="mt-space-md p-space-md rounded-xl bg-surface-container-low shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">notification_important</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span id="rv-pending-n" class="text-label-sm font-label-sm font-bold text-primary">작성 대기 중인 예약</span>
+<span class="text-label-sm font-label-sm text-outline">이용을 마친 예약의 후기를 남겨 주세요</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface font-semibold mt-0.5" id="rv-pending-title"></p>
+</div>
+</div>
+<a class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface-container-highest text-primary font-label-md text-label-md hover:bg-surface-container transition-colors self-start md:self-auto" href="#review-write-section">
+        지금 후기 작성
+        <span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- 후기 요약 -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-md mb-space-xl">
+<div class="lg:col-span-4 p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div><div class="flex items-center justify-between mb-space-sm"><span class="text-label-md font-label-md font-bold text-outline uppercase tracking-wider">Overall Satisfaction</span></div>
+<div class="flex items-baseline gap-2 mb-1"><span id="rv-avg" class="text-headline-xl font-headline-xl text-on-surface font-extrabold">0</span><span class="text-body-lg font-body-lg text-outline font-medium">/ 5.0</span></div>
+<div id="rv-stars" class="flex items-center gap-1 text-[#e59b2c] mb-space-xs"></div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">누적 동행 후기 <strong id="rv-total" class="text-on-surface font-bold">0개</strong> 기준</p>
+<p id="rv-scope" class="text-label-sm font-label-sm text-outline mt-1"></p></div>
+<div class="mt-space-md pt-space-md bg-surface-container-low/60 rounded-xl p-3"><div class="flex items-start gap-2"><span class="icon text-primary text-[20px] mt-0.5">verified_user</span><div>
+<p class="text-label-md font-label-md font-bold text-on-surface">실제 예약 인증 후기</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant leading-snug mt-0.5">이용 날짜가 지난 예약을 가진 회원만 후기를 쓸 수 있어요.</p></div></div></div>
+</div>
+<div class="lg:col-span-8 p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-center">
+<div class="text-label-md font-label-md font-bold text-on-surface mb-space-md flex items-center justify-between"><span>항목별 만족도 분석</span><span class="text-label-sm font-label-sm text-outline font-normal">전체 후기 평균</span></div>
+<div id="rv-bars" class="grid grid-cols-1 md:grid-cols-2 gap-x-space-lg gap-y-3.5"></div>
+</div>
+</section>
+<!-- SECTION 3: PHOTO REVIEWS HIGHLIGHTS GALLERY -->
+<section class="mb-space-xl">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">생생한 포토 후기</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-bold" id="rv-photo-n"></span>
+</div>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-0.5" id="rv-photo-all" href="#rv-filter">
+        포토 후기만 보기
+        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<div id="rv-photos" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-sm"></div>
+</section>
+<!-- SECTION 4: FILTER & COMPANION TAG SELECTION BAR -->
+<section id="rv-filter" class="mb-space-lg">
+<!-- Companion Filter Tabs (Brand Focus: 누구랑) -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm mb-space-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="text-label-md font-label-md font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">group</span>
+          동행 유형별 모아보기
+        </span>
+<span class="text-label-sm font-label-sm text-outline">실제 동행 조건에 맞는 후기를 비교해보세요</span>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+<button type="button" data-rv-with="" data-on="flex items-center gap-1 px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm whitespace-nowrap" data-off="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap" class="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap"><span>전체 동행</span><span class="cnt text-label-sm font-normal opacity-90"></span></button><button type="button" data-rv-with="date" data-on="flex items-center gap-1 px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm whitespace-nowrap" data-off="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap" class="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap"><span>❤️ #2인 데이트</span><span class="cnt text-label-sm font-normal opacity-90"></span></button><button type="button" data-rv-with="friend" data-on="flex items-center gap-1 px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm whitespace-nowrap" data-off="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap" class="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap"><span>👥 #친구 모임</span><span class="cnt text-label-sm font-normal opacity-90"></span></button><button type="button" data-rv-with="family" data-on="flex items-center gap-1 px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm whitespace-nowrap" data-off="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap" class="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap"><span>👨‍👩‍👧 #가족·부모님</span><span class="cnt text-label-sm font-normal opacity-90"></span></button><button type="button" data-rv-with="kids" data-on="flex items-center gap-1 px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm whitespace-nowrap" data-off="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap" class="flex items-center gap-1 px-4 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary font-label-md text-label-md transition-colors whitespace-nowrap"><span>👶 #어린이 동반</span><span class="cnt text-label-sm font-normal opacity-90"></span></button>
+</div>
+<!-- Secondary Filter Row: Categories + Photo Check + Sorting -->
+<div class="mt-space-md pt-space-sm border-t border-surface-container flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-2">
+<!-- Category Pills -->
+<span class="text-label-sm font-label-sm text-outline mr-1">유형:</span><button type="button" data-rv-type="" data-on="px-3 py-1 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold" data-off="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors" class="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors">전체</button><button type="button" data-rv-type="workshop" data-on="px-3 py-1 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold" data-off="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors" class="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors">공방</button><button type="button" data-rv-type="class" data-on="px-3 py-1 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold" data-off="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors" class="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors">클래스</button><button type="button" data-rv-type="experience" data-on="px-3 py-1 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold" data-off="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors" class="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors">체험</button><button type="button" data-rv-type="lecture" data-on="px-3 py-1 rounded-lg bg-surface-container text-primary font-label-sm text-label-sm font-semibold" data-off="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors" class="px-3 py-1 rounded-lg bg-surface hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors">강의</button>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Photo Only Checkbox -->
+<label class="inline-flex items-center gap-1.5 cursor-pointer text-body-sm font-body-sm text-on-surface select-none">
+<input id="rv-photo-only" class="w-4 h-4 rounded text-primary focus:ring-primary border-outline-variant bg-surface-container-low" type="checkbox">
+<span class="font-medium">📷 포토 후기만 보기</span>
+<span class="text-label-sm font-label-sm text-outline" id="rv-photo-cnt"></span>
+</label>
+<!-- Sorting -->
+<div class="relative">
+<select id="rv-sort" aria-label="후기 정렬" class="bg-surface-container-low text-body-sm font-body-sm text-on-surface font-medium py-1.5 pl-3 pr-8 rounded-lg border-none focus:ring-1 focus:ring-primary cursor-pointer">
+<option value="latest">최신순</option>
+<option value="rating">평점 높은순</option>
+<option value="helpful">도움돼요 많은순</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: DETAILED REVIEW LIST -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<div id="rv-list" class="flex flex-col gap-space-md scroll-mt-24" aria-live="polite"></div>
+<!-- POLICY NOTICE BOX (PRD 7-7 핵심 요구사항) -->
+<div class="p-space-md rounded-xl bg-surface-container-low text-on-surface-variant flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0 mt-0.5">policy</span>
+<div class="text-body-sm font-body-sm leading-relaxed">
+<p class="font-bold text-on-surface mb-0.5">누구랑의 안심 클린 리뷰 정책 고지</p>
+<p class="text-outline">
+          ※ 누구랑은 실제 예약을 마친 회원만 후기를 쓸 수 있고, 허위·대가성 후기는 삭제합니다. '(예시 후기)'로 표시된 글은 과제용 예시 데이터예요.
+        </p>
+</div>
+</div>
+</section>
+<!-- 페이지 -->
+<section id="rv-pager" class="flex justify-center items-center gap-1 mb-space-xl"></section>
+<!-- SECTION 6: REVIEW WRITE DEDICATED SECTION (PRD 7-7 / F-11) -->
+<section class="p-space-lg md:p-space-xl rounded-3xl bg-surface-container-lowest shadow-md mb-space-xl" id="review-write-section">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-lg pb-space-md border-b border-surface-container">
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container/30 text-secondary font-label-sm text-label-sm font-bold mb-1">
+<span class="material-symbols-outlined text-[15px]">edit_note</span>
+          <span id="rv-wait">참여 완료 후기 작성</span>
+        </div>
+<h2 class="text-headline-md font-headline-md text-on-surface">동행과 함께한 시간을 기록해주세요</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">
+          실제 경험을 자세히 작성하시면 다른 분들의 예약 선택에 가장 큰 도움이 됩니다.
+        </p>
+</div>
+<!-- Target Booking Badge Card -->
+<div id="rv-target" class="p-3 rounded-xl bg-surface-container-low max-w-sm">
+<span class="text-label-sm font-label-sm text-outline font-semibold">작성 대상 클래스</span>
+<p class="text-label-md font-label-md font-bold text-on-surface truncate mt-0.5" id="rv-target-title"></p>
+<div class="flex items-center gap-1.5 mt-1 text-label-sm font-label-sm text-primary">
+<span class="material-symbols-outlined text-[14px]">local_activity</span>
+<span id="rv-target-no"></span>
+</div>
+<div id="rv-target-pick"></div>
+</div>
+</div>
+<!-- Review Form -->
+<form id="rv-form" class="flex flex-col gap-space-lg" novalidate>
+<!-- 1. Star Rating Selector -->
+<div>
+<label class="block text-label-lg font-label-lg font-bold text-on-surface mb-2">
+          전체 만족도는 어떠셨나요? <span class="text-primary">*</span>
+</label>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 text-surface-container-highest cursor-pointer" id="star-picker">
+<button class="star-btn p-1 text-[#e59b2c] transition-transform hover:scale-110 active:scale-95" data-val="1" type="button">
+<span class="icon fill text-[32px]">star</span>
+</button>
+<button class="star-btn p-1 text-[#e59b2c] transition-transform hover:scale-110 active:scale-95" data-val="2" type="button">
+<span class="icon fill text-[32px]">star</span>
+</button>
+<button class="star-btn p-1 text-[#e59b2c] transition-transform hover:scale-110 active:scale-95" data-val="3" type="button">
+<span class="icon fill text-[32px]">star</span>
+</button>
+<button class="star-btn p-1 text-[#e59b2c] transition-transform hover:scale-110 active:scale-95" data-val="4" type="button">
+<span class="icon fill text-[32px]">star</span>
+</button>
+<button class="star-btn p-1 text-[#e59b2c] transition-transform hover:scale-110 active:scale-95" data-val="5" type="button">
+<span class="icon fill text-[32px]">star</span>
+</button>
+</div>
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface" id="star-score-text">5.0점 (최고예요!)</span>
+</div>
+</div>
+<!-- 2. Breakdown Ratings (5-point buttons) -->
+<div>
+<label class="block text-label-lg font-label-lg font-bold text-on-surface mb-3">
+          항목별 평가를 남겨주세요
+        </label>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Sub-item 1 -->
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-label-md font-label-md font-bold text-on-surface block mb-2">강사 친절도</span>
+<div class="flex gap-1">
+<button type="button" data-score="teacher" data-v="5" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">5점</button>
+<button type="button" data-score="teacher" data-v="4" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">4점</button>
+<button type="button" data-score="teacher" data-v="3" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">3점</button>
+<button type="button" data-score="teacher" data-v="2" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">2점</button>
+<button type="button" data-score="teacher" data-v="1" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">1점</button>
+</div>
+</div>
+<!-- Sub-item 2 -->
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-label-md font-label-md font-bold text-on-surface block mb-2">재료 퀄리티</span>
+<div class="flex gap-1">
+<button type="button" data-score="material" data-v="5" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">5점</button>
+<button type="button" data-score="material" data-v="4" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">4점</button>
+<button type="button" data-score="material" data-v="3" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">3점</button>
+<button type="button" data-score="material" data-v="2" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">2점</button>
+<button type="button" data-score="material" data-v="1" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">1점</button>
+</div>
+</div>
+<!-- Sub-item 3 -->
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-label-md font-label-md font-bold text-on-surface block mb-2">가격 정직도 (추가금 없음)</span>
+<div class="flex gap-1">
+<button type="button" data-score="price" data-v="5" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">5점</button>
+<button type="button" data-score="price" data-v="4" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">4점</button>
+<button type="button" data-score="price" data-v="3" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">3점</button>
+<button type="button" data-score="price" data-v="2" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">2점</button>
+<button type="button" data-score="price" data-v="1" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">1점</button>
+</div>
+</div>
+<!-- Sub-item 4 -->
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-label-md font-label-md font-bold text-on-surface block mb-2">공방 분위기</span>
+<div class="flex gap-1">
+<button type="button" data-score="mood" data-v="5" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">5점</button>
+<button type="button" data-score="mood" data-v="4" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">4점</button>
+<button type="button" data-score="mood" data-v="3" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">3점</button>
+<button type="button" data-score="mood" data-v="2" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">2점</button>
+<button type="button" data-score="mood" data-v="1" class="flex-1 py-1 rounded bg-surface text-on-surface font-label-sm text-label-sm">1점</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Companion Tag Verification & Custom Question -->
+<div class="p-space-md rounded-2xl bg-surface-container-low">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-md font-label-md font-bold text-on-surface">동행 맞춤 질문</span>
+<span class="px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm" id="rv-q-tag"></span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-space-sm">
+          함께 방문한 분과의 분위기는 어떠셨나요? 가장 가까운 한 가지를 골라 주세요.
+        </p>
+<div id="rv-tags" class="flex flex-wrap gap-2"></div>
+</div>
+<!-- 4. Review Textarea with Counter -->
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<label class="text-label-lg font-label-lg font-bold text-on-surface">
+            솔직한 경험 내용 <span class="text-primary">*</span>
+</label>
+<span class="text-label-sm font-label-sm text-outline" id="char-counter">0 / 1000자 (최소 20자)</span>
+</div>
+<textarea class="w-full rounded-xl bg-surface-container-low border-none p-space-md text-body-md font-body-md text-on-surface focus:ring-2 focus:ring-primary placeholder:text-outline" id="review-textarea" maxlength="1000" aria-label="후기 내용" placeholder="공방에서의 생생한 경험을 최소 20자 이상 솔직하게 남겨주세요. 현장 분위기, 재료 퀄리티, 동행자의 반응을 적어주시면 다른 분들께 큰 도움이 됩니다." rows="5"></textarea>
+</div>
+<!-- 5. Photo Upload Zone -->
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<label class="text-label-lg font-label-lg font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">add_a_photo</span>
+            사진 첨부 (최대 3장)
+          </label>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-space-sm">
+<!-- Upload Button -->
+<label class="border-2 border-dashed border-outline-variant rounded-xl aspect-square flex flex-col items-center justify-center p-3 text-center cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-outline text-[28px] mb-1">cloud_upload</span>
+<span class="text-label-sm font-label-sm text-on-surface font-semibold">사진 올리기</span>
+<span class="text-[11px] text-outline mt-0.5">JPG, PNG</span>
+<input id="rv-file" accept="image/*" class="hidden" multiple type="file">
+</label>
+<div id="rv-previews" class="contents"></div>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="flex items-center justify-end gap-space-sm pt-space-md border-t border-surface-container">
+<button id="rv-cancel" class="px-6 py-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button">
+          취소
+        </button>
+<button class="px-8 py-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold shadow-md transition-all active:scale-98" type="submit">
+          솔직 동행 후기 등록하기
+        </button>
+</div>
+</form>
+</section>
+</div>
+</div>
+<!-- FOOTER (Shared Component: Footer) -->
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+// 동행 후기: 목록(동행·유형·사진 필터, 정렬, 페이지) + 이용 완료 예약 후기 작성
+const $ = id => document.getElementById(id);
+const PID = qs("id");
+const SCORE_KEYS = [["teacher", "강사 친절도"], ["material", "재료 퀄리티"], ["price", "가격 정직도 (추가금 없음)"], ["mood", "공방 분위기"]];
+const F = { with: "", type: "", photo: false, sort: "latest", page: 1 };
+const PAGE = 5;
+const stars = (n, size) => Array.from({ length: 5 }, (_, i) => `<span class="icon ${i < Math.round(n) ? "fill" : ""} text-[${size}px]">star</span>`).join("");
+
+function base() { return allReviews().filter(r => byId(r.id) && (!PID || r.id === PID)); }
+
+/* ---------- 요약 · 포토 ---------- */
+function summary() {
+  const rs = base();
+  const avg = rs.length ? rs.reduce((s, r) => s + r.rating, 0) / rs.length : 0;
+  $("rv-avg").textContent = avg.toFixed(1);
+  $("rv-stars").innerHTML = stars(avg, 24);
+  $("rv-total").textContent = rs.length.toLocaleString() + "개";
+  if (PID) { const p = byId(PID); $("rv-scope").innerHTML = `<a class="text-primary underline" href="${detailUrl(p)}">${esc(p.title)}</a> 후기만 보고 있어요 · <a class="underline" href="review.html">전체 후기 보기</a>`; }
+  const bar = (label, v, icon) => `<div><div class="flex justify-between text-body-sm font-body-sm mb-1"><span class="flex items-center gap-1 text-on-surface-variant"><span class="icon text-[16px] text-primary">${icon}</span>${label}</span><b class="text-on-surface">${v.toFixed(1)} / 5.0</b></div><div class="h-2 rounded-full bg-surface-container overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:${v / 5 * 100}%"></div></div></div>`;
+  const m = k => rs.length ? rs.reduce((s, r) => s + (r.scores[k] || r.rating), 0) / rs.length : 0;
+  $("rv-bars").innerHTML = bar("강사 친절도 및 지도력", m("teacher"), "school") + bar("재료 및 완성품 퀄리티", m("material"), "inventory_2")
+    + bar("가격 정직도 (현장 추가금 없음)", m("price"), "price_check") + bar("공간 분위기 및 청결도", m("mood"), "chair")
+    + bar("동행 만족도 (함께한 사람과의 시간)", avg, "diversity_1");
+  const ph = rs.filter(r => r.photos.length).slice(0, 6);
+  $("rv-photo-n").textContent = `사진 후기 ${rs.filter(r => r.photos.length).length}개`;
+  $("rv-photos").innerHTML = ph.map(r => { const p = byId(r.id); return `<a href="${detailUrl(p)}" class="group relative rounded-xl overflow-hidden aspect-square shadow-sm bg-surface-container">
+    <img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="${r.photos[0]}" alt="${esc(p.title)} 후기 사진" loading="lazy" onerror="this.style.display='none'">
+    <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent p-2.5 flex flex-col justify-between">
+      <span class="self-end px-1.5 py-0.5 rounded bg-surface-container-lowest/90 text-[11px] font-bold text-on-surface">★ ${r.rating.toFixed(1)}</span>
+      <div class="text-white"><p class="text-label-sm font-label-sm font-bold">#${withLabel(r.with)}</p><p class="text-[11px] opacity-90 truncate">${esc(p.region)} · ${esc(p.category)}</p></div></div></a>`; }).join("")
+    || '<p class="col-span-full text-body-sm text-outline py-6 text-center">아직 사진 후기가 없어요.</p>';
+  // 동행별 개수
+  document.querySelectorAll('[data-rv-with]').forEach(b => { const w = b.dataset.rvWith; b.querySelector(".cnt").textContent = `(${rs.filter(r => !w || r.with === w).length})`; });
+  $("rv-photo-cnt").textContent = `(${rs.filter(r => r.photos.length).length})`;
+}
+
+/* ---------- 목록 ---------- */
+function card(r) {
+  const p = byId(r.id);
+  const helped = (store.get("ng_helpful", [])).includes(r.no);
+  return `<article class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm transition-shadow hover:shadow-md">
+  <div class="flex flex-wrap items-start justify-between gap-space-sm mb-space-sm">
+    <div class="flex items-center gap-space-sm">
+      <div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary text-body-lg font-body-lg">${esc(r.user.slice(0, 1))}</div>
+      <div><div class="flex items-center gap-2 flex-wrap"><span class="text-label-lg font-label-lg font-bold text-on-surface">${esc(r.user)} 님</span>
+        ${r.verified ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#EBF4EF] text-[#3A7A5E] text-label-sm font-label-sm font-semibold"><span class="icon fill text-[14px]">check_circle</span>실제 예약 인증</span>' : ""}
+        ${r.order ? `<span class="text-label-sm font-label-sm text-outline font-mono hidden sm:inline">#${esc(r.order)}</span>` : ""}${r.sample ? '<span class="text-[10px] text-outline">(예시 후기)</span>' : ""}</div>
+        <div class="flex items-center gap-2 mt-0.5"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-primary font-label-sm text-label-sm font-semibold">${WITH_UI[r.with].emoji} #${withLabel(r.with)}${r.tag ? " · " + esc(r.tag) : ""}</span><span class="text-body-sm font-body-sm text-outline">${r.date.replace(/-/g, ".")} 작성</span></div></div>
+    </div>
+    <div class="flex flex-col items-end"><div class="flex items-center gap-1"><div class="flex text-[#e59b2c]">${stars(r.rating, 18)}</div><span class="font-bold text-on-surface text-label-lg font-label-lg ml-1">${r.rating.toFixed(1)}</span></div>
+      <span class="text-label-sm font-label-sm text-outline mt-0.5">강사 ${(r.scores.teacher || r.rating).toFixed(1)} · 재료 ${(r.scores.material || r.rating).toFixed(1)} · 가격 ${(r.scores.price || r.rating).toFixed(1)} · 분위기 ${(r.scores.mood || r.rating).toFixed(1)}</span></div>
+  </div>
+  <a class="block p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors mb-space-md" href="${detailUrl(p)}"><div class="flex items-center justify-between gap-2"><div class="flex items-center gap-2 min-w-0"><span class="icon text-primary text-[18px]">brush</span><span class="text-label-md font-label-md text-on-surface font-semibold truncate">${esc(p.title)}</span></div><span class="text-label-sm font-label-sm text-primary flex items-center shrink-0">${TYPES[p.type].name} 보러가기 <span class="icon text-[14px]">arrow_forward</span></span></div></a>
+  ${r.photos.length ? `<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm mb-space-md">${r.photos.map(u => `<div class="aspect-[4/3] rounded-xl overflow-hidden bg-surface-container"><img class="w-full h-full object-cover" src="${u}" alt="후기 사진" loading="lazy" onerror="this.parentNode.remove()"></div>`).join("")}</div>` : ""}
+  <p class="text-body-md font-body-md text-on-surface leading-relaxed mb-space-md whitespace-pre-line">${esc(r.text)}</p>
+  <div class="flex items-center justify-between pt-space-sm border-t border-surface-container">
+    <button type="button" data-help="${r.no}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg ${helped ? "bg-primary-fixed text-primary" : "bg-surface-container text-on-surface-variant"} hover:bg-surface-container-high font-label-sm text-label-sm transition-colors active:scale-95"><span class="icon ${helped ? "fill" : ""} text-[16px]">thumb_up</span><span>도움이 돼요</span><span class="font-bold text-primary">${r.helpful + (helped ? 1 : 0)}</span></button>
+    <div class="flex items-center gap-3 text-label-sm font-label-sm text-outline"><button type="button" data-share="${p.id}" class="hover:text-primary transition-colors">공유하기</button><span>·</span><button type="button" data-demo="신고 기능은 과제용 예시예요." class="hover:text-error transition-colors">신고</button></div>
+  </div></article>`;
+}
+function list() {
+  let rs = base().filter(r => (!F.with || r.with === F.with) && (!F.type || byId(r.id).type === F.type) && (!F.photo || r.photos.length));
+  rs.sort(F.sort === "rating" ? (a, b) => b.rating - a.rating || b.date.localeCompare(a.date) : F.sort === "helpful" ? (a, b) => b.helpful - a.helpful : (a, b) => b.date.localeCompare(a.date));
+  const pages = Math.max(1, Math.ceil(rs.length / PAGE));
+  if (F.page > pages) F.page = pages;
+  $("rv-list").innerHTML = rs.length ? rs.slice((F.page - 1) * PAGE, F.page * PAGE).map(card).join("") : '<div class="py-14 text-center bg-surface-container-lowest rounded-2xl"><span class="icon text-[40px] text-outline-variant">rate_review</span><p class="mt-2 font-headline-sm text-headline-sm">조건에 맞는 후기가 없어요</p></div>';
+  // 페이지
+  const pg = $("rv-pager");
+  const start = Math.max(1, Math.min(F.page - 2, pages - 4));
+  const nums = []; for (let i = start; i <= Math.min(pages, start + 4); i++) nums.push(i);
+  pg.innerHTML = `<button type="button" data-page="${F.page - 1}" ${F.page <= 1 ? "disabled" : ""} class="w-9 h-9 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container disabled:opacity-30" aria-label="이전 페이지"><span class="icon text-[20px]">chevron_left</span></button>`
+    + nums.map(i => `<button type="button" data-page="${i}" class="w-9 h-9 rounded-lg flex items-center justify-center ${i === F.page ? "bg-primary text-on-primary font-bold shadow-sm" : "text-on-surface hover:bg-surface-container font-medium"} text-body-sm">${i}</button>`).join("")
+    + `<button type="button" data-page="${F.page + 1}" ${F.page >= pages ? "disabled" : ""} class="w-9 h-9 rounded-lg flex items-center justify-center text-on-surface hover:bg-surface-container disabled:opacity-30" aria-label="다음 페이지"><span class="icon text-[20px]">chevron_right</span></button>`;
+  pg.style.display = pages > 1 ? "" : "none";
+  document.querySelectorAll("[data-rv-with]").forEach(b => { const on = b.dataset.rvWith === F.with; b.className = on ? b.dataset.on : b.dataset.off; });
+  document.querySelectorAll("[data-rv-type]").forEach(b => { const on = b.dataset.rvType === F.type; b.className = on ? b.dataset.on : b.dataset.off; });
+}
+document.addEventListener("click", e => {
+  const w = e.target.closest("[data-rv-with]"); if (w) { F.with = w.dataset.rvWith; F.page = 1; list(); return; }
+  const t = e.target.closest("[data-rv-type]"); if (t) { F.type = t.dataset.rvType; F.page = 1; list(); return; }
+  const pgb = e.target.closest("[data-page]"); if (pgb && !pgb.disabled) { F.page = +pgb.dataset.page; list(); $("rv-list").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+  const h = e.target.closest("[data-help]");
+  if (h) { const a = store.get("ng_helpful", []); const i = a.indexOf(h.dataset.help); i >= 0 ? a.splice(i, 1) : a.push(h.dataset.help); store.set("ng_helpful", a); list(); return; }
+  const s = e.target.closest("[data-share]");
+  if (s) { try { navigator.clipboard.writeText(new URL(detailUrl(byId(s.dataset.share)), location.href).href); toast("상품 링크를 복사했어요."); } catch (err) { toast("복사할 수 없는 환경이에요."); } }
+});
+$("rv-photo-only").addEventListener("change", e => { F.photo = e.target.checked; F.page = 1; list(); });
+$("rv-sort").addEventListener("change", e => { F.sort = e.target.value; F.page = 1; list(); });
+$("rv-photo-all").addEventListener("click", e => { e.preventDefault(); F.photo = true; $("rv-photo-only").checked = true; F.page = 1; list(); $("rv-filter").scrollIntoView({ behavior: "smooth" }); });
+
+/* ---------- 후기 쓰기 ---------- */
+const U = store.get(KEYS.user, null);
+const done = getOrders().filter(o => orderStatus(o) === "완료" && byId(o.id) && !getMyReviews().some(r => r.order === o.no));
+let target = done.find(o => o.no === qs("write")) || done[0] || null;
+function pending() {
+  const box = $("rv-pending");
+  if (!target) { box.style.display = "none"; return; }
+  const p = byId(target.id);
+  $("rv-pending-title").innerHTML = `${esc(p.title)} <span class="font-normal text-on-surface-variant text-body-sm font-body-sm ml-1.5">${target.date.replace(/-/g, ".")} 이용 완료 · ${withLabel(target.with)}</span>`;
+  $("rv-pending-n").textContent = `작성 대기 중인 예약 ${done.length}건`;
+}
+const W = { rating: 5, scores: { teacher: 5, material: 5, price: 5, mood: 5 }, tag: "", photos: [] };
+const TAGS = {
+  date: ["✨ 기념일 추천 분위기예요", "💬 둘만의 대화에 집중하기 좋아요", "📸 서로 사진 찍어주기 예뻐요", "🤝 초보자도 협동하기 쉬워요"],
+  friend: ["🎉 여럿이 가기 좋아요", "😆 웃으면서 만들었어요", "📸 단체 사진 맛집이에요", "🍰 끝나고 수다 떨기 좋아요"],
+  family: ["👵 부모님이 좋아하셨어요", "🪑 자리가 편안해요", "🐢 천천히 알려주세요", "🎁 선물로 좋아요"],
+  kids: ["🧒 아이가 집중했어요", "🛡️ 안전 안내가 꼼꼼해요", "🧼 정리가 편해요", "🏆 아이가 뿌듯해했어요"]
+};
+function writeForm() {
+  const sec = $("review-write-section");
+  if (!U || !target) {
+    $("rv-form").innerHTML = `<div class="py-10 text-center"><span class="icon text-[40px] text-outline-variant">${U ? "event_available" : "lock"}</span>
+      <p class="mt-2 font-headline-sm text-headline-sm">${U ? "후기를 쓸 수 있는 예약이 없어요" : "로그인 후 후기를 쓸 수 있어요"}</p>
+      <p class="text-body-sm text-outline mt-1">${U ? "이용 날짜가 지난 예약에만 후기를 남길 수 있어요. (실제 예약 인증)" : "누구랑은 실제로 예약하고 이용한 회원만 후기를 남길 수 있어요."}</p>
+      <a href="${U ? "shop.html" : "login.html?next=" + encodeURIComponent("review.html#write")}" class="inline-flex mt-4 px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg">${U ? "상품 둘러보기" : "로그인하기"}</a></div>`;
+    $("rv-target").style.display = "none";
+    $("rv-wait").textContent = "참여 완료 후기 작성";
+    return;
+  }
+  const p = byId(target.id);
+  $("rv-wait").textContent = `참여 완료 후기 작성 (${done.length}건 대기 중)`;
+  $("rv-target-title").textContent = p.title;
+  $("rv-target-no").textContent = `예약번호 #${target.no} (${withLabel(target.with)} ${target.people}인 참여)`;
+  if (done.length > 1) {
+    $("rv-target-pick").innerHTML = `<select id="rv-pick" class="mt-2 w-full text-body-sm rounded-lg border-outline-variant bg-surface py-1.5">${done.map(o => `<option value="${o.no}" ${o.no === target.no ? "selected" : ""}>${esc(byId(o.id).title.slice(0, 30))} · ${o.date}</option>`).join("")}</select>`;
+    $("rv-pick").onchange = e => { target = done.find(o => o.no === e.target.value); writeForm(); };
+  }
+  $("rv-q-tag").textContent = `#${withLabel(target.with)} 예약자`;
+  $("rv-tags").innerHTML = TAGS[target.with].map(t => `<button type="button" data-tag="${t}" class="px-3 py-1.5 rounded-full ${W.tag === t ? "bg-primary text-on-primary" : "bg-surface text-on-surface-variant hover:bg-surface-container"} font-label-sm text-label-sm transition-colors">${t}</button>`).join("");
+  paintStars(); paintScores();
+}
+const STAR_TEXT = { 1: "1.0점 (아쉬웠어요)", 2: "2.0점 (조금 부족해요)", 3: "3.0점 (보통이에요)", 4: "4.0점 (만족스러워요)", 5: "5.0점 (최고예요!)" };
+function paintStars() {
+  document.querySelectorAll(".star-btn").forEach(b => { const on = +b.dataset.val <= W.rating; b.classList.toggle("text-[#e59b2c]", on); b.classList.toggle("text-outline-variant", !on); b.querySelector(".icon").classList.toggle("fill", on); });
+  $("star-score-text").textContent = STAR_TEXT[W.rating];
+}
+function paintScores() {
+  document.querySelectorAll("[data-score]").forEach(b => { const on = W.scores[b.dataset.score] === +b.dataset.v; b.className = on ? "flex-1 py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-bold" : "flex-1 py-1 rounded bg-surface hover:bg-surface-container text-on-surface font-label-sm text-label-sm"; });
+}
+document.addEventListener("click", e => {
+  const s = e.target.closest(".star-btn"); if (s) { W.rating = +s.dataset.val; paintStars(); return; }
+  const sc = e.target.closest("[data-score]"); if (sc) { W.scores[sc.dataset.score] = +sc.dataset.v; paintScores(); return; }
+  const tg = e.target.closest("[data-tag]"); if (tg) { W.tag = W.tag === tg.dataset.tag ? "" : tg.dataset.tag; writeForm(); return; }
+  const rm = e.target.closest("[data-rm-photo]"); if (rm) { W.photos.splice(+rm.dataset.rmPhoto, 1); previews(); }
+});
+const ta = $("review-textarea");
+ta && ta.addEventListener("input", () => { const n = ta.value.length; $("char-counter").textContent = `${n} / 1000자 (최소 20자)`; $("char-counter").className = n >= 20 ? "text-label-sm font-label-sm text-primary font-bold" : "text-label-sm font-label-sm text-outline"; });
+// 사진: 브라우저 안에서 작게 줄여 저장 (최대 3장)
+function shrink(file) {
+  return new Promise(res => {
+    const fr = new FileReader();
+    fr.onload = () => { const img = new Image(); img.onload = () => {
+      const s = Math.min(1, 480 / Math.max(img.width, img.height)); const c = document.createElement("canvas");
+      c.width = Math.round(img.width * s); c.height = Math.round(img.height * s); c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      res(c.toDataURL("image/jpeg", 0.7)); }; img.onerror = () => res(null); img.src = fr.result; };
+    fr.onerror = () => res(null); fr.readAsDataURL(file);
+  });
+}
+function previews() {
+  if (!$("rv-previews")) return;
+  $("rv-previews").innerHTML = W.photos.map((u, i) => `<div class="relative rounded-xl aspect-square overflow-hidden bg-surface-container-low"><img src="${u}" alt="첨부 사진 ${i + 1}" class="w-full h-full object-cover"><button type="button" data-rm-photo="${i}" class="absolute top-1 right-1 w-6 h-6 rounded-full bg-inverse-surface/80 text-white flex items-center justify-center" aria-label="사진 빼기"><span class="icon text-[14px]">close</span></button></div>`).join("")
+    || '<div class="rounded-xl aspect-square bg-surface-container-low flex flex-col items-center justify-center text-outline text-label-sm font-label-sm"><span class="icon text-[20px] mb-1">image</span><span>미리보기</span></div>';
+}
+$("rv-file") && $("rv-file").addEventListener("change", async e => {
+  const files = [...e.target.files].filter(f => f.type.startsWith("image/")).slice(0, 3 - W.photos.length);
+  for (const f of files) { const u = await shrink(f); if (u) W.photos.push(u); }
+  if (e.target.files.length > files.length) toast("사진은 최대 3장까지 올릴 수 있어요.");
+  e.target.value = ""; previews();
+});
+$("rv-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const text = ta.value.trim();
+  if (text.length < 20) { toast("후기는 20자 이상 써 주세요."); ta.focus(); return; }
+  const r = { no: "R-" + Date.now(), order: target.no, id: target.id, user: (U.name || "회원").slice(0, 1) + "*" + (U.name || "원").slice(-1), with: target.with,
+    rating: W.rating, scores: { ...W.scores }, tag: W.tag, text, photos: W.photos.slice(), date: todayStr(), helpful: 0, verified: true };
+  const all = getMyReviews(); all.unshift(r);
+  try { localStorage.setItem(PKEYS.reviews, JSON.stringify(all)); }
+  catch (err) { r.photos = []; all[0] = r; store.set(PKEYS.reviews, all); toast("사진 용량이 커서 글만 저장했어요."); }
+  location.href = "review.html?id=" + target.id + "#rv-list";
+});
+$("rv-cancel") && $("rv-cancel").addEventListener("click", () => { ta.value = ""; W.photos = []; W.tag = ""; previews(); writeForm(); });
+
+summary(); list(); pending(); writeForm(); previews();
+if (location.hash === "#write") setTimeout(() => $("review-write-section").scrollIntoView({ behavior: "smooth" }), 200);
+
+  </script>
+</body>
+</html>

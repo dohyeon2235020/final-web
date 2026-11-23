@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전체보기 | 누구랑</title>
+  <meta name="description" content="누구랑의 공방·클래스·체험·강의 400개를 동행·지역·가격·환불 등급으로 찾아보세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<!-- ================= PAGE HEADER & COMPANION CURATION ================= -->
+<section class="bg-surface-container-low border-b border-outline-variant py-8 md:py-10">
+<div class="max-w-7xl mx-auto px-space-md md:px-gutter-lg">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-1.5 bg-surface-container-highest px-3 py-1 rounded-full text-secondary font-label-sm text-label-sm mb-3">
+<span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+<span>함께하는 순간을 위한 정갈한 큐레이션</span>
+</div>
+<h1 class="text-headline-xl-mobile md:text-headline-xl font-headline-xl-mobile md:font-headline-xl text-on-surface tracking-tight mb-2">
+          누구랑 함께 떠나볼까요? <span class="text-primary">전체 둘러보기</span>
+</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg">
+          소중한 사람과의 밀도 있는 시간을 위해 준비된 감성 아틀리에와 이색 원데이 클래스를 탐색해보세요.
+        </p>
+</div>
+<!-- 4대 상품 유형 상단 탭 -->
+<div class="mt-8 flex flex-wrap items-center gap-2 border-b border-outline-variant pb-4">
+<button data-g="type" data-v="" data-active class="px-5 py-2 rounded-lg font-label-lg text-label-lg bg-primary-container text-on-primary-container shadow-sm flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[18px]">apps</span>
+<span>전체보기</span>
+</button>
+<button data-g="type" data-v="workshop" class="px-5 py-2 rounded-lg font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:text-primary hover:border-primary transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+<span>공방</span>
+</button>
+<button data-g="type" data-v="class" class="px-5 py-2 rounded-lg font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:text-primary hover:border-primary transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">brush</span>
+<span>클래스</span>
+</button>
+<button data-g="type" data-v="experience" class="px-5 py-2 rounded-lg font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:text-primary hover:border-primary transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">explore</span>
+<span>체험</span>
+</button>
+<button data-g="type" data-v="lecture" class="px-5 py-2 rounded-lg font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant border border-outline-variant hover:text-primary hover:border-primary transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span>강의</span>
+</button>
+</div>
+<!-- 세부 활동 카테고리 칩 -->
+<div class="mt-4 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-body-sm font-body-sm">
+<span class="text-on-surface-variant font-label-md text-label-md shrink-0 mr-1">인기 카테고리:</span>
+<button data-g="cat" data-v="" data-active class="px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-primary font-semibold border border-primary text-body-sm shrink-0">#전체 카테고리</button>
+<button data-g="cat" data-v="도자기" class="px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant text-body-sm shrink-0">#도자기·물레</button>
+<button data-g="cat" data-v="향수·캔들" class="px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant text-body-sm shrink-0">#수제향수·조향</button>
+<button data-g="cat" data-v="목공" class="px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant text-body-sm shrink-0">#목공·가구</button>
+<button data-g="cat" data-v="가죽" class="px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant text-body-sm shrink-0">#가죽공예</button>
+<button data-g="cat" data-v="쿠킹·베이킹" class="px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant text-body-sm shrink-0">#베이킹·디저트</button>
+<button data-g="cat" data-v="반지·액세서리" class="px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant text-body-sm shrink-0">#은공예·반지만들기</button>
+<button data-g="cat" data-v="유리" class="px-3.5 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-primary border border-outline-variant text-body-sm shrink-0">#유리공예·선캐처</button>
+</div>
+</div>
+</section>
+<!-- ================= MAIN LAYOUT WITH FILTER SIDEBAR & CARD GRID ================= -->
+<div class="max-w-7xl mx-auto px-space-md md:px-gutter-lg py-8 flex-1 w-full">
+<!-- Top Result Count & Sort Utility Bar -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-outline-variant gap-4">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-background">전체 상품</span>
+<span class="bg-surface-container px-2.5 py-0.5 rounded-full font-label-md text-label-md text-primary font-bold" data-count="{n}개">400개</span>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+<!-- 선택한 조건 -->
+<div data-chips class="hidden lg:flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant"></div>
+<!-- Sort Select Dropdown -->
+<div class="relative inline-block w-48">
+<select data-g="sort" aria-label="정렬" class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container cursor-pointer pr-8 appearance-none">
+<option value="rec">추천순</option>
+<option value="pop">실시간 인기순 (좋아요)</option>
+<option value="rating">평점 높은순</option>
+<option value="price">인원별 낮은 가격순</option>
+<option value="new">최신 등록순</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- 12-Column Responsive Body -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6">
+<!-- ================= FILTER SIDEBAR (4 Cols on Desktop) ================= -->
+<aside class="lg:col-span-3 space-y-6">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant mb-4">
+<h2 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+              맞춤 필터
+            </h2>
+<button data-reset class="text-label-sm font-label-sm text-outline hover:text-primary transition-colors">초기화</button>
+</div>
+<!-- 1) Companion Filter Chips (누구랑 태그) -->
+<div class="mb-6">
+<label class="block font-label-lg text-label-lg text-on-surface mb-2.5">
+              누구랑 가시나요? <span class="text-label-sm text-outline font-normal">(중복 선택)</span>
+</label>
+<div class="flex flex-wrap gap-2"><button data-g="with" data-v="date" data-active data-multi class="h-9 px-3.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md border border-primary-container flex items-center gap-1.5 shadow-sm"><span class="material-symbols-outlined text-[16px]">favorite</span><span>2인 데이트</span></button><button data-g="with" data-v="friend" class="h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:border-primary hover:text-primary transition-colors flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">groups</span><span>친구 모임</span></button><button data-g="with" data-v="family" class="h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:border-primary hover:text-primary transition-colors flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">family_restroom</span><span>가족 · 부모님</span></button><button data-g="with" data-v="kids" class="h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:border-primary hover:text-primary transition-colors flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">child_care</span><span>어린이 동반</span></button></div>
+</div>
+<!-- 2) Region Filter -->
+<div class="mb-6 pt-4 border-t border-outline-variant">
+<label class="block font-label-lg text-label-lg text-on-surface mb-2.5">지역 선택</label>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface">
+<input data-g="region" value="성수" data-multi  class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox">
+<span>서울 성수 / 서울숲</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface">
+<input data-g="region" value="연남,망원" data-multi class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox">
+<span>서울 연남 / 망원 / 홍대</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface">
+<input data-g="region" value="한남" data-multi class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox">
+<span>서울 한남 / 이태원</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface">
+<input data-g="region" value="북촌,서촌" data-multi class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox">
+<span>서울 종로 / 삼청 / 서촌</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface">
+<input data-g="region" value="판교" data-multi class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox">
+<span>경기 분당 / 판교</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface">
+<input data-g="region" value="일산,헤이리" data-multi class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox">
+<span>경기 일산 / 파주 헤이리</span>
+</label>
+<details class="pt-1"><summary class="cursor-pointer font-label-md text-label-md text-primary py-1">다른 지역 더보기 (전국)</summary><div class="space-y-2 mt-2">
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:부산" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>부산 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:대구" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>대구 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:인천" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>인천 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:광주" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>광주 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:대전" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>대전 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:울산" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>울산 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:세종" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>세종 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:강원" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>강원 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:충북" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>충북 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:충남" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>충남 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:전북" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>전북 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:전남" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>전남 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:경북" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>경북 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:경남" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>경남 전체</span></label>
+<label class="flex items-center gap-2 cursor-pointer font-body-sm text-body-sm text-on-surface"><input data-g="region" data-multi value="sido:제주" class="rounded border-outline-variant text-primary focus:ring-primary-container w-4 h-4" type="checkbox"><span>제주 전체</span></label></div></details>
+</div>
+</div>
+<!-- 3) Price Range Filter -->
+<div class="mb-6 pt-4 border-t border-outline-variant">
+<div class="flex justify-between items-center mb-2.5">
+<label class="font-label-lg text-label-lg text-on-surface">1인 기준 가격</label>
+<span data-range-label class="font-label-md text-label-md text-primary font-bold">가격 전체</span>
+</div>
+<input data-g="pricemax" aria-label="1인 최대 가격" class="w-full accent-primary h-2 bg-surface-container-high rounded-lg cursor-pointer" max="120000" min="10000" step="5000" type="range" value="120000">
+<div class="flex justify-between text-label-sm font-label-sm text-outline mt-1.5">
+<span>₩10,000</span>
+<span>₩120,000</span>
+</div>
+<!-- Quick preset buttons -->
+<div class="grid grid-cols-3 gap-1.5 mt-3">
+<button data-g="price" data-v="-50001" class="py-1 px-2 text-label-sm font-label-sm bg-surface-container text-on-surface-variant rounded hover:bg-surface-variant transition-colors">5만원 이하</button>
+<button data-g="price" data-v="50000-100001" class="py-1 px-2 text-label-sm font-label-sm bg-surface-container text-on-surface-variant rounded hover:bg-surface-variant transition-colors">5~10만원</button>
+<button data-g="price" data-v="100000-" class="py-1 px-2 text-label-sm font-label-sm bg-surface-container text-on-surface-variant rounded hover:bg-surface-variant transition-colors">10만원 이상</button>
+</div>
+</div>
+<!-- 4) Refund Security Rating Filter (환불 안심 등급) -->
+<div class="pt-4 border-t border-outline-variant">
+<label class="block font-label-lg text-label-lg text-on-surface mb-2.5">
+              환불 안심 등급
+              <span class="material-symbols-outlined text-[14px] text-outline ml-0.5 align-middle cursor-help" title="공방 예약 특성에 따른 취소/환불 기준 등급제">info</span>
+</label>
+<div class="space-y-2">
+<label class="flex items-center justify-between p-2 rounded-lg border border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<span class="flex items-center gap-2 font-body-sm text-body-sm">
+<input data-g="refund" value="safe" data-multi  class="rounded border-outline-variant text-primary focus:ring-primary-container" type="checkbox">
+<span>안심 등급 (2일 전 100% 환불)</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#EBF4EF] text-[#3A7A5E]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#3A7A5E]"></span>안심
+                </span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg border border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<span class="flex items-center gap-2 font-body-sm text-body-sm">
+<input data-g="refund" value="mid" data-multi  class="rounded border-outline-variant text-primary focus:ring-primary-container" type="checkbox">
+<span>보통 등급 (5일 전 100% 환불)</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FDF7EC] text-[#966318]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#B37D2E]"></span>보통
+                </span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg border border-outline-variant hover:bg-surface-container-low cursor-pointer transition-colors">
+<span class="flex items-center gap-2 font-body-sm text-body-sm">
+<input data-g="refund" value="strict" data-multi class="rounded border-outline-variant text-primary focus:ring-primary-container" type="checkbox">
+<span>엄격 등급 (재료 맞춤 발주)</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FBEFED] text-[#A3433B]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#A3433B]"></span>엄격
+                </span>
+</label>
+</div>
+</div>
+<!-- Apply Filter Button -->
+<div class="mt-6 pt-4">
+<button data-apply class="w-full py-2.5 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-lg transition-all shadow-sm flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">search</span>
+<span data-count="필터 조건 적용 ({n}건)">필터 조건 적용 (400건)</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- ================= CARDS GRID (9 Cols on Desktop - 8+ Workshop Cards) ================= -->
+<section class="lg:col-span-9">
+<div id="list" aria-live="polite" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+<!-- ================= PAGINATION ================= -->
+<nav data-pager aria-label="Pagination" class="mt-12 flex justify-center items-center gap-1.5">
+<button class="w-10 h-10 rounded-lg border border-outline-variant bg-surface-container-lowest text-outline hover:text-primary hover:border-primary flex items-center justify-center transition-colors disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container font-label-lg text-label-lg font-bold shadow-sm">1</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:text-primary hover:border-primary font-label-lg text-label-lg transition-colors">2</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:text-primary hover:border-primary font-label-lg text-label-lg transition-colors">3</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:text-primary hover:border-primary font-label-lg text-label-lg transition-colors">4</button>
+<button class="w-10 h-10 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:text-primary hover:border-primary font-label-lg text-label-lg transition-colors">5</button>
+<button class="px-3 h-10 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:text-primary hover:border-primary font-label-lg text-label-lg flex items-center gap-1 transition-colors">
+<span>다음</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</nav>
+</section>
+</div>
+</div>
+<!-- ================= FOOTER (Shared Component JSON Blueprint) ================= -->
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+initList({ card: "shop", pageSize: 9 });
+  </script>
+</body>
+</html>

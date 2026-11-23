@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 일정 | 누구랑</title>
+  <meta name="description" content="예약한 공방·클래스·체험·강의를 달력으로 보고, 공방 선생님의 맞춤 메모와 1:1 답글을 확인하세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<!-- MAIN CANVAS -->
+<div class="flex-1 w-full max-w-7xl mx-auto px-space-md md:px-gutter-lg py-space-lg md:py-space-xl">
+<!-- Page Header & Narrative Anchor -->
+<section class="mb-space-lg md:mb-space-xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-primary text-label-sm font-label-sm mb-2 border border-outline-variant/50">
+<span class="material-symbols-outlined text-[14px]" data-icon="handshake">handshake</span>
+            동행자 매칭 &amp; 사전 조율 센터
+          </div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">나의 동행 일정 캘린더</h1>
+</div>
+<!-- Quick Action / Status Badges -->
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 text-label-sm font-label-sm bg-surface-container-lowest border border-outline-variant px-3 py-1.5 rounded-lg text-on-surface-variant shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            다가오는 예약 <span class="font-bold text-primary" id="cal-count">0건</span>
+</span>
+<button data-demo class="inline-flex items-center gap-1 text-label-sm font-label-sm bg-surface-container-low hover:bg-surface-container text-on-surface px-3 py-1.5 rounded-lg border border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="sync">sync</span>
+            구글 캘린더 연동
+          </button>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-3xl">
+        예약된 클래스와 체험을 캘린더로 한눈에 확인하고, 공방 선생님이 예약 유형(인원, 동행 관계, 선택 옵션)에 맞춰 작성해주신 세심한 사전 안내 메모를 확인하세요.
+      </p>
+</section>
+<!-- 12-Column Responsive Split Layout (7:5 Split) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg lg:gap-gutter-lg items-start">
+<!-- LEFT SECTION: Monthly Calendar View (7 cols) -->
+<section class="lg:col-span-7 bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md md:p-space-lg shadow-sm">
+<!-- Calendar Controls & Month Switcher -->
+<div class="flex items-center justify-between mb-space-lg border-b border-outline-variant/40 pb-space-md">
+<div class="flex items-center gap-space-sm">
+<h2 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+<span class="font-bold" id="cal-title"></span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container text-primary border border-outline-variant/30" id="cal-this">이번 달</span>
+</h2>
+</div>
+<div class="flex items-center gap-1">
+<button type="button" id="cal-prev" aria-label="이전 달 이동" class="w-8 h-8 rounded-lg flex items-center justify-center border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button id="cal-today" type="button" class="px-2.5 h-8 rounded-lg text-label-sm font-label-sm border border-outline-variant text-on-surface hover:bg-surface-container transition-colors">오늘</button>
+<button type="button" id="cal-next" aria-label="다음 달 이동" class="w-8 h-8 rounded-lg flex items-center justify-center border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Days of Week Header -->
+<div class="grid grid-cols-7 text-center mb-2 font-label-md text-label-md text-on-surface-variant font-medium">
+<div class="text-error py-1.5">일</div>
+<div class="py-1.5">월</div>
+<div class="py-1.5">화</div>
+<div class="py-1.5">수</div>
+<div class="py-1.5">목</div>
+<div class="py-1.5">금</div>
+<div class="text-primary py-1.5">토</div>
+</div>
+<!-- 달력 (pages.js가 그림) -->
+<div id="cal-grid" class="grid grid-cols-7 gap-1.5 md:gap-2" aria-live="polite"></div>
+<!-- Calendar Footer Legend -->
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/40 flex flex-wrap items-center justify-between text-label-sm font-label-sm text-on-surface-variant gap-2">
+<div class="flex items-center gap-space-md">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary-container ring-1 ring-primary"></span>
+              선택된 일정
+            </span>
+<span class="inline-flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-surface-container-high border border-outline-variant"></span>
+              예정된 클래스
+            </span>
+</div>
+<span class="text-outline">일정을 누르면 오른쪽에서 공방 선생님의 맞춤 메모를 확인할 수 있어요.</span>
+</div>
+</section>
+<!-- 선택한 일정 · 판매자 메모 · 답글 -->
+<section class="lg:col-span-5 flex flex-col gap-space-md" id="cal-detail"></section>
+</div>
+<!-- Additional Recommendations / Companion Guarantee Banner -->
+<section class="mt-space-xl bg-surface-container rounded-xl border border-outline-variant p-space-md md:p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface">누구랑 안심 동행 클래스 보증제</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+            일정 당일 공방 사정으로 수업 진행이 원활하지 않을 경우 100% 전액 환불됩니다.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<a data-demo id="cal-refund" href="#" class="px-4 py-2 text-label-md font-label-md bg-surface-container-lowest text-on-surface border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors">
+          환불 규정 확인
+        </a>
+<button data-demo="일정 변경은 과제용 예시 기능이에요. 취소 후 다시 예약해 주세요." class="px-4 py-2 text-label-md font-label-md bg-primary-container text-on-primary rounded-lg hover:bg-secondary transition-colors">
+          예약 일정 변경
+        </button>
+</div>
+</section>
+</div>
+<!-- FOOTER (Shared Component: Footer) -->
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+// 내 일정 캘린더: 구매한 예약(ng_orders)을 달력에 표시, 날짜를 누르면 판매자 메모 + 1:1 답글
+const $ = id => document.getElementById(id);
+const live = getOrders().filter(o => o.status !== "취소" && byId(o.id));
+let sel = live.find(o => o.no === qs("no")) || live.filter(o => dday(o.date) >= 0).sort((a, b) => a.date.localeCompare(b.date))[0] || live[0] || null;
+const base = sel ? new Date(sel.date + "T00:00:00") : new Date();
+let Y = base.getFullYear(), M = base.getMonth();
+
+$("cal-count").textContent = live.filter(o => dday(o.date) >= 0).length + "건";
+
+function cell(d, inMonth) {
+  const ds = ymd(d), dow = d.getDay();
+  const os = live.filter(o => o.date === ds);
+  const dayColor = dow === 0 ? "text-error" : dow === 6 ? "text-primary" : "";
+  const H = "min-h-[82px] md:min-h-[100px] p-1.5 rounded-lg ";
+  if (!inMonth) return `<div class="${H}bg-surface-container-low/30 border border-transparent text-outline-variant text-body-sm font-body-sm select-none">${d.getDate()}</div>`;
+  const isToday = ds === todayStr();
+  if (!os.length) return `<div class="${H}border border-outline-variant/40 hover:bg-surface-container transition-colors"><span class="text-body-sm font-body-sm ${dayColor} ${isToday ? "inline-flex w-6 h-6 rounded-full border border-primary items-center justify-center font-bold" : ""}">${d.getDate()}</span></div>`;
+  const active = sel && os.some(o => o.no === sel.no);
+  const badges = os.map(o => {
+    const p = byId(o.id), on = sel && o.no === sel.no, past = dday(o.date) < 0;
+    return `<button type="button" data-no="${o.no}" class="mt-1 w-full text-left ${on ? "bg-surface-container-lowest border border-primary-container/40" : "bg-surface-container-high border border-outline-variant group-hover:border-primary"} p-1 md:p-1.5 rounded transition-colors">
+      <div class="flex items-center justify-between gap-1 text-label-sm font-label-sm"><span class="font-bold ${on ? "text-primary" : "text-on-surface"} truncate">${esc(p.title.replace(/^\[(.+?)\]\s*/, "[$1] ").slice(0, 14))}</span><span class="${past ? "bg-outline" : on ? "bg-primary" : "bg-secondary"} text-on-primary px-1 rounded text-[9px] font-bold shrink-0">${past ? "완료" : ddayText(o.date)}</span></div>
+      <p class="text-[10px] text-on-surface-variant truncate">${o.time} (${o.people}명)</p></button>`;
+  }).join("");
+  return active
+    ? `<div class="${H}bg-surface-container-low border-2 border-primary-container shadow-sm relative flex flex-col justify-between ring-2 ring-primary/20"><div class="flex items-center justify-between"><span class="w-6 h-6 rounded-full bg-primary-container text-on-primary text-body-sm font-bold flex items-center justify-center">${d.getDate()}</span><span class="text-label-sm font-label-sm text-primary font-bold hidden md:inline">선택됨</span></div>${badges}</div>`
+    : `<div class="${H}border border-outline-variant/80 hover:bg-surface-container transition-colors flex flex-col justify-between group"><span class="text-body-sm font-body-sm font-semibold ${dayColor || "text-on-surface"}">${d.getDate()}</span>${badges}</div>`;
+}
+function renderCal() {
+  const now = new Date();
+  $("cal-title").textContent = `${Y}년 ${M + 1}월`;
+  $("cal-this").style.display = (Y === now.getFullYear() && M === now.getMonth()) ? "" : "none";
+  const first = new Date(Y, M, 1), start = new Date(Y, M, 1 - first.getDay());
+  const weeks = Math.ceil((first.getDay() + new Date(Y, M + 1, 0).getDate()) / 7);
+  let h = "";
+  for (let i = 0; i < weeks * 7; i++) { const d = new Date(start); d.setDate(start.getDate() + i); h += cell(d, d.getMonth() === M); }
+  $("cal-grid").innerHTML = h;
+}
+$("cal-prev").onclick = () => { M--; if (M < 0) { M = 11; Y--; } renderCal(); };
+$("cal-next").onclick = () => { M++; if (M > 11) { M = 0; Y++; } renderCal(); };
+$("cal-today").onclick = () => { const n = new Date(); Y = n.getFullYear(); M = n.getMonth(); renderCal(); };
+$("cal-grid").addEventListener("click", e => {
+  const b = e.target.closest("[data-no]");
+  if (!b) return;
+  sel = live.find(o => o.no === b.dataset.no);
+  history.replaceState(null, "", "?no=" + encodeURIComponent(sel.no));
+  renderCal(); renderDetail();
+  if (window.innerWidth < 1024) $("cal-detail").scrollIntoView({ behavior: "smooth" });
+});
+
+const WITH_NOTE = {
+  date: "2인 데이트 예약은 둘만 오붓하게 집중할 수 있도록 나란히 앉는 테이블로 준비해 드려요.",
+  friend: "친구 모임은 함께 이야기 나누며 만들 수 있게 테이블을 붙여 준비해 드려요.",
+  family: "부모님과 함께라면 의자와 진행 속도를 편안하게 맞춰 드려요.",
+  kids: "아이 눈높이에 맞는 안전 도구와 보호자 자리를 함께 준비해 드려요."
+};
+function renderDetail() {
+  const box = $("cal-detail");
+  if (!sel) {
+    box.innerHTML = `<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-lg shadow-sm text-center">
+      <span class="icon text-[44px] text-outline-variant">event_busy</span>
+      <p class="mt-2 font-headline-sm text-headline-sm">아직 예약한 일정이 없어요</p>
+      <p class="text-body-sm text-outline mt-1">상품을 예약하면 달력에 표시되고, 공방 선생님의 맞춤 메모를 이곳에서 볼 수 있어요.</p>
+      <div class="flex justify-center gap-2 mt-4"><a href="shop.html" class="px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg">상품 둘러보기</a>
+      <a href="login.html" class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant font-label-lg text-label-lg">데모 계정으로 보기</a></div></div>`;
+    return;
+  }
+  const o = sel, p = byId(o.id), past = dday(o.date) < 0;
+  const replies = store.get(PKEYS.replies, {})[o.no] || [];
+  const memo = (tag, tagCls, sub, text, note, boxCls) => `<div class="p-3 rounded-lg ${boxCls}"><div class="flex items-center gap-2 mb-1.5 flex-wrap"><span class="px-2 py-0.5 rounded text-[11px] font-bold ${tagCls}">${tag}</span><span class="text-label-sm font-label-sm text-on-surface-variant">${sub}</span></div><p class="text-body-sm font-body-sm text-on-surface font-medium leading-relaxed">“${esc(text)}”</p><p class="text-label-sm font-label-sm text-outline mt-1">${note}</p></div>`;
+  box.innerHTML = `
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md shadow-sm">
+  <div class="flex items-center justify-between mb-2 gap-2 flex-wrap">
+    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm font-bold"><span class="icon text-[13px]">${WITH_UI[o.with].icon}</span>${withLabel(o.with)} · ${o.people}명</span>
+    <span class="text-label-sm font-label-sm text-primary font-bold">예약 번호: #${esc(o.no)}</span>
+  </div>
+  <h2 class="text-headline-sm font-headline-sm text-on-surface mb-1"><a class="hover:text-primary" href="${detailUrl(p)}">${esc(p.title)}</a></h2>
+  <p class="text-body-sm font-body-sm text-on-surface-variant mb-space-sm">${esc(p.shop)} | ${esc(p.summary)}</p>
+  <div class="bg-surface-container-low rounded-lg p-space-sm border border-outline-variant/60 flex flex-col gap-1.5">
+    <div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface"><span class="icon text-primary text-[18px]">schedule</span><span class="font-bold">${fmtDate(o.date)} ${o.time} - ${endTime(o.time, p.duration)} (${p.duration}분)</span>${past ? '<span class="px-1.5 rounded bg-outline text-white text-[10px] font-bold">이용 완료</span>' : `<span class="px-1.5 rounded bg-primary text-white text-[10px] font-bold">${ddayText(o.date)}</span>`}</div>
+    <div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface"><span class="icon text-primary text-[18px]">group</span><span>참여 인원: <span class="font-semibold text-primary">${o.people}명</span> (동행 유형: ${withLabel(o.with)})</span></div>
+    <div class="flex items-center gap-2 text-body-sm font-body-sm text-on-surface"><span class="icon text-primary text-[18px]">tune</span><span>선택 옵션: <span class="font-semibold">${o.option ? esc(p.option.name) : "없음"}</span></span></div>
+    <div class="flex items-center justify-between flex-wrap gap-1 text-body-sm font-body-sm text-on-surface pt-1 border-t border-outline-variant/30 mt-0.5"><div class="flex items-center gap-2"><span class="icon text-primary text-[18px]">payments</span><span>결제 금액: <span class="font-bold text-[15px]">${won2(o.total)}</span></span></div><span class="text-[11px] font-medium text-primary bg-surface-container px-2 py-0.5 rounded border border-outline-variant/40">기본 ${won2(o.base)}${o.option ? " + 옵션 " + won2(o.option) : ""}${o.discount ? " - 할인 " + won2(o.discount) : ""}</span></div>
+  </div>
+  <div class="mt-space-sm pt-space-sm border-t border-outline-variant/40 flex items-start justify-between gap-2">
+    <div class="flex items-start gap-1.5"><span class="icon text-outline text-[18px] mt-0.5">location_on</span><div><p class="text-body-sm font-body-sm font-semibold text-on-surface">${esc(p.shop)}</p><p class="text-label-sm font-label-sm text-on-surface-variant">${placeOf(p)}</p></div></div>
+    <a href="https://map.kakao.com/?q=${encodeURIComponent(p.sido + " " + p.sigungu)}" target="_blank" rel="noopener" class="shrink-0 text-label-sm font-label-sm text-primary hover:underline font-semibold flex items-center gap-0.5 pt-0.5"><span>길찾기</span><span class="icon text-[14px]">near_me</span></a>
+  </div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md shadow-sm">
+  <div class="flex items-center justify-between mb-space-sm"><div class="flex items-center gap-1.5"><span class="icon text-primary text-[20px]">stylus_note</span><h3 class="text-headline-sm font-headline-sm text-on-surface">공방 선생님의 맞춤 사전 메모</h3></div><span class="text-label-sm font-label-sm text-outline">${esc(p.host)} 선생님</span></div>
+  <p class="text-body-sm font-body-sm text-on-surface-variant mb-space-md">예약 인원·동행 관계·선택 옵션에 맞춰 공방 선생님이 남긴 안내예요.</p>
+  <div class="space-y-space-sm">
+    ${memo("공통 필수 메모", "bg-surface-container-high text-primary border border-outline-variant/60", "준비물 및 도착 안내", p.memo.common, "편안한 복장으로 오시면 준비된 자리에서 바로 시작할 수 있어요.", "bg-surface border border-outline-variant")}
+    ${memo("동행 맞춤 (인원 안내)", "bg-primary-container text-on-primary", `${withLabel(o.with)} · ${o.people}명`, p.memo.people, WITH_NOTE[o.with], "bg-surface-container-low border border-secondary-container/40")}
+    ${memo(`선택 옵션 (${esc(p.option.name)})`, "bg-surface-variant text-on-surface-variant", o.option ? "옵션 선택함" : "옵션 미선택 · 현장 추가 가능", p.memo.option, o.option ? "선택하신 옵션은 수업 시작 전에 미리 준비해 둘게요." : "원하시면 수업 시작 때 말씀해 주세요.", "bg-surface border border-outline-variant")}
+    ${memo("사전 확인 정보", "bg-surface-container-high text-on-surface", "주의사항 안내", p.memo.info, "궁금한 점은 아래 1:1 사전 조율로 남겨 주세요.", "bg-surface border border-outline-variant")}
+  </div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md shadow-sm">
+  <div class="flex items-center justify-between mb-space-sm"><h3 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-1.5"><span class="icon text-primary text-[19px]">forum</span>선생님과 1:1 사전 조율</h3><span class="text-label-sm font-label-sm bg-surface-container px-2 py-0.5 rounded text-primary font-medium">답글 ${replies.length}개</span></div>
+  <p class="text-label-md font-label-md text-on-surface-variant mb-space-sm">선생님께 사전 질문이나 답글을 남겨 보세요 (예: 주차, 알레르기, 기념일 서프라이즈 등)</p>
+  <div class="space-y-space-sm mb-space-md" id="reply-list">
+    <div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant/60"><div class="flex items-center gap-2 mb-1"><span class="px-2 py-0.5 rounded text-[11px] font-bold bg-primary-container text-on-primary">선생님</span><span class="text-label-sm text-outline">${esc(p.host)} · 예약 확정 시</span></div><p class="text-body-sm text-on-surface">예약해 주셔서 감사해요! ${fmtDate(o.date, false)} ${o.time}에 뵐게요. 궁금한 점은 편하게 남겨 주세요.</p></div>
+    ${o.request ? `<div class="p-3 rounded-lg bg-surface border border-outline-variant ml-6"><div class="flex items-center gap-2 mb-1"><span class="px-2 py-0.5 rounded text-[11px] font-bold bg-surface-container-high text-primary border border-outline-variant/60">나 (예약 요청)</span></div><p class="text-body-sm text-on-surface">${esc(o.request)}</p></div>` : ""}
+    ${replies.map(r => `<div class="p-3 rounded-lg bg-surface border border-outline-variant ml-6"><div class="flex items-center justify-between gap-2 mb-1"><span class="px-2 py-0.5 rounded text-[11px] font-bold bg-surface-container-high text-primary border border-outline-variant/60">나</span><span class="text-label-sm text-outline">${esc(r.at)}</span></div><p class="text-body-sm text-on-surface whitespace-pre-line">${esc(r.text)}</p></div>`).join("")}
+  </div>
+  ${past ? `<a href="review.html?write=${encodeURIComponent(o.no)}#write" class="w-full py-2.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-1"><span class="icon text-[18px]">rate_review</span>이용 완료 — 동행 후기 쓰기</a>` : `
+  <form id="reply-form" class="flex flex-col gap-2">
+    <div class="relative"><label for="reply-text" class="sr-only">답글 내용</label>
+      <textarea id="reply-text" maxlength="300" rows="3" placeholder="선생님께 남길 추가 요청사항이나 궁금한 점을 적어주세요." class="w-full rounded-lg bg-surface border border-outline-variant focus:bg-surface-container-lowest focus:border-primary-container focus:ring-2 focus:ring-primary/20 text-body-sm font-body-sm text-on-surface placeholder:text-outline p-3 resize-none"></textarea>
+      <div class="absolute right-2.5 bottom-2.5 text-[11px] text-outline"><span id="reply-n">0</span> / 300자</div></div>
+    <div class="flex items-center justify-between pt-1"><div class="flex items-center gap-1 text-label-sm font-label-sm text-outline"><span class="icon text-[15px]">lock</span>선생님과 나에게만 보이는 답글이에요</div>
+      <button type="submit" class="px-space-md py-2 bg-primary-container hover:bg-secondary text-on-primary font-label-lg text-label-lg rounded-lg shadow-sm transition-all active:scale-95 flex items-center gap-1"><span>답글 등록</span><span class="icon text-[16px]">send</span></button></div>
+  </form>`}
+</div>`;
+  const f = $("reply-form");
+  if (f) {
+    $("reply-text").addEventListener("input", e => $("reply-n").textContent = e.target.value.length);
+    f.addEventListener("submit", e => {
+      e.preventDefault();
+      const t = $("reply-text").value.trim();
+      if (!t) return toast("답글 내용을 입력해 주세요.");
+      const all = store.get(PKEYS.replies, {});
+      const now = new Date();
+      (all[o.no] = all[o.no] || []).push({ text: t, at: `${now.getMonth() + 1}/${now.getDate()} ${pad(now.getHours())}:${pad(now.getMinutes())}` });
+      store.set(PKEYS.replies, all);
+      toast("선생님께 답글을 남겼어요.");
+      renderDetail();
+    });
+  }
+  $("cal-refund").href = detailUrl(p) + "#d-refund";
+}
+renderCal(); renderDetail();
+
+  </script>
+</body>
+</html>

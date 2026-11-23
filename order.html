@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예약 및 결제 | 누구랑</title>
+  <meta name="description" content="날짜·인원·옵션을 확인하고 환불 규정에 동의한 뒤 가상 결제로 예약을 마칩니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<!-- Page Content Area -->
+<div class="flex-1 w-full max-w-7xl mx-auto px-space-md md:px-gutter-lg py-space-lg md:py-space-xl">
+<!-- Title & Step Indicator Section -->
+<div class="mb-space-lg md:mb-space-xl pb-space-md border-b border-outline-variant">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<span class="text-primary font-label-sm text-label-sm tracking-wide uppercase font-semibold">Nugurang Booking</span>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mt-1">클래스 예약 및 결제</h1>
+</div>
+<!-- 3-Step Indicator -->
+<ol class="flex items-center gap-2 sm:gap-4 text-label-sm font-label-sm">
+<li class="flex items-center gap-1.5 text-on-surface-variant/70">
+<span class="w-5 h-5 rounded-full flex items-center justify-center bg-surface-container-high text-on-surface-variant text-[11px] font-bold">01</span>
+<span class="hidden sm:inline">일정·옵션 확인</span>
+</li>
+<li class="text-outline-variant">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</li>
+<li class="flex items-center gap-1.5 text-primary-container font-bold">
+<span class="w-5 h-5 rounded-full flex items-center justify-center bg-primary-container text-on-primary text-[11px] shadow-sm">02</span>
+<span class="border-b-2 border-primary-container pb-0.5">결제 진행</span>
+</li>
+<li class="text-outline-variant">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</li>
+<li class="flex items-center gap-1.5 text-on-surface-variant/50">
+<span class="w-5 h-5 rounded-full flex items-center justify-center bg-surface-container-low text-outline text-[11px]">03</span>
+<span class="hidden sm:inline">예약 완료</span>
+</li>
+</ol>
+</div>
+</div>
+<!-- 2-Column Responsive Layout (7:5 Split on Desktop) -->
+<div id="order-wrap" class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg lg:gap-gutter-lg items-start">
+<!-- LEFT COLUMN: Forms, Summaries, Refund, Payment Methods (7 cols) -->
+<section class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- 1) 예약 상품 및 일정 요약 카드 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-space-sm mb-space-md">
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment</span>
+              예약 상품 및 일정 요약
+            </h2>
+<span id="o-with" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-primary font-semibold"></span>
+</div>
+<div class="flex flex-col sm:flex-row gap-space-md">
+<!-- 상품 사진 -->
+<div id="o-img" class="w-full sm:w-36 h-36 flex-shrink-0 rounded-lg overflow-hidden relative border border-outline-variant/50 bg-surface-container"></div>
+<!-- 상품 · 일정 -->
+<div class="flex-1 flex flex-col justify-between"><div>
+<div class="flex flex-wrap items-center gap-2 mb-1"><span id="o-shop" class="text-label-md font-label-md text-primary font-semibold tracking-wider"></span>
+<span class="text-label-sm font-label-sm text-outline flex items-center gap-0.5"><span class="icon text-[14px]">location_on</span><span id="o-place"></span></span></div>
+<h3 id="o-title" class="text-headline-sm font-headline-sm text-on-surface leading-snug"></h3></div>
+<div class="mt-3 pt-3 border-t border-outline-variant/40 space-y-2 text-body-sm font-body-sm">
+<div class="flex items-center text-on-surface-variant"><span class="icon text-[16px] text-outline mr-2">event</span><span class="font-medium text-on-surface">예약 일시:</span><span id="o-when" class="ml-1.5 font-semibold text-primary"></span></div>
+<div class="flex items-center text-on-surface-variant"><span class="icon text-[16px] text-outline mr-2">group</span><span class="font-medium text-on-surface">예약 인원:</span><span id="o-people" class="ml-1.5"></span></div>
+<div class="flex items-center text-on-surface-variant"><span class="icon text-[16px] text-outline mr-2">redeem</span><span class="font-medium text-on-surface">선택 옵션:</span><span id="o-option" class="ml-1.5"></span></div>
+</div></div>
+</div>
+</div>
+<!-- 2) 예약자 정보 입력 폼 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-space-sm mb-space-md">
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">person</span>
+              예약자 정보 입력
+            </h2>
+<span class="text-label-sm font-label-sm text-outline">* 필수 입력 항목</span>
+</div>
+<div class="space-y-space-md">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1" for="ordererName">
+                  예약자 이름 <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2.5 text-body-md font-body-md focus:bg-surface-container-lowest focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" id="ordererName" type="text" autocomplete="name" placeholder="예약자 실명">
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1" for="ordererPhone">
+                  연락처 (휴대폰) <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2.5 text-body-md font-body-md focus:bg-surface-container-lowest focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" id="ordererPhone" type="tel" autocomplete="tel" placeholder="010-1234-5678">
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1" for="ordererEmail">
+                이메일 주소 (예약 확정서 수신) <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2.5 text-body-md font-body-md focus:bg-surface-container-lowest focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" id="ordererEmail" type="email" autocomplete="email" placeholder="example@email.com">
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<label class="block text-label-md font-label-md text-on-surface" for="specialRequest">
+                  동행자 메모 및 공방 전달 요청사항
+                </label>
+<span class="text-label-sm font-label-sm text-outline">선택사항</span>
+</div>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-body-md font-body-md focus:bg-surface-container-lowest focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none resize-none placeholder:text-outline-variant" id="specialRequest" placeholder="예) 1주년 기념 데이트로 방문합니다. 서로에게 어울리는 포근한 우디 계열 향을 조향해보고 싶어요." rows="3"></textarea>
+</div>
+</div>
+</div>
+<!-- 3) 환불 정책 동의 및 확인 (필수) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+              환불 정책 및 취소 수수료 안내
+            </h2>
+<!-- Safe Badge Component as per Design System -->
+<span id="o-refund-badge"></span>
+</div>
+<div id="o-refund" class="bg-surface-container-low/70 border border-outline-variant/60 rounded-lg p-3.5 mb-space-md text-body-sm font-body-sm"></div>
+<!-- Mandatory Checkbox -->
+<label class="flex items-start gap-3 cursor-pointer group select-none">
+<input class="mt-0.5 w-4 h-4 rounded text-primary-container focus:ring-primary-container/30 border-outline-variant cursor-pointer" id="refundCheck" type="checkbox">
+<div class="text-body-sm font-body-sm text-on-surface">
+<span class="font-semibold text-primary">[필수]</span> <span id="o-agree-text"></span>
+            </div>
+</label>
+</div>
+<!-- 4) 결제 수단 선택 (가상 결제) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-space-sm mb-space-md">
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">credit_card</span>
+              결제 수단 선택
+            </h2>
+<span class="text-label-sm font-label-sm text-outline-variant bg-surface-container px-2 py-0.5 rounded text-on-surface-variant">가상 샌드박스 결제</span>
+</div>
+<!-- Radio Selection Matrix -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+<!-- Method 1: Card (Active default) -->
+<label class="flex flex-col items-center justify-center p-3.5 rounded-lg border-2 border-primary-container bg-surface-container/30 cursor-pointer text-center transition-all hover:bg-surface-container">
+<input checked="" class="sr-only" name="payment_method" type="radio" value="card">
+<span class="material-symbols-outlined text-primary-container text-[24px] mb-1">credit_card</span>
+<span class="text-label-md font-label-md font-semibold text-primary-container">신용/체크카드</span>
+<span class="text-[10px] text-on-surface-variant mt-0.5">국내 전 카드사 지원</span>
+</label>
+<!-- Method 2: Naver Pay -->
+<label class="flex flex-col items-center justify-center p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/50 cursor-pointer text-center transition-all hover:border-outline hover:bg-surface-container-low">
+<input class="sr-only" name="payment_method" type="radio" value="naverpay">
+<span class="font-bold text-[#03C75A] text-[18px] mb-0.5 tracking-tight leading-none">N Pay</span>
+<span class="text-label-md font-label-md font-medium text-on-surface">네이버페이</span>
+<span class="text-[10px] text-outline mt-0.5">포인트 적립 지원</span>
+</label>
+<!-- Method 3: Kakao Pay -->
+<label class="flex flex-col items-center justify-center p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/50 cursor-pointer text-center transition-all hover:border-outline hover:bg-surface-container-low">
+<input class="sr-only" name="payment_method" type="radio" value="kakaopay">
+<span class="font-bold text-[#3C1E1E] text-[18px] mb-0.5 tracking-tight leading-none">k·pay</span>
+<span class="text-label-md font-label-md font-medium text-on-surface">카카오페이</span>
+<span class="text-[10px] text-outline mt-0.5">카카오 머니/카드</span>
+</label>
+<!-- Method 4: Toss Pay -->
+<label class="flex flex-col items-center justify-center p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/50 cursor-pointer text-center transition-all hover:border-outline hover:bg-surface-container-low">
+<input class="sr-only" name="payment_method" type="radio" value="tosspay">
+<span class="material-symbols-outlined text-[#0064FF] text-[22px] mb-1">payments</span>
+<span class="text-label-md font-label-md font-medium text-on-surface">토스페이</span>
+<span class="text-[10px] text-outline mt-0.5">간편결제 원클릭</span>
+</label>
+<!-- Method 5: Bank Transfer -->
+<label class="flex flex-col items-center justify-center p-3.5 rounded-lg border border-outline-variant bg-surface-container-low/50 cursor-pointer text-center transition-all hover:border-outline hover:bg-surface-container-low col-span-2 sm:col-span-2">
+<input class="sr-only" name="payment_method" type="radio" value="vbank">
+<div class="flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-outline text-[20px]">account_balance</span>
+<span class="text-label-md font-label-md font-medium text-on-surface">무통장 입금 (가상계좌)</span>
+</div>
+<span class="text-[10px] text-outline">입금 기한 24시간 제공 · 현금영수증 자동발행</span>
+</label>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN: Sticky Order Summary & Direct CTA Trigger (5 cols) -->
+<aside class="lg:col-span-5">
+<div class="sticky top-24 bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md md:p-space-lg shadow-md space-y-space-md">
+<div class="border-b border-outline-variant/60 pb-space-sm flex items-center justify-between">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">최종 결제 금액</h2>
+<span class="text-label-sm font-label-sm text-primary font-medium">안심 주문서</span>
+</div>
+<div id="o-break" class="space-y-3 text-body-md font-body-md"></div>
+<!-- Total divider & final sum -->
+<div class="border-t border-dashed border-outline-variant pt-space-md">
+<div class="flex justify-between items-baseline mb-1">
+<span class="text-headline-sm font-headline-sm text-on-surface">총 결제 예정 금액</span>
+<div class="text-right">
+<span class="text-headline-xl font-headline-xl text-primary font-bold tracking-tight" id="o-total">0</span>
+<span class="text-headline-sm font-headline-sm text-primary font-bold ml-0.5">원</span>
+</div>
+</div>
+<p class="text-right text-label-sm font-label-sm text-outline">부가세(VAT) 포함 금액</p>
+</div>
+<!-- Main Call To Action Button (Terracotta Color) -->
+<p id="o-msg" role="alert" class="hidden text-label-sm font-label-sm text-error mb-2"></p>
+<div class="pt-2">
+<button class="w-full bg-primary-container hover:bg-primary text-on-primary font-bold py-3.5 px-space-md rounded-lg shadow-md hover:shadow-lg transition-all duration-150 ease-out active:scale-[0.98] text-body-lg font-body-lg flex items-center justify-center gap-2" id="submitPayBtn" type="button"><span class="material-symbols-outlined text-[20px]">lock</span> 94,000원 결제하기 (가상)</button>
+<div class="mt-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant/50 text-body-sm font-body-sm text-on-surface-variant space-y-1">
+<div class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5 flex-shrink-0">info</span>
+<p class="leading-snug">
+                  결제 완료 후 판매자 준비 안내 및 <strong>내 일정 캘린더</strong>에서 즉시 확인 가능합니다.
+                </p>
+</div>
+<p class="text-label-sm font-label-sm text-outline pl-5">
+                · 본 결제는 가상 샌드박스로 실제 금액이 인출되지 않습니다.
+              </p>
+</div>
+</div>
+<!-- Trust Badges Block -->
+<div class="pt-1 flex items-center justify-center gap-4 text-outline text-label-sm font-label-sm border-t border-outline-variant/30">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield</span> 실제 출금 없는 가상 결제
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">handshake</span> 현장 추가금 0원
+            </span>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- Footer (Shared Component) -->
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+// 예약·결제: detail.html에서 저장한 ng_draft를 읽어 주문서 작성
+const $ = id => document.getElementById(id);
+const D = store.get(PKEYS.draft, null);
+const P = D && byId(D.id);
+if (!P) {
+  $("order-wrap").innerHTML = `<div class="lg:col-span-12 py-20 text-center bg-surface-container-lowest rounded-xl border border-outline-variant">
+    <span class="icon text-[44px] text-outline-variant">shopping_cart</span>
+    <p class="mt-2 font-headline-sm text-headline-sm">예약할 상품이 없어요</p>
+    <p class="text-body-sm text-outline mt-1">상품 상세에서 날짜·시간·인원을 고른 뒤 예약하기를 눌러 주세요.</p>
+    <a href="shop.html" class="inline-flex mt-4 px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg">상품 둘러보기</a></div>`;
+} else {
+  const C = calcPrice(P, D.people, D.option);
+  $("o-with").innerHTML = `<span class="icon text-[14px]">${WITH_UI[D.with].icon}</span>${withLabel(D.with)} 예약`;
+  $("o-img").innerHTML = photo(P, "w-full h-full object-cover");
+  $("o-shop").textContent = `[${P.shop} · ${P.host} 선생님]`;
+  $("o-place").textContent = placeOf(P);
+  $("o-title").innerHTML = `<a class="hover:text-primary" href="${detailUrl(P)}">${esc(P.title)}</a>`;
+  $("o-when").textContent = `${fmtDate(D.date)} ${D.time} (${P.duration}분 소요)`;
+  $("o-people").textContent = `${D.people}명 (${withLabel(D.with)})`;
+  $("o-option").textContent = D.option ? `${P.option.name} (+${won2(P.option.price)})` : "선택 안 함";
+
+  // 환불 규정: 등급별 기준일 계산
+  const R = { safe: [[2, "100% 전액 환불"], [1, "50% 부분 환불"], [0, "환불 불가"]],
+              mid: [[5, "100% 전액 환불"], [2, "50% 부분 환불"], [0, "환불 불가"]],
+              strict: [[6, "100% 전액 환불"], [3, "30% 부분 환불"], [0, "환불 불가"]] }[P.refund];
+  const before = n => { const d = new Date(D.date + "T00:00:00"); d.setDate(d.getDate() - n); return `${d.getMonth() + 1}/${d.getDate()}`; };
+  $("o-refund-badge").innerHTML = refundBadge(P, REFUND[P.refund].name + " 등급");
+  $("o-refund").innerHTML = `<p class="font-semibold text-on-surface mb-2 flex items-center gap-1.5"><span class="icon text-[16px] text-primary">policy</span>누구랑 3단계 안심 환불제 — ${REFUND[P.refund].name} 규정</p>
+    <ul class="space-y-1.5 text-on-surface-variant pl-1">
+      <li class="flex items-center justify-between gap-2"><span>· 체험 ${R[0][0]}일 전 (${before(R[0][0])} 23:59까지) 취소 시</span><span class="font-bold text-[#3A7A5E] shrink-0">${R[0][1]}</span></li>
+      <li class="flex items-center justify-between gap-2"><span>· 체험 ${R[1][0]}일 전 (${before(R[1][0])} 23:59까지) 취소 시</span><span class="font-semibold text-on-surface shrink-0">${R[1][1]}</span></li>
+      <li class="flex items-center justify-between gap-2"><span>· 그 이후 · 당일 취소 또는 노쇼</span><span class="font-semibold text-error shrink-0">${R[2][1]}</span></li></ul>`;
+  $("o-agree-text").textContent = `${REFUND[P.refund].name} 규정 및 클래스 운영 수칙을 확인하였으며 이에 동의합니다.`;
+
+  $("o-break").innerHTML = `
+    <div class="flex justify-between items-center text-on-surface-variant"><span>수업료 (${D.people}인 참여)</span><span class="font-medium text-on-surface">${won2(C.base)}</span></div>
+    <div class="flex justify-between items-center text-body-sm font-body-sm text-outline pl-2"><span>└ 1인당 ${won2(P.price)} × ${D.people}명</span></div>
+    ${D.option ? `<div class="flex justify-between items-center text-on-surface-variant"><span>선택 옵션 추가</span><span class="font-medium text-on-surface">+${won2(C.option)}</span></div>
+    <div class="flex justify-between items-center text-body-sm font-body-sm text-outline pl-2"><span>└ ${esc(P.option.name)}</span></div>` : ""}
+    ${C.discount ? `<div class="flex justify-between items-center"><span class="text-[#3A7A5E] font-medium">단체 할인 (${P.groupDiscount}%)</span><span class="font-semibold text-[#3A7A5E]">-${won2(C.discount)}</span></div>` : ""}
+    <div class="flex justify-between items-center text-on-surface-variant"><span class="flex items-center gap-1">현장 추가금 보장제<span class="icon text-[15px] text-[#3A7A5E]" title="공방 현장에서 별도 추가금이 발생하지 않습니다.">verified</span></span><span class="font-semibold text-[#3A7A5E]">0원 (보장)</span></div>`;
+  $("o-total").textContent = C.total.toLocaleString();
+  $("submitPayBtn").innerHTML = `<span class="icon text-[20px]">lock</span> ${won2(C.total)} 결제하기 (가상)`;
+
+  // 예약자 정보: 로그인했으면 채움
+  const U = store.get(KEYS.user, null);
+  if (U) { $("ordererName").value = U.name || ""; $("ordererPhone").value = U.phone || ""; $("ordererEmail").value = U.email || ""; }
+
+  // 결제 수단 선택 모양
+  const radios = document.querySelectorAll('input[name="payment_method"]');
+  const paint = () => radios.forEach(r => {
+    const c = r.closest("label");
+    c.classList.toggle("border-2", r.checked); c.classList.toggle("border-primary-container", r.checked); c.classList.toggle("bg-surface-container/30", r.checked);
+    c.classList.toggle("border-outline-variant", !r.checked);
+  });
+  radios.forEach(r => r.addEventListener("change", paint)); paint();
+
+  $("submitPayBtn").addEventListener("click", () => {
+    const msg = $("o-msg");
+    const name = $("ordererName").value.trim(), phone = $("ordererPhone").value.trim(), email = $("ordererEmail").value.trim();
+    const fail = (t, el) => { msg.textContent = t; msg.classList.remove("hidden"); el && el.focus(); };
+    if (!name) return fail("예약자 이름을 입력해 주세요.", $("ordererName"));
+    if (!/^01[016789]-?\d{3,4}-?\d{4}$/.test(phone)) return fail("휴대폰 번호를 010-1234-5678 형식으로 입력해 주세요.", $("ordererPhone"));
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("이메일 주소를 확인해 주세요.", $("ordererEmail"));
+    if (!$("refundCheck").checked) return fail("환불 규정에 동의해야 결제할 수 있어요.", $("refundCheck"));
+    msg.classList.add("hidden");
+    const btn = $("submitPayBtn");
+    btn.disabled = true;
+    btn.innerHTML = '<span class="icon animate-spin text-[20px]">progress_activity</span> 가상 결제 승인 중...';
+    const payLabel = document.querySelector('input[name="payment_method"]:checked').closest("label").querySelector(".text-label-md").textContent.trim();
+    setTimeout(() => {
+      const o = { no: newOrderNo(), id: P.id, date: D.date, time: D.time, people: D.people, option: D.option, with: D.with, ...C,
+        pay: payLabel, name, phone, email, request: $("specialRequest").value.trim(), status: "결제완료", createdAt: new Date().toISOString() };
+      const list = getOrders(); list.unshift(o); saveOrders(list);
+      try { localStorage.removeItem(PKEYS.draft); } catch (e) {}
+      location.href = "complete.html?no=" + encodeURIComponent(o.no);
+    }, 900);
+  });
+}
+
+  </script>
+</body>
+</html>

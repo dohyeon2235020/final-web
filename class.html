@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스 | 누구랑</title>
+  <meta name="description" content="베이킹·드로잉·플라워·커피·댄스 원데이 클래스를 동행에 맞춰 찾아보세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<div class="flex flex-col w-full">
+<!-- TOP INTRO HERO BANNER & BREADCRUMB -->
+<section class="w-full bg-surface-container-low/70 py-space-lg px-margin md:px-margin-md lg:px-margin-lg">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-space-md">
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
+<a href="index.html" class="hover:text-primary transition-colors">홈</a>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="font-semibold text-primary">클래스</span>
+</nav>
+<!-- Editorial Intro Block -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">Life One-day Studio</span>
+<span class="text-outline font-label-sm text-label-sm">• 하루 완성 프로젝트</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">원데이 클래스</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            일상에 새로운 즐거움을 더하는 하루의 배움. 베이킹, 드로잉, 플라워, 바리스타까지 함께 배우며 특별한 성취감을 나눠보세요.
+          </p>
+</div>
+<!-- Quick Value Proposition Highlights -->
+<div class="flex items-center flex-wrap gap-space-sm bg-surface-container-lowest p-space-sm rounded-xl shadow-sm">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">초보자 대환영</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-primary text-[18px]">inventory_2</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">재료 100% 제공</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container">
+<span class="material-symbols-outlined text-primary text-[18px]">card_giftcard</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">당일 완성 패키지</span>
+</div>
+</div>
+</div>
+<!-- PRD 4-1 Sub-Navigation Category Tabs -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 mt-space-xs scrollbar-none"><button data-g="cat" data-v="" data-active class="whitespace-nowrap px-space-md py-2 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-sm flex items-center gap-1.5 transition-all" type="button"><span class="material-symbols-outlined text-[16px]">interests</span>전체 (100)</button><button data-g="cat" data-v="쿠킹·베이킹" class="whitespace-nowrap px-space-md py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5 shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">bakery_dining</span>쿠킹·베이킹 (20)</button><button data-g="cat" data-v="드로잉·캘리그라피" class="whitespace-nowrap px-space-md py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5 shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">palette</span>드로잉·캘리그라피 (19)</button><button data-g="cat" data-v="플라워" class="whitespace-nowrap px-space-md py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5 shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">local_florist</span>플라워 (20)</button><button data-g="cat" data-v="커피·음료" class="whitespace-nowrap px-space-md py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5 shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">coffee</span>커피·음료 (21)</button><button data-g="cat" data-v="댄스·운동" class="whitespace-nowrap px-space-md py-2 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5 shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">self_improvement</span>댄스·운동 (20)</button></div>
+</div>
+</section>
+<!-- MAIN CATALOG CONTENT AREA (2-COLUMN: SIDEBAR + GRID) -->
+<section class="w-full max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg py-space-xl">
+<!-- Top Companion Pills Bar & Search Barometer -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg mb-space-lg bg-surface-container-lowest p-space-md rounded-2xl shadow-sm">
+<!-- Companion Pills (누구랑 동행 필터) -->
+<div class="flex items-center gap-space-xs overflow-x-auto scrollbar-none py-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">group</span>동행자:
+        </span>
+<button data-g="with" data-v="" data-active class="companion-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container font-semibold shadow-sm flex items-center gap-1 transition-all" type="button">
+<span>전체 동행</span>
+</button>
+<button data-g="with" data-v="date" class="companion-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5" type="button">
+<span class="text-rose-600">❤️</span>
+<span>#2인 데이트</span>
+</button>
+<button data-g="with" data-v="friend" class="companion-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5" type="button">
+<span class="text-sky-600">👥</span>
+<span>#친구 모임</span>
+</button>
+<button data-g="with" data-v="family" class="companion-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5" type="button">
+<span class="text-amber-600">👨‍👩‍👧</span>
+<span>#가족·부모님</span>
+</button>
+<button data-g="with" data-v="kids" class="companion-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1.5" type="button">
+<span class="text-emerald-600">👶</span>
+<span>#어린이 동반</span>
+</button>
+</div>
+<!-- Result Counter & Sort dropdown -->
+<div class="flex items-center justify-between lg:justify-end gap-space-md shrink-0">
+<div class="flex items-baseline gap-1"><span class="font-label-sm text-label-sm text-on-surface-variant">총</span><span data-count="{n}" class="font-headline-sm text-headline-sm font-bold text-primary">100</span><span class="font-body-sm text-body-sm text-on-surface-variant">개의 클래스</span></div>
+<div class="relative inline-flex items-center">
+<select data-g="sort" aria-label="정렬" class="appearance-none bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md pl-3 pr-8 py-2 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-container transition-all">
+<option value="rec">추천순</option>
+<option value="pop">인기순(좋아요)</option>
+<option value="rating">평점 높은 순</option>
+<option value="price">낮은 가격순</option>
+<option value="dur">소요 시간 짧은 순</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-[18px] text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT FILTER SIDEBAR (4 COLUMNS DESKTOP) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-md sticky top-24">
+<!-- Filter Card Container -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs font-headline-sm text-headline-sm text-on-surface font-bold">
+<span class="material-symbols-outlined text-primary text-[22px]">tune</span>
+<span>상세 필터</span>
+</div>
+<button data-reset class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">refresh</span>
+              초기화
+            </button>
+</div>
+<!-- 1. 활동 유형별 소요 시간 -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+<span>수업 소요 시간</span>
+<span class="font-label-sm text-label-sm text-primary font-normal">원데이 집중</span>
+</label>
+<div class="grid grid-cols-2 gap-2 mt-1">
+<button data-g="dur" data-v="-60" class="px-3 py-2 text-left rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high font-body-sm text-body-sm transition-all flex items-center justify-between" type="button">
+<span>1시간 미만</span>
+
+</button>
+<button data-g="dur" data-v="60-121" data-active class="px-3 py-2 text-left rounded-lg bg-primary-container text-on-primary-container font-body-sm text-body-sm font-semibold transition-all flex items-center justify-between shadow-sm" type="button">
+<span>1~2시간 (대세)</span>
+
+</button>
+<button data-g="dur" data-v="121-181" class="px-3 py-2 text-left rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high font-body-sm text-body-sm transition-all flex items-center justify-between" type="button">
+<span>2~3시간</span>
+
+</button>
+<button data-g="dur" data-v="181-" class="px-3 py-2 text-left rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high font-body-sm text-body-sm transition-all flex items-center justify-between" type="button">
+<span>3시간 이상</span>
+
+</button>
+</div>
+</div>
+<!-- 2. 수업 참여 정원 규모 -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+<span>수업 인원 유형</span>
+<span class="font-label-sm text-label-sm text-outline">밀착 코칭</span>
+</label>
+<div class="flex flex-col gap-2 mt-1">
+<label class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-2">
+<input data-g="size" value="1-5" class="accent-primary w-4 h-4 cursor-pointer" name="class_capacity" type="radio">
+<span class="font-body-sm text-body-sm text-on-surface">1:1 맞춤 클래스</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">단독 레슨</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-2">
+<input data-g="size" value="5-9"  class="accent-primary w-4 h-4 cursor-pointer" name="class_capacity" type="radio">
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">소규모 (2~4인 팀 단독)</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">선호도 1위</span>
+</label>
+<label class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-2">
+<input data-g="size" value="9-" class="accent-primary w-4 h-4 cursor-pointer" name="class_capacity" type="radio">
+<span class="font-body-sm text-body-sm text-on-surface">단체 친목형 (6인 이상)</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">모임 추천</span>
+</label>
+</div>
+</div>
+<!-- 3. 가격대 (1인 기준) -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">1인 기준 가격대</label>
+<div class="grid grid-cols-3 gap-1.5 mt-1">
+<button data-g="price" data-v="-40001" data-active class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm" type="button">4만원 이하</button>
+<button data-g="price" data-v="40000-70001" class="py-1.5 px-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm" type="button">4~7만원</button>
+<button data-g="price" data-v="70000-" class="py-1.5 px-2 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm" type="button">7만원 이상</button>
+</div></div>
+<!-- 4. 안심 환불 등급 필터 -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface font-semibold">환불 안심 등급</label>
+<a data-demo class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-0.5" href="#">
+                안내
+                <span class="material-symbols-outlined text-[14px]">help</span>
+</a>
+</div>
+<div class="flex flex-col gap-2 mt-1">
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input data-g="refund" value="safe" data-multi  class="accent-primary w-4 h-4 rounded cursor-pointer" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">안심 등급 (2일 전 100% 환불)</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input data-g="refund" value="mid" data-multi  class="accent-primary w-4 h-4 rounded cursor-pointer" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">보통 등급 (5일 전 100% 환불)</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input data-g="refund" value="strict" data-multi class="accent-primary w-4 h-4 rounded cursor-pointer" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface font-medium">엄격 등급 (재료 맞춤 발주)</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-rose-500"></span>
+</label>
+</div>
+</div>
+<button data-apply class="w-full py-3 bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg rounded-xl shadow-md transition-colors flex items-center justify-center gap-2" type="button"><span class="material-symbols-outlined text-[18px]">search</span><span data-count="필터 조건 적용 ({n}개)">필터 조건 적용 (100개)</span></button>
+</div>
+<!-- PRD 누구랑 클래스 케어 보증 뱃지 박스 -->
+<div class="bg-gradient-to-br from-surface-container-highest to-surface-container rounded-2xl p-space-md shadow-sm relative overflow-hidden">
+<div class="flex items-start gap-space-sm relative z-10">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[22px]">format_image_left</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">누구랑 클래스 케어</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+                수업 재료비 · 도구 대여료 사전 100% 포함 보증제. 현장 추가 결제 0원을 약속합니다.
+              </p>
+</div>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between text-outline font-label-sm text-label-sm relative z-10">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">verified_user</span> 안심 예약 매뉴얼
+            </span>
+<span class="font-semibold text-primary">100% 책임보상제</span>
+</div>
+</div>
+</aside>
+<!-- RIGHT PRODUCT GRID (8 COLUMNS DESKTOP, 2 COLUMNS PER ROW IN CONTAINER) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Class Product Grid -->
+<div id="list" aria-live="polite" class="grid grid-cols-1 md:grid-cols-2 gap-space-md"></div>
+<!-- Pagination Section -->
+<div data-pager class="flex items-center justify-between pt-space-lg border-t-0 mt-space-md">
+<button class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md transition-colors flex items-center gap-1 disabled:opacity-40" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+            이전
+          </button>
+<div class="flex items-center gap-1">
+<button class="w-9 h-9 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold shadow-sm" type="button">1</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button">2</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button">3</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button">4</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button">5</button>
+</div>
+<button class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-1" type="button">
+            다음
+            <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- BOTTOM COMMUNITY CALLOUT PROMO BANNER -->
+<section class="w-full bg-surface-container-low mt-space-lg py-space-xl px-margin md:px-margin-md lg:px-margin-lg">
+<div class="max-w-[1200px] mx-auto bg-surface-container-lowest rounded-3xl p-space-lg md:p-space-xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[36px]">forum</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-primary font-bold tracking-wide uppercase">Real Story Community</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">누구와 다녀오셨나요? 생생한 동행 후기를 나눠보세요</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">친구 모임, 커플 데이트 솔직 후기를 작성하시면 다음 클래스 5,000원 지원 쿠폰을 드립니다.</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 w-full md:w-auto">
+<a href="review.html" class="w-full md:w-auto px-space-lg py-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md text-center font-semibold shadow-md transition-all">
+          동행 후기 보러가기
+        </a>
+</div>
+</div>
+</section>
+</div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+initList({ type: "class", card: "class", pageSize: 8 });
+  </script>
+</body>
+</html>

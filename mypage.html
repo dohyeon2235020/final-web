@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지 | 누구랑</title>
+  <meta name="description" content="예약 내역, 내가 쓴 후기, 1:1 문의 내역, 회원정보와 동행 취향을 관리하세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<!-- MAIN CANVAS -->
+<div class="flex-1 w-full max-w-7xl mx-auto px-space-md md:px-gutter-lg py-space-lg md:py-space-xl"><div class="flex flex-col w-full" id="mp-root">
+<!-- PROFILE SUMMARY BENTO HEADER -->
+<section class="w-full mb-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-md md:p-space-lg shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg relative overflow-hidden">
+<!-- Ambient organic tint glow -->
+<div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<!-- 회원 정보 -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md z-10">
+<div id="mp-avatar" class="w-20 h-20 rounded-full shadow-md bg-primary-container text-on-primary flex items-center justify-center text-[32px] font-bold" aria-hidden="true"></div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-2 mb-1"><h1 id="mp-name" class="text-headline-md font-headline-md text-on-surface"></h1>
+<span class="bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm px-2.5 py-0.5 rounded-full flex items-center gap-1"><span class="icon fill text-[13px]">workspace_premium</span><span id="mp-level"></span></span></div>
+<div class="flex flex-wrap items-center gap-1.5 mt-1"><span class="text-label-sm font-label-sm text-outline mr-1">주요 동행:</span><span id="mp-with" class="flex flex-wrap gap-1.5"></span></div>
+<div class="flex flex-wrap items-center gap-1.5 mt-2 text-label-sm font-label-sm text-on-surface-variant"><span class="icon text-[14px] text-primary">interests</span><span>관심 분야: <strong id="mp-interest" class="text-on-surface font-medium"></strong></span></div>
+</div></div>
+<!-- Quick Metrics Ribbon -->
+<div class="grid grid-cols-3 gap-2 sm:gap-4 bg-surface-container-low p-space-sm sm:p-space-md rounded-xl z-10 w-full lg:w-auto">
+<a class="flex flex-col items-center justify-center px-3 py-2 rounded-lg hover:bg-surface-container transition-colors text-center" href="#orders" data-go="orders">
+<span class="text-label-sm font-label-sm text-on-surface-variant mb-0.5">누적 예약</span>
+<span class="text-headline-md font-headline-md text-primary font-bold" id="mp-n-orders">0<span class="text-label-sm font-label-sm text-on-surface ml-0.5">건</span></span>
+</a>
+<a class="flex flex-col items-center justify-center px-3 py-2 rounded-lg hover:bg-surface-container transition-colors text-center border-l border-outline-variant/30" href="#reviews" data-go="reviews">
+<span class="text-label-sm font-label-sm text-on-surface-variant mb-0.5">작성 후기</span>
+<span class="text-headline-md font-headline-md text-on-surface font-bold" id="mp-n-reviews">0<span class="text-label-sm font-label-sm text-on-surface ml-0.5">건</span></span>
+</a>
+<a class="flex flex-col items-center justify-center px-3 py-2 rounded-lg hover:bg-surface-container transition-colors text-center border-l border-outline-variant/30" href="wishlist.html">
+<span class="text-label-sm font-label-sm text-on-surface-variant mb-0.5">찜 목록</span>
+<span class="text-headline-md font-headline-md text-on-surface font-bold" id="mp-n-wish">0<span class="text-label-sm font-label-sm text-on-surface ml-0.5">개</span></span>
+</a>
+</div>
+</div>
+</section>
+<!-- 탭 -->
+<section class="w-full mb-space-lg" id="mp-tabs"><div class="flex items-center gap-space-sm overflow-x-auto pb-1 border-b border-outline-variant/40 scrollbar-none" role="tablist">
+<button type="button" role="tab" id="tab-orders" data-on="relative pb-3 px-space-md text-label-lg font-label-lg font-bold text-primary flex items-center gap-1.5 whitespace-nowrap" data-off="relative pb-3 px-space-md text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 whitespace-nowrap" class="relative pb-3 px-space-md text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 whitespace-nowrap"><span>예약 내역</span><span id="tab-n-orders" class="px-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm">0</span><span class="bar absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"></span></button><button type="button" role="tab" id="tab-reviews" data-on="relative pb-3 px-space-md text-label-lg font-label-lg font-bold text-primary flex items-center gap-1.5 whitespace-nowrap" data-off="relative pb-3 px-space-md text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 whitespace-nowrap" class="relative pb-3 px-space-md text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 whitespace-nowrap"><span>내가 쓴 후기</span><span id="tab-n-reviews" class="px-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm">0</span><span class="bar absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"></span></button><button type="button" role="tab" id="tab-qna" data-on="relative pb-3 px-space-md text-label-lg font-label-lg font-bold text-primary flex items-center gap-1.5 whitespace-nowrap" data-off="relative pb-3 px-space-md text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 whitespace-nowrap" class="relative pb-3 px-space-md text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 whitespace-nowrap"><span>1:1 문의 내역</span><span id="tab-n-qna" class="px-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-sm font-label-sm">0</span><span class="bar absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"></span></button><button type="button" role="tab" id="tab-info" data-on="relative pb-3 px-space-md text-label-lg font-label-lg font-bold text-primary flex items-center gap-1.5 whitespace-nowrap" data-off="relative pb-3 px-space-md text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 whitespace-nowrap" class="relative pb-3 px-space-md text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5 whitespace-nowrap"><span>회원정보 및 관심 설정</span><span class="bar absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"></span></button>
+</div></section>
+<!-- CONTENT 2-COLUMN LAYOUT -->
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- 탭 내용 -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg" id="mp-main" aria-live="polite"></div>
+<!-- RIGHT COLUMN: SIDEBAR WIDGETS (4 cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- 1. 동행 취향 맞춤 설정 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg shadow-sm flex flex-col gap-space-md relative">
+<div class="flex items-center justify-between"><div class="flex items-center gap-1.5 text-headline-sm font-headline-sm text-on-surface"><span class="icon text-primary">diversity_1</span>동행 취향 맞춤 설정</div><span class="text-label-sm font-label-sm text-secondary font-bold">활성 모드</span></div>
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-2"><p id="tuner-text" class="text-body-sm font-body-sm text-on-surface"></p><p class="text-label-sm font-label-sm text-outline">가장 먼저 고른 동행이 추천과 목록 필터의 기본값이 돼요.</p></div>
+<div id="tuner-grid" class="grid grid-cols-2 gap-2 text-label-md font-label-md"></div>
+<a id="tuner-go" href="shop.html" class="w-full py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm font-semibold text-center transition-colors">이 동행으로 상품 보기</a>
+</div>
+<!-- 2. 환불 안심 등급 안내 -->
+<div class="bg-surface-container-low rounded-xl p-space-md sm:p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center gap-1.5 text-headline-sm font-headline-sm text-on-surface"><span class="icon text-[#3A7A5E]">verified_user</span>누구랑 안심 예약제</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">공방 특성에 따라 재료가 미리 준비되므로 상품마다 환불 안심 등급을 표기하고 있어요.</p>
+<div class="flex flex-col gap-2">
+<div class="flex items-start gap-2 bg-surface-container-lowest p-2.5 rounded-lg"><span class="w-2.5 h-2.5 rounded-full bg-[#3A7A5E] mt-1 shrink-0"></span><div><span class="text-label-md font-label-md font-bold text-on-surface">안심 환불</span><p class="text-label-sm font-label-sm text-outline">체험 2일 전까지 전액, 1일 전 50% 환불</p></div></div>
+<div class="flex items-start gap-2 bg-surface-container-lowest p-2.5 rounded-lg"><span class="w-2.5 h-2.5 rounded-full bg-[#B37D2E] mt-1 shrink-0"></span><div><span class="text-label-md font-label-md font-bold text-on-surface">보통 환불</span><p class="text-label-sm font-label-sm text-outline">체험 5일 전까지 전액, 이후 단계적 공제</p></div></div>
+<div class="flex items-start gap-2 bg-surface-container-lowest p-2.5 rounded-lg"><span class="w-2.5 h-2.5 rounded-full bg-[#A3433B] mt-1 shrink-0"></span><div><span class="text-label-md font-label-md font-bold text-on-surface">엄격 환불</span><p class="text-label-sm font-label-sm text-outline">체험 6일 이상 전에만 전액, 2일 이내 환불 불가</p></div></div>
+</div></div>
+<!-- 3. 1:1 CARE CENTER BANNER -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg shadow-sm flex flex-col gap-space-sm border-l-4 border-l-primary">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-primary font-bold">고객 안심 케어 센터</span>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-bold">
+          일정 조율이나 특별한 동행 요청이 필요하신가요?
+        </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+          선생님과의 조율, 알레르기 안내, 기념일 서프라이즈 준비 등 도움이 필요하시면 1:1 문의로 남겨 주세요.
+        </p>
+<div class="pt-2">
+<a href="index.html#qna" class="w-full py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-label-md font-label-md font-bold transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[17px]">support_agent</span>
+            1:1 안심 상담 연결하기
+          </a>
+</div>
+</div>
+</aside>
+</div>
+<!-- 예약 상세 · 취소 모달 -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-inverse-surface/45 backdrop-blur-sm" id="mp-modal" role="dialog" aria-modal="true" aria-labelledby="mp-modal-title">
+<div class="bg-surface-container-lowest rounded-xl max-w-lg w-full p-space-md sm:p-space-lg shadow-xl flex flex-col gap-space-md relative max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/30"><div class="flex items-center gap-2"><span class="icon text-primary">policy</span><h3 id="mp-modal-title" class="text-headline-sm font-headline-sm text-on-surface font-bold">예약 상세 및 취소/환불 규정</h3></div>
+<button type="button" data-close-modal class="p-1 rounded-full text-outline hover:text-on-surface hover:bg-surface-container" aria-label="닫기"><span class="icon">close</span></button></div>
+<div id="mp-modal-body" class="flex flex-col gap-space-sm text-body-sm font-body-sm"></div>
+<div class="flex items-center justify-end gap-2 pt-2 border-t border-outline-variant/30">
+<button type="button" data-close-modal class="px-4 py-2 rounded-lg bg-surface-container text-on-surface text-label-md font-label-md font-semibold hover:bg-surface-container-high">닫기</button>
+<button type="button" id="mp-cancel" class="px-4 py-2 rounded-lg bg-surface-container-low text-error hover:bg-error-container text-label-md font-label-md font-bold">예약 취소 신청</button></div>
+</div></div>
+</div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+// 마이페이지: 예약 내역 · 내가 쓴 후기 · 1:1 문의 · 회원정보 (로그인 필요)
+const $ = id => document.getElementById(id);
+const U = store.get(KEYS.user, null);
+if (!U) {
+  $("mp-root").innerHTML = `<div class="py-20 text-center bg-surface-container-lowest rounded-xl border border-outline-variant">
+    <span class="icon text-[44px] text-outline-variant">lock</span>
+    <p class="mt-2 font-headline-sm text-headline-sm">로그인이 필요한 페이지예요</p>
+    <p class="text-body-sm text-outline mt-1">예약 내역과 후기, 회원정보는 로그인 후 볼 수 있어요.</p>
+    <div class="flex justify-center gap-2 mt-4"><a href="login.html?next=mypage.html" class="px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg">로그인</a><a href="join.html" class="px-4 py-2 rounded-lg bg-surface-container-low border border-outline-variant font-label-lg text-label-lg">회원가입</a></div></div>`;
+} else {
+  let TAB = ["orders", "reviews", "qna", "info"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "orders";
+  let FILTER = "all";
+  const orders = () => getOrders().filter(o => byId(o.id));
+  const myReviews = () => getMyReviews();
+
+  function header() {
+    const os = orders();
+    $("mp-avatar").textContent = (U.name || "?").slice(0, 1);
+    $("mp-name").textContent = `${U.name} 님`;
+    $("mp-level").textContent = `누구랑 메이트 · 예약 ${os.length}회`;
+    $("mp-with").innerHTML = (U.with && U.with.length ? U.with : ["date"]).map((w, i) => `<span class="${i ? "bg-surface-container text-on-surface-variant" : "bg-primary text-on-primary shadow-sm"} text-label-sm font-label-sm px-2.5 py-0.5 rounded-full flex items-center gap-1"><span class="icon text-[12px]">${WITH_UI[w].icon}</span>#${withLabel(w)}</span>`).join("");
+    $("mp-interest").textContent = U.interests && U.interests.length ? U.interests.join(", ") : "아직 설정하지 않았어요";
+    $("mp-n-orders").textContent = os.length; $("mp-n-reviews").textContent = myReviews().length; $("mp-n-wish").textContent = store.get(KEYS.wish, []).length;
+    $("tab-n-orders").textContent = os.length; $("tab-n-reviews").textContent = myReviews().length; $("tab-n-qna").textContent = store.get(KEYS.qna, []).length;
+    ["orders", "reviews", "qna", "info"].forEach(t => {
+      const b = $("tab-" + t); const on = t === TAB;
+      b.className = on ? b.dataset.on : b.dataset.off; b.setAttribute("aria-selected", on);
+      b.querySelector(".bar").style.display = on ? "" : "none";
+    });
+  }
+
+  function orderCard(o) {
+    const p = byId(o.id), st = orderStatus(o), reviewed = myReviews().some(r => r.order === o.no);
+    const stBadge = st === "예정" ? `<span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-2.5 py-1 rounded-md font-bold tracking-tight flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-surface-container-lowest"></span>이용 예정 · ${ddayText(o.date)}</span>`
+      : st === "완료" ? '<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2.5 py-0.5 rounded-md font-semibold flex items-center gap-1"><span class="icon text-[14px]">check_circle</span>체험 완료</span>'
+      : '<span class="bg-error-container text-on-error-container font-label-sm text-label-sm px-2.5 py-0.5 rounded-md font-semibold flex items-center gap-1"><span class="icon text-[14px]">cancel</span>예약 취소</span>';
+    const mine = myReviews().find(r => r.order === o.no);
+    return `
+<article class="bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg ${st === "예정" ? "shadow-md" : "shadow-sm"} flex flex-col gap-space-md ${st === "취소" ? "opacity-70" : ""}">
+  <div class="flex items-center justify-between flex-wrap gap-2">
+    <div class="flex items-center gap-2 flex-wrap">${stBadge}
+      <span class="bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm px-2 py-0.5 rounded-full font-semibold flex items-center gap-1"><span class="icon text-[13px]">${WITH_UI[o.with].icon}</span>${withLabel(o.with)} ${o.people}인</span>
+      <span class="text-label-sm font-label-sm text-outline">예약번호 ${esc(o.no)}</span></div>
+    ${st === "예정" ? refundBadge(p, `환불 안심 등급: ${REFUND[p.refund].name}`) : st === "완료" ? (reviewed ? '<span class="bg-secondary-fixed/50 text-on-secondary-fixed text-label-sm font-label-sm px-2 py-0.5 rounded-full font-semibold">후기 작성 완료</span>' : '<span class="text-error font-bold text-label-sm font-label-sm flex items-center gap-1"><span class="icon text-[14px]">timer</span>후기를 기다려요</span>') : ""}
+  </div>
+  <div class="flex flex-col sm:flex-row gap-space-md">
+    <a href="${detailUrl(p)}" class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm relative bg-surface-container">${photo(p, "w-full h-full object-cover")}<span class="absolute bottom-1.5 left-1.5 bg-inverse-surface/80 text-inverse-on-surface text-label-sm font-label-sm px-1.5 py-0.5 rounded">${p.region.split(" ").slice(1).join(" ")}</span></a>
+    <div class="flex flex-col justify-between flex-1">
+      <div><div class="text-label-md font-label-md text-secondary font-semibold mb-0.5">${esc(p.shop)} · ${esc(p.host)} 선생님</div>
+        <h2 class="text-headline-sm font-headline-sm text-on-surface font-bold hover:text-primary transition-colors"><a href="${detailUrl(p)}">${esc(p.title)}</a></h2></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-space-md text-body-sm font-body-sm text-on-surface-variant mt-2 bg-surface-container-low/60 p-2.5 rounded-lg">
+        <div class="flex items-center gap-1.5"><span class="icon text-primary text-[17px]">schedule</span><span class="font-medium text-on-surface">${fmtDate(o.date)} ${o.time} (${p.duration}분)</span></div>
+        <div class="flex items-center gap-1.5"><span class="icon text-secondary text-[17px]">group</span><span>${o.people}명${o.option ? " | 옵션: " + esc(p.option.name) : ""}</span></div>
+        <div class="flex items-center gap-1.5"><span class="icon text-outline text-[17px]">receipt_long</span><span>결제: <strong class="text-on-surface font-bold">${won2(o.total)}</strong> (${esc(o.pay)})</span></div>
+        <div class="flex items-center gap-1.5"><span class="icon text-outline text-[17px]">location_on</span><span>${placeOf(p)}</span></div>
+      </div>
+    </div>
+  </div>
+  ${st === "예정" ? `<div class="bg-surface-container rounded-lg p-3 flex items-start gap-2.5"><span class="icon text-primary shrink-0 mt-0.5">edit_note</span><div class="flex-1 min-w-0"><span class="text-label-sm font-label-sm font-bold text-on-surface">선생님의 사전 안내 메모</span><p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5 line-clamp-1">“${esc(p.memo.common)} ${esc(p.memo.info)}”</p></div></div>` : ""}
+  ${mine ? `<div class="bg-surface-container-low/70 rounded-lg p-3 text-body-sm font-body-sm text-on-surface-variant flex items-center gap-2 overflow-hidden"><span class="text-[#E08A00] shrink-0">${"★".repeat(Math.round(mine.rating))}</span><span class="truncate">“${esc(mine.text)}”</span></div>` : ""}
+  ${st === "완료" && !reviewed ? '<div class="bg-primary/5 rounded-lg p-3 text-body-sm font-body-sm text-on-surface flex items-center gap-1.5"><span class="icon text-primary text-[18px]">redeem</span>함께한 시간의 분위기와 사진을 후기로 남겨 주세요. 다른 동행에게 큰 도움이 돼요.</div>' : ""}
+  <div class="flex flex-col sm:flex-row items-center justify-end gap-space-sm pt-1 border-t border-outline-variant/30">
+    <button type="button" data-modal="${o.no}" class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-md font-label-md font-semibold transition-colors flex items-center justify-center gap-1.5"><span class="icon text-[17px] text-outline">info</span>예약 상세 / 취소 규정</button>
+    ${st === "예정" ? `<a href="calendar.html?no=${encodeURIComponent(o.no)}" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md font-bold transition-all shadow-sm flex items-center justify-center gap-1.5"><span class="icon text-[17px]">calendar_month</span>일정 및 선생님 메모 확인</a>`
+      : st === "완료" && !reviewed ? `<a href="review.html?write=${encodeURIComponent(o.no)}#write" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md font-bold shadow-sm flex items-center justify-center gap-1.5"><span class="icon text-[17px]">rate_review</span>솔직 동행 후기 작성하기</a>`
+      : `<a href="${detailUrl(p)}#book" class="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary text-label-md font-label-md font-bold flex items-center justify-center gap-1"><span class="icon text-[16px]">replay</span>다시 예약하기</a>`}
+  </div>
+</article>`;
+  }
+
+  function renderOrders() {
+    const os = orders();
+    const cnt = { all: os.length, 예정: 0, 완료: 0, 취소: 0 };
+    os.forEach(o => cnt[orderStatus(o)]++);
+    const list = os.filter(o => FILTER === "all" || orderStatus(o) === FILTER)
+      .sort((a, b) => {
+        const ua = orderStatus(a) === "예정", ub = orderStatus(b) === "예정";
+        if (ua !== ub) return ua ? -1 : 1;
+        return ua ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date);
+      });
+    const fb = (k, label) => `<button type="button" data-filter="${k}" class="px-3 py-1.5 rounded-lg text-label-sm font-label-sm ${FILTER === k ? "font-bold bg-surface-container-lowest text-primary shadow-sm" : "text-on-surface-variant hover:text-primary transition-colors"}">${label} (${cnt[k]})</button>`;
+    return `<div class="flex items-center justify-between flex-wrap gap-space-sm">
+      <div class="flex items-center gap-1.5 bg-surface-container-low p-1 rounded-xl flex-wrap">${fb("all", "전체")}${fb("예정", "이용 예정")}${fb("완료", "이용 완료")}${fb("취소", "취소/환불")}</div>
+      <span class="text-body-sm font-body-sm text-outline hidden sm:inline-block">이 브라우저에 저장된 예약 내역이에요.</span></div>`
+      + (list.length ? list.map(orderCard).join("") : empty("event_busy", "해당하는 예약이 없어요", "마음에 드는 공방을 찾아 예약해 보세요.", "shop.html", "상품 둘러보기"));
+  }
+  const empty = (icon, t, d, href, btn) => `<div class="py-14 text-center bg-surface-container-lowest rounded-xl border border-outline-variant"><span class="icon text-[40px] text-outline-variant">${icon}</span><p class="mt-2 font-headline-sm text-headline-sm">${t}</p><p class="text-body-sm text-outline mt-1">${d}</p>${href ? `<a href="${href}" class="inline-flex mt-4 px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg">${btn}</a>` : ""}</div>`;
+  function renderReviews() {
+    const rs = myReviews();
+    return rs.length ? rs.map(r => { const p = byId(r.id); return `<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex gap-space-md">
+      <a href="${detailUrl(p)}" class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-surface-container">${photo(p, "w-full h-full object-cover")}</a>
+      <div class="flex-1 min-w-0"><div class="flex items-center justify-between gap-2"><a href="${detailUrl(p)}" class="font-label-lg text-label-lg text-on-surface hover:text-primary truncate">${esc(p.title)}</a><span class="text-label-sm text-outline shrink-0">${r.date}</span></div>
+      <div class="text-[#E08A00] text-sm">${"★".repeat(Math.round(r.rating))}<span class="text-outline-variant">${"★".repeat(5 - Math.round(r.rating))}</span> <span class="text-label-sm text-primary">#${withLabel(r.with)}</span></div>
+      <p class="text-body-sm text-on-surface-variant mt-1">${esc(r.text)}</p>
+      <div class="mt-2 flex gap-2"><a href="review.html?id=${p.id}" class="text-label-sm font-label-sm text-primary hover:underline">후기 페이지에서 보기</a><button type="button" data-del-review="${r.no}" class="text-label-sm font-label-sm text-outline hover:text-error">삭제</button></div></div></article>`; }).join("")
+      : empty("rate_review", "아직 쓴 후기가 없어요", "이용을 마친 예약에서 후기를 남길 수 있어요.", "review.html", "동행 후기 보러 가기");
+  }
+  function renderQna() {
+    const qs2 = store.get(KEYS.qna, []);
+    return (qs2.length ? `<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm divide-y divide-outline-variant/40">${qs2.slice().reverse().map(q => `<div class="py-3 flex items-center justify-between gap-2"><div class="min-w-0"><span class="text-label-sm font-label-sm text-primary">[${esc(q.type)}]</span> <span class="text-body-md">${esc(q.title)}</span></div><span class="text-label-sm text-outline shrink-0">${esc(q.date)} · 접수됨</span></div>`).join("")}</div>` : empty("support_agent", "접수한 문의가 없어요", "궁금한 점은 메인 커뮤니티의 1:1 문의로 남겨 주세요.", "", ""))
+      + '<a href="index.html#qna" class="self-start inline-flex px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg">1:1 문의 작성하기</a>';
+  }
+  function renderInfo() {
+    const cats = [...new Set(Object.values(TYPES).flatMap(t => t.categories))];
+    return `<form id="info-form" class="bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg shadow-sm space-y-space-md">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+        <label class="block"><span class="block text-label-md font-label-md mb-1">이름</span><input name="name" value="${esc(U.name || "")}" required class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2.5"></label>
+        <label class="block"><span class="block text-label-md font-label-md mb-1">아이디 (이메일)</span><input value="${esc(U.email || "")}" disabled class="w-full bg-surface-container border border-outline-variant rounded-lg px-3.5 py-2.5 text-outline"></label>
+        <label class="block"><span class="block text-label-md font-label-md mb-1">휴대폰 번호</span><input name="phone" value="${esc(U.phone || "")}" placeholder="010-1234-5678" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3.5 py-2.5"></label>
+      </div>
+      <fieldset><legend class="text-label-md font-label-md mb-2">주로 함께하는 동행 (여러 개 선택)</legend><div class="flex flex-wrap gap-2">${Object.keys(COMPANIONS).map(w => `<label class="cursor-pointer"><input type="checkbox" name="with" value="${w}" class="peer sr-only" ${U.with && U.with.includes(w) ? "checked" : ""}><span class="h-9 px-3.5 rounded-full border border-outline-variant flex items-center gap-1.5 text-label-md font-label-md peer-checked:bg-primary-container peer-checked:text-white peer-checked:border-primary-container"><span class="icon text-[16px]">${WITH_UI[w].icon}</span>${withLabel(w)}</span></label>`).join("")}</div></fieldset>
+      <fieldset><legend class="text-label-md font-label-md mb-2">관심 분야</legend><div class="flex flex-wrap gap-2">${cats.map(c => `<label class="cursor-pointer"><input type="checkbox" name="interests" value="${c}" class="peer sr-only" ${U.interests && U.interests.includes(c) ? "checked" : ""}><span class="px-3 py-1.5 rounded-full border border-outline-variant text-body-sm peer-checked:bg-primary-fixed peer-checked:border-primary">#${c}</span></label>`).join("")}</div></fieldset>
+      <div class="flex justify-end gap-2"><button type="submit" class="px-5 py-2.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg">저장하기</button></div></form>`;
+  }
+
+  function render() {
+    header();
+    const main = $("mp-main");
+    main.innerHTML = TAB === "orders" ? renderOrders() : TAB === "reviews" ? renderReviews() : TAB === "qna" ? renderQna() : renderInfo();
+    const f = $("info-form");
+    if (f) f.addEventListener("submit", e => {
+      e.preventDefault();
+      U.name = f.name.value.trim() || U.name; U.phone = f.phone.value.trim();
+      U.with = [...f.querySelectorAll('[name="with"]:checked')].map(i => i.value);
+      U.interests = [...f.querySelectorAll('[name="interests"]:checked')].map(i => i.value);
+      store.set(KEYS.user, U);
+      const users = store.get(PKEYS.users, []); const me = users.find(x => x.email === U.email);
+      if (me) { Object.assign(me, { name: U.name, phone: U.phone, with: U.with, interests: U.interests }); store.set(PKEYS.users, users); }
+      toast("회원정보를 저장했어요."); render(); renderHeader(); renderTuner();
+    });
+  }
+
+  ["orders", "reviews", "qna", "info"].forEach(t => $("tab-" + t).addEventListener("click", () => { TAB = t; history.replaceState(null, "", "#" + t); render(); }));
+  document.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); TAB = a.dataset.go; render(); $("mp-tabs").scrollIntoView({ behavior: "smooth" }); }));
+  $("mp-main").addEventListener("click", e => {
+    const f = e.target.closest("[data-filter]"); if (f) { FILTER = f.dataset.filter; render(); return; }
+    const m = e.target.closest("[data-modal]"); if (m) { openModal(m.dataset.modal); return; }
+    const d = e.target.closest("[data-del-review]");
+    if (d) { if (d.dataset.armed) { store.set(PKEYS.reviews, myReviews().filter(r => r.no !== d.dataset.delReview)); toast("후기를 삭제했어요."); render(); } else { d.dataset.armed = 1; d.textContent = "한 번 더 누르면 삭제돼요"; } }
+  });
+
+  // 예약 상세 / 취소 모달
+  function openModal(no) {
+    const o = getOrders().find(x => x.no === no), p = byId(o.id), st = orderStatus(o);
+    const days = dday(o.date);
+    const rule = { safe: [2, 1], mid: [5, 2], strict: [6, 3] }[p.refund];
+    const pct = days >= rule[0] ? 100 : days >= rule[1] ? (p.refund === "strict" ? 30 : 50) : 0;
+    const before = n => { const d = new Date(o.date + "T00:00:00"); d.setDate(d.getDate() - n); return `${d.getMonth() + 1}/${d.getDate()}`; };
+    $("mp-modal-body").innerHTML = `<div class="bg-surface-container-low p-3 rounded-lg"><div class="text-label-md font-label-md font-bold text-on-surface mb-1">${esc(p.title)}</div>
+      <div class="text-body-sm text-on-surface-variant">${fmtDate(o.date)} ${o.time} (${o.people}명) · 결제금액 <strong class="text-on-surface">${won2(o.total)}</strong> <span class="text-primary">(수업료 ${won2(o.base)}${o.option ? " + 옵션 " + won2(o.option) : ""}${o.discount ? " - 할인 " + won2(o.discount) : ""})</span></div>
+      <div class="text-label-sm font-label-sm text-primary font-bold mt-1">적용 등급: [${REFUND[p.refund].name}] ${REFUND[p.refund].rule}</div></div>
+      <div class="space-y-2 mt-2">
+        <div class="flex justify-between items-center py-1.5 border-b border-outline-variant/20"><span class="text-on-surface-variant">이용 ${rule[0]}일 전 (~${before(rule[0])} 23:59)</span><span class="font-bold text-[#3A7A5E]">100% 전액 환불</span></div>
+        <div class="flex justify-between items-center py-1.5 border-b border-outline-variant/20"><span class="text-on-surface-variant">이용 ${rule[1]}일 전 (~${before(rule[1])} 23:59)</span><span class="font-bold text-on-surface">${p.refund === "strict" ? 30 : 50}% 부분 환불</span></div>
+        <div class="flex justify-between items-center py-1.5 border-b border-outline-variant/20"><span class="text-on-surface-variant">그 이후 · 당일 취소 및 노쇼</span><span class="font-bold text-error">환불 불가</span></div></div>
+      ${st === "예정" ? `<div class="bg-surface-container p-3 rounded-lg mt-2 text-label-sm font-label-sm text-on-surface-variant">지금 취소하면 <b class="text-primary">${pct}% (${won2(Math.round(o.total * pct / 100))})</b>가 환불돼요. (가상 결제라 실제 돈이 오가지는 않아요)</div>` : ""}`;
+    const c = $("mp-cancel");
+    c.style.display = st === "예정" ? "" : "none";
+    c.dataset.no = no; c.dataset.armed = ""; c.textContent = "예약 취소 신청";
+    $("mp-modal").classList.remove("hidden");
+  }
+  const closeModal = () => $("mp-modal").classList.add("hidden");
+  document.querySelectorAll("[data-close-modal]").forEach(b => b.addEventListener("click", closeModal));
+  $("mp-modal").addEventListener("click", e => { if (e.target.id === "mp-modal") closeModal(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+  $("mp-cancel").addEventListener("click", () => {
+    const c = $("mp-cancel");
+    if (!c.dataset.armed) { c.dataset.armed = 1; c.textContent = "정말 취소할까요? 한 번 더 누르세요"; return; }
+    const list = getOrders(); const o = list.find(x => x.no === c.dataset.no); o.status = "취소"; saveOrders(list);
+    closeModal(); toast("예약을 취소했어요."); FILTER = "all"; render();
+  });
+
+  // 동행 취향 위젯
+  function renderTuner() {
+    const w = (U.with && U.with[0]) || "date";
+    $("tuner-text").innerHTML = `현재 <strong class="text-primary font-bold">${withLabel(w)}</strong> 중심으로 상품을 추천받고 있어요.`;
+    $("tuner-grid").innerHTML = Object.keys(COMPANIONS).map(k => `<button type="button" data-tune="${k}" class="py-2.5 px-3 rounded-lg ${k === w ? "bg-primary text-on-primary font-bold shadow-sm" : "bg-surface-container-low text-on-surface hover:bg-surface-container font-medium"} flex items-center justify-center gap-1.5 transition-colors"><span class="icon text-[16px]">${WITH_UI[k].icon}</span>${withLabel(k)}</button>`).join("");
+    $("tuner-go").href = `shop.html?with=${w}`;
+  }
+  $("tuner-grid").addEventListener("click", e => {
+    const b = e.target.closest("[data-tune]"); if (!b) return;
+    U.with = [b.dataset.tune].concat((U.with || []).filter(x => x !== b.dataset.tune));
+    store.set(KEYS.user, U); renderTuner(); header(); toast(`${withLabel(b.dataset.tune)} 중심으로 추천해 드릴게요.`);
+  });
+  renderTuner(); render();
+}
+
+  </script>
+</body>
+</html>

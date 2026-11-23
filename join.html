@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 | 누구랑</title>
+  <meta name="description" content="누구랑 회원가입 — 주로 함께하는 동행과 관심 분야를 알려주면 맞춤 상품을 먼저 보여드려요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<!-- MAIN CANVAS -->
+<div class="flex-1 w-full max-w-7xl mx-auto px-space-md md:px-gutter-lg py-space-lg md:py-space-xl"><div class="flex flex-col w-full items-center justify-center py-space-sm md:py-space-md">
+<!-- Registration Container: warm atelier aesthetics, subtle organic shadow, bounded 720px width -->
+<div class="w-full max-w-[720px] bg-surface-container-lowest rounded-xl shadow-xl p-space-md sm:p-gutter-md md:p-space-xl flex flex-col gap-space-lg relative overflow-hidden">
+<!-- Atmospheric subtle terracotta gradient accent at top edge -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary/30 via-primary-container to-secondary-container"></div>
+<!-- Header Section: Subtitle, Editorial Main Heading & Stepper Indicator -->
+<header class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary font-bold tracking-wider uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+          누구랑 회원가입
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2.5 py-1 rounded-full">
+          가입은 1분이면 끝나요
+        </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+        소중한 사람과의 온전한 시간,<br class="hidden sm:inline">지금 시작해보세요
+      </h1>
+<!-- Atelier Stepper Ribbon -->
+<nav aria-label="가입 단계" class="flex items-center gap-2 pt-space-xs font-label-md text-label-md text-on-surface-variant">
+<span id="join-step1" class="flex items-center gap-1.5 text-primary font-bold">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center text-[11px] font-bold">1</span>
+          기본 정보 &amp; 취향
+        </span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant">chevron_right</span>
+<span id="join-step2" class="flex items-center gap-1.5 text-outline">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-[11px] font-semibold">2</span>
+          가입 완료
+        </span>
+</nav>
+</header>
+<!-- Sign-up Form -->
+<form class="flex flex-col gap-space-xl" id="signup-form" novalidate>
+<!-- SECTION 1: Terms Agreement (약관 동의) -->
+<section aria-labelledby="terms-heading" class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2" id="terms-heading">
+<span class="w-1.5 h-4 bg-primary rounded-full inline-block"></span>
+            약관 동의
+          </h2>
+<span class="font-label-sm text-label-sm text-outline">* 필수 항목을 모두 동의하셔야 합니다</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<!-- Entire Agreement Master Toggle (High-emphasis container) -->
+<div class="bg-surface-container-low hover:bg-surface-container p-space-md rounded-xl transition-colors duration-150 flex items-center justify-between cursor-pointer" id="all-agree-box">
+<label class="flex items-center gap-space-sm cursor-pointer select-none w-full">
+<input class="w-5 h-5 rounded text-primary focus:ring-primary-container bg-surface-container-lowest transition" id="check-all" type="checkbox">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">모든 약관에 전체 동의합니다</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">필수 및 선택 약관에 일괄 동의하며, 언제든지 맞춤 알림을 해제할 수 있습니다.</span>
+</div>
+</label>
+</div>
+<!-- Sub-agreements list -->
+<div class="bg-surface p-space-sm rounded-lg flex flex-col gap-2.5">
+<!-- Mandatory 1: Service Terms -->
+<div class="flex items-center justify-between px-space-xs py-1">
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input class="term-item w-4 h-4 rounded text-primary focus:ring-primary-container bg-surface-container-lowest transition" id="term-service" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">
+<span class="text-primary font-bold">[필수]</span> 이용약관 동의
+                </span>
+</label>
+<button data-demo="약관 전문은 과제용 예시라 준비 중이에요." class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-0.5" type="button">
+                전문보기
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Mandatory 2: Privacy Policy -->
+<div class="flex items-center justify-between px-space-xs py-1">
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input class="term-item w-4 h-4 rounded text-primary focus:ring-primary-container bg-surface-container-lowest transition" id="term-privacy" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">
+<span class="text-primary font-bold">[필수]</span> 개인정보 수집 및 이용 동의
+                </span>
+</label>
+<button data-demo="약관 전문은 과제용 예시라 준비 중이에요." class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-0.5" type="button">
+                전문보기
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Optional: Companion Match Notifications -->
+<div class="flex items-center justify-between px-space-xs py-1">
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input class="term-item w-4 h-4 rounded text-primary focus:ring-primary-container bg-surface-container-lowest transition" id="term-marketing" type="checkbox">
+<span class="font-body-md text-body-md text-on-surface">
+<span class="text-outline font-semibold">[선택]</span> 동행 맞춤 클래스 알림 및 혜택 수신 동의 (SMS/이메일)
+                </span>
+</label>
+<button data-demo="약관 전문은 과제용 예시라 준비 중이에요." class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-0.5" type="button">
+                전문보기
+                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Basic Account Details (회원 기본 정보) -->
+<section aria-labelledby="account-heading" class="flex flex-col gap-space-md">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2" id="account-heading">
+<span class="w-1.5 h-4 bg-primary rounded-full inline-block"></span>
+          기본 정보 입력
+        </h2>
+<div class="grid grid-cols-1 gap-space-md">
+<!-- Name Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center justify-between" for="user-name">
+              이름
+              <span class="font-label-sm text-label-sm text-outline font-normal">공방 예약자 실명 확인용</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low text-on-surface rounded-lg px-4 py-3 font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-all placeholder:text-outline/70" id="user-name" placeholder="홍길동" type="text">
+<span class="material-symbols-outlined absolute right-3.5 top-1/2 -translate-y-1/2 text-primary opacity-0 transition-opacity pointer-events-none" id="name-valid-icon" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Email (ID) with Duplicate Check -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface font-semibold" for="user-email">
+              아이디 (이메일)
+            </label>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container-low text-on-surface rounded-lg px-4 py-3 font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-all placeholder:text-outline/70" id="user-email" placeholder="example@nugurang.com" type="email">
+<button class="px-space-md py-3 rounded-lg bg-surface-container-high hover:bg-surface-container text-on-surface font-label-lg text-label-lg font-bold transition whitespace-nowrap active:scale-95 shadow-sm" id="btn-check-duplicate" type="button">
+                중복 확인
+              </button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1" id="email-helper">
+<span class="material-symbols-outlined text-[15px] text-outline">info</span>
+              예약 확인 알림장 및 모바일 바우처가 발송됩니다.
+            </p>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface font-semibold" for="user-password">
+              비밀번호
+            </label>
+<div class="relative">
+<input class="w-full bg-surface-container-low text-on-surface rounded-lg px-4 py-3 font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-all placeholder:text-outline/70" id="user-password" placeholder="비밀번호를 입력해주세요" type="password">
+<button aria-label="비밀번호 표시 전환" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition p-1" id="toggle-pw" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-outline">영문, 숫자, 특수문자 조합 8자 이상 입력해주세요.</p>
+</div>
+<!-- Password Confirm -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center justify-between" for="user-password-check">
+              비밀번호 확인
+              <span class="font-label-sm text-label-sm text-outline font-medium" id="pw-match-status"></span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low text-on-surface rounded-lg px-4 py-3 font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-all placeholder:text-outline/70" id="user-password-check" placeholder="비밀번호를 다시 한번 입력해주세요" type="password">
+<span class="material-symbols-outlined absolute right-3.5 top-1/2 -translate-y-1/2 text-primary opacity-0 transition-opacity pointer-events-none" id="pw-check-icon" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+</div>
+<!-- Phone Number & Verification Trigger -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface font-semibold" for="user-phone">
+              휴대폰 번호
+            </label>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container-low text-on-surface rounded-lg px-4 py-3 font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none transition-all placeholder:text-outline/70" id="user-phone" maxlength="13" placeholder="010-0000-0000" type="tel">
+<button class="px-space-md py-3 rounded-lg bg-surface-container-high hover:bg-surface-container text-on-surface font-label-lg text-label-lg font-bold transition whitespace-nowrap active:scale-95 shadow-sm" id="btn-send-auth" type="button">
+                인증번호 발송
+              </button>
+</div>
+<!-- Dynamic verification input slot -->
+<div class="hidden flex gap-2 mt-1" id="auth-code-container">
+<input class="flex-1 bg-surface-container-low text-on-surface rounded-lg px-4 py-2.5 font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none" id="auth-code-input" maxlength="6" placeholder="인증번호 6자리 입력" type="text">
+<button class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg font-semibold hover:bg-primary-container transition active:scale-95" id="btn-verify-code" type="button">
+                확인
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: '누구랑' Atelier Companion Personalization (PRD 7-9 & 9-3 Key Differentiator) -->
+<section aria-labelledby="custom-heading" class="flex flex-col gap-space-lg bg-surface-container-low/70 p-space-md md:p-space-lg rounded-xl">
+<div>
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">groups</span>
+<span class="font-label-sm text-label-sm font-bold text-primary tracking-wide">누구랑 특화 맞춤 정보</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface" id="custom-heading">
+            주로 어떤 분과 함께 공방·체험을 방문하시나요?
+          </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            동행자 맞춤형 좌석 배치, 공방 분위기, 추천 커리큘럼 피드를 구성해 드립니다. (복수 선택 가능)
+          </p>
+</div>
+<!-- 4 Major Companion Persona Cards (Interactive Multi-select) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm" id="companion-selector">
+<!-- Persona 1: Date -->
+<div class="companion-card relative p-space-md rounded-xl bg-surface-container-lowest cursor-pointer transition-all duration-200 hover:shadow-md select-none group" data-companion="date">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0 text-xl group-hover:scale-105 transition-transform">
+                👫
+              </div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#2인 데이트</span>
+<span class="check-mark material-symbols-outlined text-primary text-[20px] opacity-0 transition-opacity">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">커플 공방, 로맨틱 무드, 이색 기념일</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-0.5 rounded">프라이빗 2인석</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-0.5 rounded">기념일 패키지</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Persona 2: Friends -->
+<div class="companion-card relative p-space-md rounded-xl bg-surface-container-lowest cursor-pointer transition-all duration-200 hover:shadow-md select-none group" data-companion="friends">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shrink-0 text-xl group-hover:scale-105 transition-transform">
+                👭
+              </div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#친구 모임</span>
+<span class="check-mark material-symbols-outlined text-primary text-[20px] opacity-0 transition-opacity">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">단체 베이킹, 원데이 클래스, 우정링</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-0.5 rounded">단체석 완비</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-0.5 rounded">포토존 제공</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Persona 3: Family/Parents -->
+<div class="companion-card relative p-space-md rounded-xl bg-surface-container-lowest cursor-pointer transition-all duration-200 hover:shadow-md select-none group" data-companion="family">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface shrink-0 text-xl group-hover:scale-105 transition-transform">
+                👨‍👩‍👧
+              </div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#가족·부모님</span>
+<span class="check-mark material-symbols-outlined text-primary text-[20px] opacity-0 transition-opacity">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">효도 원데이, 전통 다도, 친환경 목공</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-0.5 rounded">편안한 좌석</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-0.5 rounded">완만한 계단/주차</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Persona 4: Kids accompanied -->
+<div class="companion-card relative p-space-md rounded-xl bg-surface-container-lowest cursor-pointer transition-all duration-200 hover:shadow-md select-none group" data-companion="kids">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant shrink-0 text-xl group-hover:scale-105 transition-transform">
+                👶
+              </div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#어린이 동반</span>
+<span class="check-mark material-symbols-outlined text-primary text-[20px] opacity-0 transition-opacity">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">키즈 케어 안심 클래스, 안전 오감체험</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-0.5 rounded">안전 가이드 상주</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-0.5 rounded">무독성 재료</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Workshop Categories (Max 3 Selection) -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-lg text-label-lg font-bold text-on-surface">
+              관심 있는 공방 및 활동 분야를 골라주세요
+            </label>
+<span class="font-label-sm text-label-sm text-outline" id="craft-counter">최대 3개 (0/3)</span>
+</div>
+<div class="flex flex-wrap gap-2 pt-1" id="craft-chips-container">
+<button class="craft-chip h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95 shadow-sm" data-craft="perfume" type="button">
+              #향수·캔들
+            </button>
+<button class="craft-chip h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95 shadow-sm" data-craft="pottery" type="button">
+              #도자기·물레
+            </button>
+<button class="craft-chip h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95 shadow-sm" data-craft="leather" type="button">
+              #가죽공예
+            </button>
+<button class="craft-chip h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95 shadow-sm" data-craft="cooking" type="button">
+              #쿠킹·베이킹
+            </button>
+<button class="craft-chip h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95 shadow-sm" data-craft="glass" type="button">
+              #유리공예
+            </button>
+<button class="craft-chip h-9 px-3.5 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95 shadow-sm" data-craft="wood" type="button">
+              #목공·가구
+            </button>
+</div>
+</div>
+</section>
+<p id="join-msg" role="alert" class="hidden text-body-sm font-body-sm text-error bg-error-container/40 rounded-lg p-3"></p>
+<!-- SUBMIT ACTION CLUSTER -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold py-4 rounded-lg shadow-md transition-all duration-150 active:scale-[0.99] flex items-center justify-center gap-2" id="btn-submit" type="submit">
+<span>회원가입 완료</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Footer Navigation / Prompt to Login -->
+<div class="flex items-center justify-center gap-1.5 py-space-xs">
+<span class="font-body-md text-body-md text-on-surface-variant">이미 누구랑 계정이 있으신가요?</span>
+<a class="font-label-lg text-label-lg font-bold text-primary hover:text-primary-container transition-colors underline underline-offset-4" href="login.html">
+            로그인하기
+          </a>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- FOOTER (Shared Component: Footer) -->
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+// 회원가입: 이 브라우저의 ng_users에 저장 (비밀번호는 해시로 저장)
+const $ = id => document.getElementById(id);
+const CRAFT = { perfume: "향수·캔들", pottery: "도자기", leather: "가죽", cooking: "쿠킹·베이킹", glass: "유리", wood: "목공" };
+const COMP_MAP = { date: "date", friends: "friend", family: "family", kids: "kids" };
+const J = { with: [], crafts: [], emailOk: false };
+const users = () => store.get(PKEYS.users, []);
+
+// 약관 전체 동의
+const terms = [...document.querySelectorAll(".term-item")];
+$("check-all").addEventListener("change", e => terms.forEach(t => t.checked = e.target.checked));
+terms.forEach(t => t.addEventListener("change", () => $("check-all").checked = terms.every(x => x.checked)));
+
+// 이름
+$("user-name").addEventListener("input", e => $("name-valid-icon").classList.toggle("opacity-0", e.target.value.trim().length < 2));
+
+// 아이디 중복 확인
+const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+$("user-email").addEventListener("input", () => { J.emailOk = false; $("email-helper").className = "font-body-sm text-body-sm text-outline flex items-center gap-1"; $("email-helper").innerHTML = '<span class="icon text-[16px]">info</span>예약 확인 안내를 받을 이메일이에요. 중복 확인을 눌러 주세요.'; });
+$("btn-check-duplicate").addEventListener("click", () => {
+  const v = $("user-email").value.trim().toLowerCase(), h = $("email-helper");
+  if (!emailRe.test(v)) { h.className = "font-body-sm text-body-sm text-error flex items-center gap-1"; h.innerHTML = '<span class="icon text-[16px]">error</span>이메일 형식을 확인해 주세요.'; return; }
+  if (users().some(u => u.email === v) || v === DEMO_USER.email) { h.className = "font-body-sm text-body-sm text-error flex items-center gap-1"; h.innerHTML = '<span class="icon text-[16px]">error</span>이미 가입된 아이디예요. 로그인해 주세요.'; return; }
+  J.emailOk = true; h.className = "font-body-sm text-body-sm text-primary flex items-center gap-1"; h.innerHTML = '<span class="icon fill text-[16px]">check_circle</span>사용할 수 있는 아이디예요.';
+});
+
+// 비밀번호
+const pwOk = v => v.length >= 8 && /[A-Za-z]/.test(v) && /\d/.test(v) && /[^A-Za-z0-9]/.test(v);
+function pwCheck() {
+  const a = $("user-password").value, b = $("user-password-check").value, s = $("pw-match-status");
+  if (!a) { s.textContent = "영문, 숫자, 특수문자 조합 8자 이상 입력해주세요."; s.className = "font-label-sm text-label-sm text-outline"; }
+  else if (!pwOk(a)) { s.textContent = "영문, 숫자, 특수문자를 모두 넣어 8자 이상으로 만들어 주세요."; s.className = "font-label-sm text-label-sm text-error font-medium"; }
+  else { s.textContent = "사용할 수 있는 비밀번호예요."; s.className = "font-label-sm text-label-sm text-primary font-medium"; }
+  $("pw-check-icon").classList.toggle("opacity-0", !(b && a === b));
+}
+$("user-password").addEventListener("input", pwCheck); $("user-password-check").addEventListener("input", pwCheck);
+$("toggle-pw").addEventListener("click", () => { const p = $("user-password"); p.type = p.type === "password" ? "text" : "password"; });
+
+// 휴대폰 인증 (예시)
+$("btn-send-auth").addEventListener("click", () => {
+  const v = $("user-phone").value.trim();
+  if (!/^01[016789]-?\d{3,4}-?\d{4}$/.test(v)) return toast("휴대폰 번호를 010-1234-5678 형식으로 입력해 주세요.");
+  toast("휴대폰 인증은 과제용 예시 기능이에요. 번호 형식만 확인했어요.");
+  $("btn-send-auth").textContent = "확인됨";
+});
+
+// 동행 카드 · 관심 분야 칩
+document.querySelectorAll(".companion-card").forEach(c => {
+  c.setAttribute("role", "button"); c.setAttribute("tabindex", "0");
+  const toggle = () => {
+    const w = COMP_MAP[c.dataset.companion]; const on = !J.with.includes(w);
+    on ? J.with.push(w) : J.with.splice(J.with.indexOf(w), 1);
+    c.classList.toggle("bg-surface-container", on); c.classList.toggle("shadow-md", on); c.classList.toggle("bg-surface-container-lowest", !on);
+    c.querySelector(".check-mark").classList.toggle("opacity-0", !on); c.setAttribute("aria-pressed", on);
+  };
+  c.addEventListener("click", toggle);
+  c.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+});
+document.querySelectorAll(".craft-chip").forEach(ch => ch.addEventListener("click", () => {
+  const v = CRAFT[ch.dataset.craft]; const on = !J.crafts.includes(v);
+  if (on && J.crafts.length >= 3) return toast("관심 분야는 최대 3개까지 고를 수 있어요.");
+  on ? J.crafts.push(v) : J.crafts.splice(J.crafts.indexOf(v), 1);
+  ch.classList.toggle("bg-primary", on); ch.classList.toggle("text-on-primary", on); ch.classList.toggle("bg-surface-container-lowest", !on); ch.classList.toggle("text-on-surface", !on);
+  ch.setAttribute("aria-pressed", on);
+  $("craft-counter").textContent = `최대 3개 (${J.crafts.length}/3)`;
+}));
+
+// 가입
+$("signup-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const msg = $("join-msg");
+  const fail = (t, el) => { msg.textContent = t; msg.classList.remove("hidden"); el && el.focus(); };
+  const name = $("user-name").value.trim(), email = $("user-email").value.trim().toLowerCase(), pw = $("user-password").value, phone = $("user-phone").value.trim();
+  if (!$("term-service").checked || !$("term-privacy").checked) return fail("필수 약관 2개에 동의해 주세요.", $("term-service"));
+  if (name.length < 2) return fail("이름을 2자 이상 입력해 주세요.", $("user-name"));
+  if (!emailRe.test(email)) return fail("아이디(이메일) 형식을 확인해 주세요.", $("user-email"));
+  if (!J.emailOk) return fail("아이디 중복 확인을 눌러 주세요.", $("btn-check-duplicate"));
+  if (!pwOk(pw)) return fail("비밀번호는 영문, 숫자, 특수문자를 넣어 8자 이상이어야 해요.", $("user-password"));
+  if (pw !== $("user-password-check").value) return fail("비밀번호 확인이 일치하지 않아요.", $("user-password-check"));
+  if (phone && !/^01[016789]-?\d{3,4}-?\d{4}$/.test(phone)) return fail("휴대폰 번호 형식을 확인해 주세요.", $("user-phone"));
+  if (!J.with.length) return fail("주로 함께하는 동행을 하나 이상 골라 주세요.", document.querySelector(".companion-card"));
+  msg.classList.add("hidden");
+  const u = { name, email, pw: await hashPw(pw), phone, with: J.with, interests: J.crafts, marketing: $("term-marketing").checked, joined: todayStr() };
+  const list = users(); list.push(u); store.set(PKEYS.users, list);
+  store.set(KEYS.user, { name, email, phone, with: J.with, interests: J.crafts });
+  $("join-step2").className = $("join-step1").className.replace("text-primary font-bold", "text-primary font-bold");
+  $("signup-form").innerHTML = `<div class="text-center py-space-lg">
+    <div class="w-16 h-16 mx-auto rounded-full bg-secondary-fixed flex items-center justify-center text-primary"><span class="icon fill text-[36px]">check_circle</span></div>
+    <h2 class="font-headline-md text-headline-md mt-space-md">${esc(name)}님, 가입을 환영해요!</h2>
+    <p class="text-body-md text-on-surface-variant mt-1">${J.with.map(withLabel).join(", ")}에 맞는 공방·클래스를 먼저 보여 드릴게요.</p>
+    <div class="flex flex-col sm:flex-row justify-center gap-2 mt-space-lg">
+      <a href="shop.html?with=${J.with[0]}" class="px-5 py-3 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg">맞춤 상품 보러 가기</a>
+      <a href="mypage.html" class="px-5 py-3 rounded-lg bg-surface-container-low border border-outline-variant font-label-lg text-label-lg">마이페이지</a></div></div>`;
+  renderHeader();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+  </script>
+</body>
+</html>

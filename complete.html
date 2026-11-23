@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예약 완료 | 누구랑</title>
+  <meta name="description" content="예약 번호와 일정, 장소, 공방 선생님 사전 메모를 확인하세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<!-- MAIN CANVAS -->
+<div class="flex-1 w-full max-w-7xl mx-auto px-space-md md:px-gutter-lg py-space-lg md:py-space-xl"><div class="flex flex-col w-full" id="complete-wrap">
+<!-- Progress Stepper (Step 3 Active) -->
+<div class="w-full flex justify-center mb-space-lg md:mb-space-xl">
+<div class="flex items-center gap-2 sm:gap-4 md:gap-8 bg-surface-container-low px-space-md sm:px-space-lg py-3 rounded-full shadow-sm max-w-xl w-full justify-between">
+<!-- Step 1 -->
+<div class="flex items-center gap-1.5 opacity-60">
+<span class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center font-label-sm text-label-sm text-on-surface-variant font-bold">1</span>
+<span class="font-label-md text-label-md text-on-surface-variant hidden sm:inline">일정·옵션 확인</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant sm:hidden">일정</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[16px]">chevron_right</span>
+<!-- Step 2 -->
+<div class="flex items-center gap-1.5 opacity-60">
+<span class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center font-label-sm text-label-sm text-on-surface-variant font-bold">2</span>
+<span class="font-label-md text-label-md text-on-surface-variant hidden sm:inline">결제 진행</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant sm:hidden">결제</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[16px]">chevron_right</span>
+<!-- Step 3 (Active) -->
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+<span class="font-label-lg text-label-lg text-primary">03 예약 완료</span>
+</div>
+</div>
+</div>
+<!-- Hero Confirmation Card -->
+<div class="relative bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg md:p-space-xl shadow-sm mb-space-lg overflow-hidden">
+<!-- Warm Accent Glow -->
+<div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-br from-primary-fixed-dim/30 to-transparent blur-3xl pointer-events-none"></div>
+<div class="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md pb-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center text-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Booking Confirmed</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-0.5">예약이 성공적으로 완료되었습니다!</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">소중한 분과의 따뜻한 추억을 위해 공방 선생님이 정성껏 준비하고 있습니다.</p>
+</div>
+</div>
+<!-- Booking Order Badge -->
+<div class="w-full md:w-auto bg-surface-container-low px-space-md py-3 rounded-lg flex flex-col items-start md:items-end">
+<span class="font-label-sm text-label-sm text-outline font-medium">예약 번호</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-wide" id="c-no">#</span>
+</div>
+</div>
+<!-- Quick Payment Meta Row -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-space-md bg-surface-container-low/60 rounded-lg p-space-md text-on-surface">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-0.5">결제 일시</span>
+<span class="font-body-md text-body-md font-medium text-on-surface" id="c-paid"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline mb-0.5">결제 수단</span>
+<div class="flex items-center gap-1.5 font-body-md text-body-md font-medium text-on-surface">
+<span class="icon text-[18px] text-primary">credit_card</span><span id="c-pay"></span>
+</div>
+</div>
+<div class="flex flex-col sm:items-end">
+<span class="font-label-sm text-label-sm text-outline mb-0.5">총 결제 금액</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="c-total"></span>
+</div>
+</div>
+</div>
+<!-- Main Content Grid: Booking Detail + Teacher Note Notification -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-xl">
+<!-- Left 7 Cols: Workshop Reservation Details Card -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="local_mall">local_mall</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">예약 상세 내역</h2>
+</div>
+<!-- Companion Pill (Brand Component) -->
+<div class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm" id="c-with"></div>
+</div>
+<!-- 예약 상품 -->
+<div class="flex flex-col sm:flex-row gap-space-md mb-space-md">
+<div id="c-img" class="w-full sm:w-36 h-28 rounded-lg overflow-hidden shrink-0 shadow-sm bg-surface-container"></div>
+<div class="flex flex-col justify-center"><div class="flex flex-wrap items-center gap-2 mb-1"><span id="c-cat" class="px-2 py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-secondary font-semibold"></span><span id="c-shop" class="font-label-sm text-label-sm text-on-surface font-medium"></span><span id="c-host" class="font-label-sm text-label-sm text-outline"></span></div><h3 id="c-title" class="font-headline-sm text-headline-sm text-on-surface leading-snug"></h3><p id="c-sum" class="font-body-sm text-body-sm text-on-surface-variant mt-1"></p></div>
+</div>
+<div id="c-break" class="flex flex-col divide-y divide-surface-container-high bg-surface-container-low/40 rounded-lg p-space-md gap-space-sm"></div>
+<!-- Location & Directions -->
+<div class="mt-space-md pt-space-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+<span class="font-label-lg text-label-lg text-on-surface font-bold">오시는 길 &amp; 공방 위치</span>
+</div>
+<a class="inline-flex items-center gap-1 text-primary hover:text-secondary font-label-md text-label-md font-semibold transition-colors" id="c-map" href="https://map.kakao.com" rel="noopener noreferrer" target="_blank">
+<span>카카오맵 길찾기</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-3" id="c-place"></p>
+<div class="w-full h-44 rounded-lg bg-surface-container shadow-sm relative overflow-hidden flex items-end p-space-sm"><div id="c-photo" class="absolute inset-0"></div>
+<div class="bg-surface/90 backdrop-blur-sm px-3 py-1.5 rounded-md text-on-surface font-label-sm text-label-sm flex items-center gap-1.5 shadow-sm relative"><span class="material-symbols-outlined text-primary text-[16px]">storefront</span><span id="c-store"></span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right 5 Cols: PRD Core Seller Memo Alert & Companion Scheduling Hook -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Key PRD Integration Notice: Seller Memo Preparing -->
+<div class="bg-surface-container rounded-xl p-space-md sm:p-space-lg shadow-sm relative overflow-hidden">
+<div class="flex items-start gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+</div>
+<div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-label-sm text-label-sm font-bold mb-1">
+<span>선생님 맞춤 안내 알림</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">
+              선생님이 사전 맞춤 메모를 준비 중입니다
+            </h3>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed" id="c-lead"></p>
+<!-- Informational Callout Box -->
+<div class="bg-surface-container-lowest/80 rounded-lg p-space-md mb-space-md flex flex-col gap-2"><div class="flex items-start gap-2 mb-1"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">format_quote</span><div><p class="font-label-sm text-label-sm text-secondary font-bold mb-0.5">선생님 사전 메모 미리보기</p><p class="font-body-sm text-body-sm text-on-surface font-medium leading-relaxed"><span id="c-memo"></span></p></div></div><div class="flex items-start gap-2 pt-2 border-t border-surface-container-high"><span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">sync_alt</span><p class="font-body-sm text-body-sm text-on-surface-variant">메모 확인 후 선생님께 1:1 답글로 요청사항을 바로 전달하실 수 있습니다.</p></div></div>
+<!-- Inline Status Visualizer -->
+<div class="flex items-center justify-between bg-surface-container-high/70 px-space-md py-2.5 rounded-lg mb-space-md">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="font-label-md text-label-md text-on-surface font-medium">선생님 메모 작성 상태</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold" id="c-dday">준비 중</span>
+</div>
+<!-- Primary Jump CTA to Calendar (calendar.html) -->
+<a class="w-full bg-primary hover:bg-[#9E452B] text-on-primary py-3.5 px-space-md rounded-lg font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-sm transition-all duration-150 active:scale-[0.99]" href="calendar.html">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span>내 일정 캘린더에서 메모 확인하기</span>
+</a>
+</div>
+<!-- Secondary Quick Help & Companion Tip Box -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">diversity_1</span>
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">동행자와 일정 공유하기</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+          함께 가는 동행에게 예약 일정과 장소를 복사해서 메신저로 보내 보세요.
+        </p>
+<button id="c-share" class="w-full bg-surface-container-low hover:bg-surface-container text-on-surface py-2.5 px-space-md rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>예약 내용 복사</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Global Action Bar -->
+<div class="w-full flex flex-col sm:flex-row items-center justify-center gap-space-md pt-space-md border-t border-surface-container-high"><a class="w-full sm:w-auto min-w-[220px] bg-primary hover:bg-[#9E452B] text-on-primary py-3.5 px-space-lg rounded-lg font-label-lg text-label-lg font-bold text-center shadow-sm transition-all active:scale-[0.98] flex items-center justify-center gap-2" href="calendar.html"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">calendar_today</span><span>내 일정 캘린더에서 확인하기</span></a><a class="w-full sm:w-auto min-w-[180px] bg-surface-container hover:bg-surface-container-high text-on-surface py-3.5 px-space-lg rounded-lg font-label-lg text-label-lg font-semibold text-center transition-colors" href="mypage.html">예약 상세 내역 보기</a><a class="w-full sm:w-auto bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-primary py-3.5 px-space-md rounded-lg font-label-md text-label-md font-semibold text-center transition-colors flex items-center justify-center gap-1.5" href="index.html"><span class="material-symbols-outlined text-[18px]">home</span><span>홈으로 이동</span></a></div>
+</div></div>
+<!-- FOOTER (Shared Component: Footer) -->
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+// 결제 완료: ?no=예약번호
+const $ = id => document.getElementById(id);
+const orders = getOrders();
+const O = orders.find(o => o.no === qs("no")) || orders[0];
+const P = O && byId(O.id);
+if (!P) {
+  $("complete-wrap").innerHTML = `<div class="py-20 text-center bg-surface-container-lowest rounded-xl border border-outline-variant">
+    <span class="icon text-[44px] text-outline-variant">receipt_long</span>
+    <p class="mt-2 font-headline-sm text-headline-sm">예약 내역을 찾을 수 없어요</p>
+    <p class="text-body-sm text-outline mt-1">상품을 예약하면 이곳에서 예약 번호와 일정을 확인할 수 있어요.</p>
+    <a href="shop.html" class="inline-flex mt-4 px-4 py-2 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg">상품 둘러보기</a></div>`;
+} else {
+  const paid = new Date(O.createdAt);
+  $("c-no").textContent = "#" + O.no;
+  $("c-paid").textContent = isNaN(paid) ? O.createdAt : `${paid.getFullYear()}. ${pad(paid.getMonth() + 1)}. ${pad(paid.getDate())} (${DAYS[paid.getDay()]}) ${pad(paid.getHours())}:${pad(paid.getMinutes())}`;
+  $("c-pay").textContent = O.pay + " (가상 결제)";
+  $("c-total").textContent = won2(O.total);
+  $("c-with").innerHTML = `<span class="icon fill text-[14px]">${WITH_UI[O.with].icon}</span><span>${withLabel(O.with)} · ${O.people}명</span>`;
+  $("c-img").innerHTML = photo(P, "w-full h-full object-cover");
+  $("c-cat").textContent = P.category; $("c-shop").textContent = P.shop; $("c-host").textContent = `(진행자: ${P.host} 선생님)`;
+  $("c-title").innerHTML = `<a class="hover:text-primary" href="${detailUrl(P)}">${esc(P.title)}</a>`;
+  $("c-sum").textContent = P.summary;
+  const row = (icon, label, right) => `<div class="flex items-start justify-between py-2 gap-3"><span class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1.5 shrink-0"><span class="icon text-[18px] text-outline">${icon}</span>${label}</span><div class="text-right">${right}</div></div>`;
+  $("c-break").innerHTML =
+    row("schedule", "예약 일시", `<p class="font-label-lg text-label-lg text-on-surface font-bold">${fmtDate(O.date)} ${O.time}</p><p class="font-body-sm text-body-sm text-secondary font-medium">소요 시간: ${P.duration}분 (${O.time} ~ ${endTime(O.time, P.duration)})</p>`)
+    + row("group", "방문 인원", `<span class="font-label-lg text-label-lg text-on-surface font-bold">${O.people}명</span><span class="font-body-sm text-body-sm text-outline ml-1">(${withLabel(O.with)} · ${won2(P.price)} / 1인)</span>`)
+    + row("tune", "추가 선택 옵션", O.option ? `<p class="font-label-lg text-label-lg text-on-surface">${esc(P.option.name)}</p><p class="font-body-sm text-body-sm text-outline">+${won2(O.option)}</p>` : '<p class="text-body-sm text-outline">선택 안 함</p>')
+    + row("verified_user", "환불 정책 등급", refundBadge(P, `${REFUND[P.refund].name} (${REFUND[P.refund].rule})`))
+    + (O.discount ? row("loyalty", "단체 할인", `<p class="font-label-lg text-label-lg text-secondary font-semibold">4인 이상 ${P.groupDiscount}%</p><p class="font-body-sm text-body-sm text-secondary">-${won2(O.discount)}</p>`) : "")
+    + `<div class="flex items-start justify-between py-2 pt-space-sm"><span class="font-label-lg text-label-lg text-on-surface font-bold flex items-center gap-1.5"><span class="icon text-[18px] text-primary">payments</span>최종 결제 금액</span><div class="text-right"><span class="font-headline-sm text-headline-sm text-primary font-bold">${won2(O.total)}</span><p class="font-body-sm text-body-sm text-outline">(수업료 ${won2(O.base)}${O.option ? " + 옵션 " + won2(O.option) : ""}${O.discount ? " - 할인 " + won2(O.discount) : ""})</p></div></div>`;
+  $("c-place").textContent = `${placeOf(P)} · ${P.shop}`;
+  $("c-map").href = "https://map.kakao.com/?q=" + encodeURIComponent(`${P.sido} ${P.sigungu}`);
+  $("c-photo").innerHTML = photo(P, "absolute inset-0 w-full h-full object-cover");
+  $("c-store").textContent = `${P.shop} · ${P.region}`;
+  $("c-lead").innerHTML = `${esc(P.shop)} ${esc(P.host)} 선생님이 예약하신 <strong class="text-primary font-bold">${withLabel(O.with)} ${O.people}명</strong>${O.option ? ` · <strong class="text-on-surface font-semibold">${esc(P.option.name)}</strong>` : ""}에 맞춘 사전 안내를 준비하고 있어요.`;
+  $("c-memo").textContent = `“${P.memo.common} ${P.memo.info}”`;
+  $("c-dday").textContent = `준비 중 (${ddayText(O.date)})`;
+  document.querySelectorAll('a[href="calendar.html"]').forEach(a => a.href = "calendar.html?no=" + encodeURIComponent(O.no));
+  $("c-share").addEventListener("click", () => {
+    const text = `[누구랑 예약] ${P.title}\n${fmtDate(O.date)} ${O.time} · ${O.people}명\n${placeOf(P)} ${P.shop}`;
+    try { navigator.clipboard.writeText(text); toast("예약 카드 내용을 복사했어요. 동행에게 붙여넣어 보내세요."); } catch (e) { toast("복사할 수 없는 환경이에요."); }
+  });
+}
+
+  </script>
+</body>
+</html>

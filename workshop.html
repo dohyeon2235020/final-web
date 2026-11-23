@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공방 | 누구랑</title>
+  <meta name="description" content="도자기·가죽·향수·목공·반지·유리 공방 원데이 클래스를 동행에 맞춰 찾아보세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<div class="flex flex-col w-full">
+<!-- Top Atmospheric Intro & Breadcrumb -->
+<section class="w-full bg-surface-container-low/70 py-space-lg relative overflow-hidden">
+<!-- Subtle Organic Ambient Radial Glows -->
+<div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-20 left-1/3 w-80 h-80 rounded-full bg-primary-fixed-dim/20 blur-2xl pointer-events-none"></div>
+<div class="max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg relative z-10">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-space-xs text-outline font-label-sm text-label-sm mb-space-sm">
+<a href="index.html" class="hover:text-primary transition-colors flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[15px]">home</span> 홈
+        </a>
+<span class="material-symbols-outlined text-[13px] text-outline-variant">chevron_right</span>
+<span class="text-on-surface font-semibold">공방 아틀리에</span>
+</nav>
+<!-- Category Title & Editorial Narrative -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-primary font-label-sm text-label-sm mb-space-xs">
+<span class="material-symbols-outlined text-[15px]">palette</span>
+<span>정성 가득 수공예 아틀리에</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">공방 아틀리에</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 leading-relaxed">
+            손끝의 온기로 빚어내는 세상에 하나뿐인 작품. 연인, 친구, 가족과 함께 소중한 일상을 빚고 영원히 간직할 오브제를 완성해보세요.
+          </p>
+</div>
+<!-- Safe Workshop Promise Capsule -->
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest/90 backdrop-blur rounded-xl shadow-sm border-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">현장 추가금 0원 보증</span>
+<span class="font-label-sm text-label-sm text-outline">사전 안내 재료비 100% 포함 원칙</span>
+</div>
+</div>
+</div>
+<!-- Craft Category Sub-Nav Tabs (Horizontal Scrollable) -->
+<div class="mt-space-lg flex items-center gap-space-xs overflow-x-auto pb-1.5 no-scrollbar scroll-smooth"><button data-g="cat" data-v="" data-active class="group flex items-center gap-1.5 px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap bg-primary-container text-on-primary-container shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-[18px]">auto_awesome</span><span>전체</span><span class="text-[11px] px-1.5 py-0.5 rounded-full bg-on-primary-container/20 font-bold">100</span></button><button data-g="cat" data-v="도자기" class="group flex items-center gap-1.5 px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">search_off</span><span>도자기</span><span class="text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-semibold">18</span></button><button data-g="cat" data-v="가죽" class="group flex items-center gap-1.5 px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">card_membership</span><span>가죽</span><span class="text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-semibold">16</span></button><button data-g="cat" data-v="향수·캔들" class="group flex items-center gap-1.5 px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">air</span><span>향수·캔들</span><span class="text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-semibold">17</span></button><button data-g="cat" data-v="목공" class="group flex items-center gap-1.5 px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">chair</span><span>목공</span><span class="text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-semibold">17</span></button><button data-g="cat" data-v="반지·액세서리" class="group flex items-center gap-1.5 px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">diamond</span><span>반지·액세서리</span><span class="text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-semibold">16</span></button><button data-g="cat" data-v="유리" class="group flex items-center gap-1.5 px-4 py-2 rounded-full font-label-lg text-label-lg whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px] text-tertiary">window</span><span>유리</span><span class="text-[11px] px-1.5 py-0.5 rounded-full bg-surface-container font-semibold">16</span></button></div>
+</div>
+</section>
+<!-- Sticky Companion Bar & Location Navigator -->
+<section class="sticky top-16 z-30 bg-surface/95 backdrop-blur-md shadow-[0_4px_16px_-4px_rgba(46,36,32,0.06)] py-space-sm">
+<div class="max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<!-- Companion Filter Chips ("누구랑" Pills) -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar py-0.5">
+<span class="font-label-md text-label-md text-on-surface-variant whitespace-nowrap mr-1 flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[16px] text-primary">diversity_1</span>
+          동행 선택
+        </span>
+<button data-g="with" data-v="" data-active class="px-3.5 py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-primary-container text-on-primary-container shadow-sm font-semibold transition-all" type="button">
+          전체 동행
+        </button>
+<button data-g="with" data-v="date" class="px-3.5 py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1" type="button">
+<span>❤️</span>
+<span>2인 데이트</span>
+</button>
+<button data-g="with" data-v="friend" class="px-3.5 py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1" type="button">
+<span>👥</span>
+<span>친구 모임</span>
+</button>
+<button data-g="with" data-v="family" class="px-3.5 py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1" type="button">
+<span>👨‍👩‍👧</span>
+<span>가족 · 부모님</span>
+</button>
+<button data-g="with" data-v="kids" class="px-3.5 py-1.5 rounded-full font-label-md text-label-md whitespace-nowrap bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-1" type="button">
+<span>👶</span>
+<span>어린이 동반</span>
+</button>
+</div>
+<!-- Quick Location Filter Chips -->
+<div class="hidden lg:flex items-center gap-1.5 text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-outline flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span> 지역:
+        </span>
+<button data-g="region" data-v="성수" class="px-2.5 py-1 rounded bg-surface-container font-label-sm text-label-sm text-on-surface hover:bg-surface-container-highest transition-colors" type="button">성수/서울숲</button>
+<button data-g="region" data-v="연남,망원" class="px-2.5 py-1 rounded bg-surface-container-low font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container transition-colors" type="button">연남/홍대</button>
+<button data-g="region" data-v="한남" class="px-2.5 py-1 rounded bg-surface-container-low font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container transition-colors" type="button">한남/이태원</button>
+<button data-g="region" data-v="북촌,서촌" class="px-2.5 py-1 rounded bg-surface-container-low font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container transition-colors" type="button">종로/삼청</button>
+<button data-g="region" data-v="헤이리" class="px-2.5 py-1 rounded bg-surface-container-low font-label-sm text-label-sm text-on-surface-variant hover:bg-surface-container transition-colors" type="button">파주 헤이리</button>
+</div>
+</div>
+</section>
+<!-- Main Body Content: 12-Column Responsive Layout -->
+<div class="max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg py-space-lg w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- LEFT ASIDE: Filter Controls & Atelier Guarantees (4 cols) -->
+<aside class="lg:col-span-3 flex flex-col gap-space-md">
+<!-- Filter Summary & Reset Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-primary">tune</span> 필터 검색
+            </span>
+<button data-reset class="font-label-sm text-label-sm text-outline hover:text-primary transition-colors flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-[14px]">refresh</span> 초기화
+            </button>
+</div>
+<!-- Refund Guarantee Badge Filter -->
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-label-md text-label-md text-on-surface flex items-center justify-between">
+              환불 안심 등급
+              <span class="material-symbols-outlined text-[16px] text-outline" title="공방 예약 취소 규정">info</span>
+</span>
+<div class="space-y-1.5">
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<span class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<input data-g="refund" value="safe" data-multi  class="w-4 h-4 rounded text-primary-container focus:ring-0 accent-primary" type="checkbox">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#EBF4EF] text-[#3A7A5E] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#3A7A5E]"></span>안심 등급
+                  </span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">2일 전 100%</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<span class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<input data-g="refund" value="mid" data-multi  class="w-4 h-4 rounded text-primary-container focus:ring-0 accent-primary" type="checkbox">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#FDF7EC] text-[#966318] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#B37D2E]"></span>보통 등급
+                  </span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">5일 전 100%</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<span class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface">
+<input data-g="refund" value="strict" data-multi class="w-4 h-4 rounded text-primary-container focus:ring-0 accent-primary" type="checkbox">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-[#FBEFED] text-[#A3433B] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#A3433B]"></span>엄격 등급
+                  </span>
+</span>
+<span class="font-label-sm text-label-sm text-outline">맞춤형 원자재</span>
+</label>
+</div>
+</div>
+<!-- Price Range Radios -->
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-label-md text-label-md text-on-surface">가격대 (1인 기준)</span>
+<div class="space-y-1">
+<label class="flex items-center gap-2.5 p-1.5 rounded hover:bg-surface-container-low cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
+<input data-g="price" value="-30001" class="text-primary accent-primary" name="price" type="radio">
+<span>30,000원 이하</span>
+</label>
+<label class="flex items-center gap-2.5 p-1.5 rounded hover:bg-surface-container-low cursor-pointer font-body-sm text-body-sm text-on-surface font-semibold bg-surface-container-low/60">
+<input data-g="price" value="30000-70001"  class="text-primary accent-primary" name="price" type="radio">
+<span>30,000원 ~ 70,000원</span>
+</label>
+<label class="flex items-center gap-2.5 p-1.5 rounded hover:bg-surface-container-low cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
+<input data-g="price" value="70000-120001" class="text-primary accent-primary" name="price" type="radio">
+<span>70,000원 ~ 120,000원</span>
+</label>
+<label class="flex items-center gap-2.5 p-1.5 rounded hover:bg-surface-container-low cursor-pointer font-body-sm text-body-sm text-on-surface-variant">
+<input data-g="price" value="120000-" class="text-primary accent-primary" name="price" type="radio">
+<span>120,000원 이상</span>
+</label>
+</div>
+</div>
+<!-- Special Atelier Amenities -->
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-label-md text-label-md text-on-surface">특별 편의 &amp; 시설</span>
+<div class="space-y-2">
+<label class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant cursor-pointer">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요."  class="w-4 h-4 rounded accent-primary" type="checkbox">
+<span>🅿️ 주차 가능 공방</span>
+</label>
+<label class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant cursor-pointer">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요."  class="w-4 h-4 rounded accent-primary" type="checkbox">
+<span>🔒 프라이빗 단독 대관/예약</span>
+</label>
+<label class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant cursor-pointer">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요." class="w-4 h-4 rounded accent-primary" type="checkbox">
+<span>🐾 반려동물 동반 가능</span>
+</label>
+<label class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant cursor-pointer">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요."  class="w-4 h-4 rounded accent-primary" type="checkbox">
+<span>🧾 영수증 인증 리뷰 공방만</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Editorial Trust Widget -->
+<div class="bg-gradient-to-br from-surface-container-high to-surface-container p-space-md rounded-xl flex flex-col gap-2 shadow-sm">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[24px]">workspace_premium</span>
+<span class="font-label-lg text-label-lg font-bold">누구랑 공방 안심 보증제</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            공방 현장에서 당황스러운 추가 재료비 청구 0원! 사전 안내된 재료와 도구 일체가 기본 요금에 모두 포함되어 편안하게 체험을 즐기실 수 있습니다.
+          </p>
+<div class="mt-2 pt-2 bg-surface-container-lowest/70 p-2.5 rounded-lg flex items-center justify-between text-on-surface">
+<span class="font-label-sm text-label-sm font-semibold">100% 실명 검증 장인</span>
+<span class="material-symbols-outlined text-[16px] text-primary">check_circle</span>
+</div>
+</div>
+</aside>
+<!-- RIGHT PRODUCT LISTING GRID: (9 cols) -->
+<div class="lg:col-span-9 flex flex-col gap-space-md">
+<!-- Grid Control Top Bar: Counts & Sorting Dropdown -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm">
+<div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm text-on-surface font-bold">공방 상품</span><span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md font-bold"><span data-count="총 {n}개의 공방">총 100개의 공방</span></span><span class="text-outline text-body-sm hidden sm:inline">| 실시간 예약 가능</span></div>
+<div class="flex items-center gap-2 self-end sm:self-auto">
+<label class="font-label-sm text-label-sm text-outline sr-only" for="sort-select">정렬 방식</label>
+<div class="relative inline-flex items-center">
+<select data-g="sort" aria-label="정렬" class="appearance-none bg-surface-container-low text-on-surface font-label-md text-label-md px-3 py-1.5 pr-8 rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer" id="sort-select">
+<option value="rec">✨ 추천순 (동행 매칭 최적화)</option>
+<option value="pop">🔥 인기순 (위시리스트 많은 순)</option>
+<option value="rating">⭐ 평점 높은 순</option>
+<option value="price">🪙 낮은 가격순</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2 text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+<!-- View Layout Toggle Icons -->
+<div class="hidden sm:flex items-center p-0.5 rounded-lg bg-surface-container-low">
+<button aria-label="그리드 뷰" data-demo="목록은 바둑판 보기만 제공해요." class="p-1 rounded bg-surface-container-lowest text-primary shadow-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</button>
+<button aria-label="리스트 뷰" data-demo="목록은 바둑판 보기만 제공해요." class="p-1 rounded text-outline hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 3-Column Responsive Atelier Cards Grid -->
+<div id="list" aria-live="polite" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-md"></div>
+<!-- Interactive Editorial Callout / Studio Discovery -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col md:flex-row items-center justify-between gap-space-md mt-space-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[26px]">draw</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">찾으시는 특별한 공예 장르가 있으신가요?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">원하시는 맞춤형 동행 인원이나 기업 워크숍 단체 예약도 친절히 매칭해 드립니다.</p>
+</div>
+</div>
+<a href="index.html#qna" class="whitespace-nowrap px-4 py-2.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-xs transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">chat</span>
+<span>맞춤 공방 1:1 의뢰</span>
+</a>
+</div>
+<!-- Pagination Section -->
+<nav data-pager aria-label="페이지 이동" class="flex items-center justify-center gap-space-xs mt-space-lg">
+<button aria-label="이전 페이지" class="w-10 h-10 rounded-lg flex items-center justify-center text-outline-variant cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md font-bold shadow-xs" type="button">
+            1
+          </button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+            2
+          </button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+            3
+          </button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+            4
+          </button>
+<button class="w-10 h-10 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-colors" type="button">
+            5
+          </button>
+<button aria-label="다음 페이지" class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors shadow-xs" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</div>
+</div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+initList({ type: "workshop", card: "workshop", pageSize: 9 });
+  </script>
+</body>
+</html>

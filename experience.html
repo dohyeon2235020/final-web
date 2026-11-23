@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>체험 | 누구랑</title>
+  <meta name="description" content="데이트·가족 나들이·어린이·여행·지역 체험을 동행에 맞춰 찾아보세요.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tw-config.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+  <!-- 헤더 · 네비게이션 바 (app.js가 그림 — 메인과 같은 메뉴) -->
+  <header id="site-header"></header>
+
+  <main id="main" class="flex-1 w-full">
+<div class="flex flex-col w-full">
+<!-- Top Navigation & Breadcrumbs Strip -->
+<section class="w-full bg-surface-container-low/60 border-b border-outline-variant/30 py-space-sm">
+<div class="max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg flex items-center justify-between">
+<nav class="flex items-center gap-space-xs font-label-md text-label-md text-outline">
+<a href="index.html" class="hover:text-primary transition-colors flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]">home</span>
+          홈
+        </a>
+<span class="material-symbols-outlined text-[14px] text-outline-variant">chevron_right</span>
+<span class="text-on-surface font-semibold">체험</span>
+</nav>
+<div class="flex items-center gap-space-sm text-outline font-label-sm text-label-sm hidden sm:flex">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+          검증된 공방 &amp; 액티비티 파트너 120+
+        </span>
+</div>
+</div>
+</section>
+<!-- Editorial Hero Section -->
+<section class="relative w-full bg-gradient-to-b from-surface-container-low/40 via-surface to-surface overflow-hidden py-space-lg lg:py-space-xl">
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 bottom-0 w-80 h-80 rounded-full bg-primary-fixed/20 blur-2xl pointer-events-none"></div>
+<div class="max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<div class="lg:col-span-7 flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">nature_people</span>
+              야외·실내 액티비티
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">group_work</span>
+              동행 맞춤 패키지
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">price_check</span>
+              현장 추가비용 0원 보증
+            </span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight leading-snug">
+            특별한 하루를 완성하는 <br class="hidden sm:inline">
+<span class="text-primary underline decoration-primary-container/30 decoration-wavy underline-offset-8">이색 감성 체험</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            틀에 박힌 일상에서 벗어나 둘만의 오붓한 데이트, 아이와 함께하는 자연 속 촉감 놀이, 
+            부모님과 나누는 온기 어린 힐링 나들이를 선물하세요. 누구와 함께여도 실패 없는 동행 맞춤 체험을 제안합니다.
+          </p>
+<div class="pt-space-xs flex flex-wrap items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">safety_check</span>
+<span>전 체험 안심 환불 보증</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">photo_camera</span>
+<span>동행 스냅 &amp; 기념품 기본 포함</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary">star</span>
+<span>실제 이용자 만족도 4.9점대</span>
+</div>
+</div>
+</div>
+<!-- Hero Visual Spotlight Mosaic -->
+<div class="lg:col-span-5 relative mt-space-md lg:mt-0">
+<div class="grid grid-cols-2 gap-space-sm relative">
+<div class="flex flex-col gap-space-sm">
+<div class="relative overflow-hidden rounded-xl shadow-md h-44 bg-surface-container">
+<img class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" data-alt="A warm, sunlit Korean strawberry greenhouse farm with a young family gently picking bright red strawberries into a rustic wooden box, warm morning light, cinematic editorial tone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3SESjWEIX2bgyPJtDTgA6uP_eGM2lUZA27BEBYz6_UCW9bF31IrCqRQu7rT1i86zbN0d1fbNyJnwIaUrFiUPaAdsazbwj9cP3fPRRSQ7oIBZGCGejYNzU2DZ6od4Q0Y2fwQaN7HmvS4O_rjZwd0Jt0DG0nrAGu2PErPd4zuvYpBEjgNxqDR_4V2JA39rhUmNc_itlp-_SV9ARMSo6oTHL8bipAW2FeAaK-SkyVVs">
+<div class="absolute bottom-2 left-2 bg-inverse-surface/80 text-inverse-on-surface text-label-sm font-label-sm px-2 py-0.5 rounded backdrop-blur-sm">
+                  가족 수확 체험
+                </div>
+</div>
+<div class="relative overflow-hidden rounded-xl shadow-md h-32 bg-surface-container">
+<img class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" data-alt="Close-up of a vintage black and white film camera set on a wooden table inside an aesthetic traditional Hanok in Seochon, Seoul, warm linen textures, soft earthy palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJa28sVjAMkRtCjLNI0TWNVUqvUdedrytmfnk8fkE7_Dy70i4sE_58ylGDgNDkdiGk9BdZwjcciMOk6-LMnbb-sxB5SZ0Qz8-OkMvFiIpS-EC2kwmOLWTfqWYgobJ6BnOf4Zh6AGkU7y8SErhHCXnUQ-GRJGpMs-DLPq9fdXUTRNTGUlF0ZokVbsGTuiRjZQPPnyT-dUARQpf6T2fEc1O0Mz6GkTO26qCDurO7nSo">
+<div class="absolute bottom-2 left-2 bg-inverse-surface/80 text-inverse-on-surface text-label-sm font-label-sm px-2 py-0.5 rounded backdrop-blur-sm">
+                  서촌 필름 스냅
+                </div>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm pt-6">
+<div class="relative overflow-hidden rounded-xl shadow-md h-36 bg-surface-container">
+<img class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" data-alt="Clear crystal kayak floating gently on calm emerald coastal waters in Aewol Jeju at golden sunset with warm amber reflections and gentle waves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC30J-0r2MMJS-O8qKjVke083VtnAdThrEBFBPlxYFR0aBetDb_qcTc1tSzsXM9VcnyGyJMYjNU1MwWFbIbu17nG144w-nz1RjllYoljRIpvY65X9ui8f1fYLqWuqibuvhXX1JBCOcK5CEKZ1HoyC2F74XUhutHUK9P2sjwnvTofmpxzyZVV1e8BlD9gS_1QohDFpjMALje5WLJnEFwaHB74WAu1mClzve6oRSko7c">
+<div class="absolute bottom-2 left-2 bg-inverse-surface/80 text-inverse-on-surface text-label-sm font-label-sm px-2 py-0.5 rounded backdrop-blur-sm">
+                  제주 선셋 카약
+                </div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-high flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-secondary">
+<span class="material-symbols-outlined text-[28px]">local_activity</span>
+<span class="font-headline-sm text-headline-sm font-bold">100개</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">이번 주 예약 가능</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">엄선된 로컬 시그니처 체험</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky Subcategory Navigation Tabs -->
+<section class="w-full bg-surface-container-lowest sticky top-20 z-40 shadow-sm border-b border-outline-variant/30">
+<div class="max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg">
+<div class="flex items-center gap-space-xs overflow-x-auto py-2.5 no-scrollbar scroll-smooth"><button data-g="cat" data-v="" data-active class="whitespace-nowrap px-space-md py-space-xs rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 transition-all shadow-sm" type="button"><span>전체 체험</span><span class="px-1.5 py-0.2 rounded-full bg-on-primary/20 text-on-primary text-[11px] font-bold">100</span></button><button data-g="cat" data-v="2인 데이트" class="whitespace-nowrap px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button"><span>❤️ 2인 데이트</span><span class="text-outline text-label-sm font-label-sm">19</span></button><button data-g="cat" data-v="가족 나들이" class="whitespace-nowrap px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button"><span>👨‍👩‍👧 가족 나들이</span><span class="text-outline text-label-sm font-label-sm">20</span></button><button data-g="cat" data-v="어린이 체험" class="whitespace-nowrap px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button"><span>👶 어린이 체험</span><span class="text-outline text-label-sm font-label-sm">21</span></button><button data-g="cat" data-v="여행 체험" class="whitespace-nowrap px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button"><span>🧭 여행 체험</span><span class="text-outline text-label-sm font-label-sm">20</span></button><button data-g="cat" data-v="지역체험" class="whitespace-nowrap px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors flex items-center gap-1.5" type="button"><span>🌿 지역체험</span><span class="text-outline text-label-sm font-label-sm">20</span></button></div>
+</div>
+</section>
+<!-- Interactive Companion Quick Filter Bar -->
+<section class="w-full bg-surface py-space-md border-b border-outline-variant/20">
+<div class="max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<!-- Companion Target Selector -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar pb-1 md:pb-0">
+<span class="font-label-sm text-label-sm text-outline whitespace-nowrap mr-1 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+          누구랑:
+        </span>
+<button data-g="with" data-v="" data-active class="px-3 py-1.5 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold whitespace-nowrap shadow-sm" type="button">
+          전체 동행
+        </button>
+<button data-g="with" data-v="date" class="px-3 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors flex items-center gap-1" type="button">
+<span>❤️ 2인 데이트</span>
+</button>
+<button data-g="with" data-v="friend" class="px-3 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors flex items-center gap-1" type="button">
+<span>👥 친구 모임</span>
+</button>
+<button data-g="with" data-v="family" class="px-3 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors flex items-center gap-1" type="button">
+<span>👨‍👩‍👧 가족·부모님</span>
+</button>
+<button data-g="with" data-v="kids" class="px-3 py-1.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors flex items-center gap-1" type="button">
+<span>👶 어린이 동반</span>
+</button>
+</div>
+<!-- Regional Quick Chips -->
+<div class="flex items-center gap-space-xs overflow-x-auto no-scrollbar">
+<span class="font-label-sm text-label-sm text-outline whitespace-nowrap mr-1 font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">pin_drop</span>
+          지역:
+        </span>
+<button data-g="region" data-v="sido:서울,sido:인천" class="px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface text-label-sm font-label-sm hover:bg-surface-container transition-colors whitespace-nowrap" type="button">
+          서울/근교
+        </button>
+<button data-g="region" data-v="sido:제주" class="px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface text-label-sm font-label-sm hover:bg-surface-container transition-colors whitespace-nowrap" type="button">
+          제주
+        </button>
+<button data-g="region" data-v="강릉,속초" class="px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface text-label-sm font-label-sm hover:bg-surface-container transition-colors whitespace-nowrap" type="button">
+          강릉/속초
+        </button>
+<button data-g="region" data-v="sido:경기" class="px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface text-label-sm font-label-sm hover:bg-surface-container transition-colors whitespace-nowrap" type="button">
+          파주/경기
+        </button>
+<div class="h-4 w-[1px] bg-outline-variant/60 mx-1 hidden sm:block"></div>
+<button data-reset class="px-2 py-1 rounded-md text-outline hover:text-primary transition-colors text-label-sm font-label-sm flex items-center gap-0.5 whitespace-nowrap" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+          필터 초기화
+        </button>
+</div>
+</div>
+</section>
+<!-- Main Content Layout: Sidebar + Product Grid -->
+<section class="w-full max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left Filter Sidebar -->
+<aside class="lg:col-span-3 flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">filter_alt</span>
+              상세 조건 검색
+            </span>
+<button data-reset class="text-label-sm font-label-sm text-outline hover:text-primary transition-colors" type="button">
+              초기화
+            </button>
+</div>
+<!-- Filter Group 1: 장소 구분 -->
+<div class="flex flex-col gap-space-sm">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+              체험 장소 구분
+              <span class="text-outline font-normal text-[11px]">중복 선택 가능</span>
+</label>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요."  class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span>실내 힐링 체험</span>
+
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요."  class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span>야외 액티비티</span>
+
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요."  class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span>자연 &amp; 농장 나들이</span>
+
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요." class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span>스튜디오·문화공간</span>
+
+</label>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Filter Group 2: 소요 시간 -->
+<div class="flex flex-col gap-space-sm">
+<label class="font-label-md text-label-md text-on-surface font-semibold">소요 시간</label>
+<div class="grid grid-cols-1 gap-2">
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="dur" value="0-" class="w-4 h-4 text-primary focus:ring-primary accent-primary cursor-pointer" name="duration" type="radio">
+<span>전체 시간</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="dur" value="120-181"  class="w-4 h-4 text-primary focus:ring-primary accent-primary cursor-pointer" name="duration" type="radio">
+<span>반일 코스 (2~3시간)</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="dur" value="240-" class="w-4 h-4 text-primary focus:ring-primary accent-primary cursor-pointer" name="duration" type="radio">
+<span>당일 나들이 (4시간 이상)</span>
+</label>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Filter Group 3: 안심 환불 등급 -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface font-semibold">환불 안심 등급</label>
+<span class="material-symbols-outlined text-[16px] text-outline cursor-help" title="날씨 및 일정 변경 걱정 없는 취소 정책 등급입니다.">help</span>
+</div>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="refund" value="safe" data-multi  class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#3A7A5E]"></span>
+<span class="font-medium text-on-surface">안심 등급</span>
+<span class="text-outline text-label-sm font-label-sm">(2일 전 100% 환불)</span>
+</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="refund" value="mid" data-multi  class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#B37D2E]"></span>
+<span class="font-medium text-on-surface">보통 등급</span>
+<span class="text-outline text-label-sm font-label-sm">(5일 전 100% 환불)</span>
+</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="refund" value="strict" data-multi class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#A3433B]"></span>
+<span class="font-medium text-on-surface">엄격 등급</span>
+<span class="text-outline text-label-sm font-label-sm">(주문제작 재료 사전준비)</span>
+</span>
+</label>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Filter Group 4: 1인 기준 가격대 -->
+<div class="flex flex-col gap-space-sm">
+<label class="font-label-md text-label-md text-on-surface font-semibold">1인 기준 가격대</label>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="price" value="-30001" data-multi class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span>~ 30,000원 이하</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="price" value="30000-60001" data-multi  class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span>30,000원 ~ 60,000원</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="price" value="60000-100001" data-multi class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span>60,000원 ~ 100,000원</span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-g="price" value="100000-" data-multi class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span>100,000원 이상</span>
+</label>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Filter Group 5: 특별 편의 시설 -->
+<div class="flex flex-col gap-space-sm">
+<label class="font-label-md text-label-md text-on-surface font-semibold">특별 편의 시설</label>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요."  class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">local_parking</span>
+                  주차 완비 (무료/공영)
+                </span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요." class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">umbrella</span>
+                  우천 시 실내 대체 프로그램
+                </span>
+</label>
+<label class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm cursor-pointer hover:text-on-surface">
+<input data-demo="예시 필터입니다. 이 조건은 아직 상품 데이터에 없어요." class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">pets</span>
+                  반려동물 동반 가능
+                </span>
+</label>
+</div>
+</div>
+</div>
+<!-- Nugurang Assurance Badge Banner -->
+<div class="rounded-xl bg-gradient-to-br from-surface-container-high to-surface-container p-space-md shadow-sm relative overflow-hidden">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">format_image_left</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">누구랑 체험 안심 보증</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                갑작스러운 기상 악화나 파트너 사정 시 당일 전액 환불 및 보상 포인트를 100% 보장해 드립니다.
+              </p>
+<a href="index.html#faq" class="font-label-sm text-label-sm text-primary font-semibold hover:underline mt-1 inline-flex items-center gap-0.5">
+                보증제도 자세히 보기
+                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Main: Product Listing Grid -->
+<div class="lg:col-span-9 flex flex-col gap-space-lg">
+<!-- Sorting and Count Status Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">총 <span data-count="{n}" class="text-primary font-extrabold">100</span>개의 체험</span>
+<span class="text-outline text-label-sm font-label-sm hidden sm:inline">실시간 예약 확정 가능</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center bg-surface-container-low rounded-lg p-1 text-label-sm font-label-sm">
+<button data-g="sort" data-v="pop" data-active class="px-3 py-1 rounded bg-surface-container-lowest text-primary font-bold shadow-xs" type="button">
+                인기순
+              </button>
+<button data-g="sort" data-v="rating" class="px-3 py-1 text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+                평점순
+              </button>
+<button data-g="sort" data-v="price" class="px-3 py-1 text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+                낮은가격순
+              </button>
+<button data-g="sort" data-v="new" class="px-3 py-1 text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+                최신순
+              </button>
+</div>
+<div class="hidden xl:flex items-center gap-1 text-outline pl-2 border-l border-outline-variant/30">
+<button aria-label="그리드 뷰" data-demo="목록은 바둑판 보기만 제공해요." class="p-1.5 rounded hover:bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button aria-label="리스트 뷰" data-demo="목록은 바둑판 보기만 제공해요." class="p-1.5 rounded hover:bg-surface-container text-outline">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Cards Grid (6 PRD items) -->
+<div id="list" aria-live="polite" class="grid grid-cols-1 md:grid-cols-2 gap-space-lg"></div>
+<!-- Pagination Section -->
+<nav data-pager aria-label="체험 목록 페이지" class="flex items-center justify-center gap-1.5 pt-space-lg">
+<button aria-label="이전 페이지" class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-low text-outline hover:bg-surface-container hover:text-on-surface transition-colors disabled:opacity-30" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-primary text-on-primary font-label-lg text-label-lg font-bold shadow-sm" type="button">
+            1
+          </button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-low text-on-surface hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">
+            2
+          </button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-low text-on-surface hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">
+            3
+          </button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-low text-on-surface hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">
+            4
+          </button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-low text-on-surface hover:bg-surface-container font-label-lg text-label-lg transition-colors" type="button">
+            5
+          </button>
+<button aria-label="다음 페이지" class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</nav>
+<!-- Group & Corporate Experience Banner -->
+<section class="mt-space-md rounded-2xl bg-surface-container p-space-lg lg:p-space-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-space-lg shadow-sm">
+<div class="flex flex-col gap-space-xs max-w-lg relative z-10">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm w-fit">
+<span class="material-symbols-outlined text-[15px]">corporate_fare</span>
+              기업 단체 워크샵 &amp; 가족 기념행사
+            </div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">
+              10인 이상 단체 맞춤 이색 체험 견적 문의
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              팀빌딩 아틀리에 대관, 야외 프라이빗 피크닉, 가족 기념 축하 세션까지 동행 인원에 맞춘 최적의 코스와 세금계산서 발행을 지원합니다.
+            </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 relative z-10 w-full sm:w-auto">
+<button data-demo class="w-full sm:w-auto px-space-lg py-3 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-low border border-outline-variant font-label-lg text-label-lg font-semibold transition-colors flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+              체험 제안서 다운로드
+            </button>
+<a href="index.html#qna" class="w-full sm:w-auto px-space-lg py-3 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-label-lg text-label-lg font-bold shadow-md transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+              1:1 맞춤 견적 신청
+            </a>
+</div>
+<div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-tertiary-fixed/30 blur-2xl pointer-events-none"></div>
+</section>
+</div>
+</div>
+</section>
+<!-- Bottom Visual Curated Story Highlights -->
+<section class="w-full bg-surface-container-low/70 py-space-xl mt-space-lg border-t border-outline-variant/30">
+<div class="max-w-[1200px] mx-auto px-margin md:px-margin-md lg:px-margin-lg flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Editor's Pick</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">동행과 함께 다녀온 리얼 체험 피드</h2>
+</div>
+<a href="review.html" class="font-label-md text-label-md text-primary font-semibold hover:underline flex items-center gap-0.5">
+          커뮤니티 후기 더보기
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-sm text-label-sm font-bold">
+              민
+            </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">이민지 님</p>
+<span class="font-label-sm text-label-sm text-outline">파주 평화농원 방문</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
+            "아이 손으로 딴 딸기가 시중 것보다 훨씬 달고 맛있네요. 잼 병에 날짜랑 아이 이름 스티커까지 붙여주셔서 좋은 추억 남겼어요!"
+          </p>
+<div class="flex items-center gap-1 text-primary text-label-sm font-label-sm mt-auto">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">5.0</span>
+<span class="text-outline ml-1">가족과 함께</span>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-sm text-label-sm font-bold">
+              준
+            </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">박준우 님</p>
+<span class="font-label-sm text-label-sm text-outline">서촌 흑백 스냅 방문</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
+            "기념일 데이트로 선택했는데 작가님이 표정 유도도 편하게 해주시고, 현장에서 원목 액자까지 받아서 방에 바로 걸었습니다."
+          </p>
+<div class="flex items-center gap-1 text-primary text-label-sm font-label-sm mt-auto">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">5.0</span>
+<span class="text-outline ml-1">연인과 2인 데이트</span>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-label-sm text-label-sm font-bold">
+              수
+            </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">정수현 님</p>
+<span class="font-label-sm text-label-sm text-outline">양평 들꽃마을 방문</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
+            "부모님 환갑 기념으로 모시고 갔는데 편백 족욕하면서 너무 행복해하셨습니다. 선생님께서 끓여주신 약초차도 일품이었어요."
+          </p>
+<div class="flex items-center gap-1 text-primary text-label-sm font-label-sm mt-auto">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-outline ml-1">부모님 모시고</span>
+</div>
+</div>
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-xs flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-sm text-label-sm font-bold">
+              혜
+            </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">강혜린 님</p>
+<span class="font-label-sm text-label-sm text-outline">북촌 전통주 공방 방문</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
+            "친구 넷이서 방문했는데 술 빚는 원리도 쉽고 재밌게 설명해주셨어요. 시음주 5종 다 개성 넘치고 가져온 막걸리도 집에서 잘 익혔습니다."
+          </p>
+<div class="flex items-center gap-1 text-primary text-label-sm font-label-sm mt-auto">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-outline ml-1">친구 모임</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="pages.js"></script>
+  <script>
+initList({ type: "experience", card: "experience", pageSize: 6 });
+  </script>
+</body>
+</html>
