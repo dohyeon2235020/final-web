@@ -58,6 +58,13 @@ function twImgFallback(img) {
   if (r && img.src !== r) { img.dataset.remote = ""; img.src = r; return; }
   img.outerHTML = '<div class="tw-img-fallback"><span class="icon">palette</span></div>';
 }
+// 사진 출처 (Openverse CC 라이선스)
+function creditHTML(p) {
+  const labels = [];
+  if (LOCAL_PHOTO.has(p.id)) labels.push('대표 사진: 디자인 시안');
+  p.credits.forEach((c, i) => labels.push(`<a class="underline hover:text-primary" href="${c.url}" target="_blank" rel="noopener">사진 ${labels.length + 1} (CC ${c.license.toUpperCase()})</a>`));
+  return `<p class="text-label-sm font-label-sm text-outline flex flex-wrap gap-x-2 gap-y-1"><span class="icon text-[14px]">photo_camera</span>사진 출처: Openverse · ${labels.join(" · ")}</p>`;
+}
 function wishBtn(p, cls) {
   const on = isWished(p.id);
   return `<button type="button" aria-label="찜하기" title="찜하기" data-wish="${p.id}" aria-pressed="${on}" class="tw-wish ${on ? "on" : ""} ${cls}"><span class="icon ${on ? "fill" : ""} text-[18px]">favorite</span></button>`;
@@ -475,7 +482,7 @@ function sampleReviews() {
         rating: Math.max(4, Math.min(5, Math.round((p.rating - (k * 0.3)) * 2) / 2)),
         scores: { teacher: 5, material: 4.5 + (i % 2) * 0.5, price: 4 + ((i + k) % 3) * 0.5, mood: 5 },
         text: REVIEW_LINES[p.type][(i + k) % 4] + " " + (p.memo.info ? "(" + p.memo.info + ")" : ""),
-        photos: k === 0 && i % 2 === 0 ? [p.imageRemote].concat(p.photos.slice(0, 1)) : [],
+        photos: [], // 예시 후기에는 사진을 붙이지 않음 (상품 사진과 같은 이미지가 다시 쓰이지 않도록)
         date: ymd(d), helpful: (i * 3 + k) % 40, verified: true, sample: true
       });
     }
@@ -511,7 +518,7 @@ function seedDemo() {
   const reviews = getMyReviews().filter(r => !r.demo);
   reviews.unshift({ no: "R-DEMO-1", order: "NG-DEMO-ws-003", id: "ws-003", user: "김*연", with: "date", rating: 5,
     scores: { teacher: 5, material: 5, price: 4.5, mood: 5 }, text: "선생님이 손 위치를 꼼꼼하게 교정해주셔서 초보인데도 너무 예쁜 잔이 나왔어요!",
-    photos: [byId("ws-003").imageRemote], date: add(-18), helpful: 12, verified: true, demo: true });
+    photos: [], date: add(-18), helpful: 12, verified: true, demo: true });
   store.set(PKEYS.reviews, reviews);
   const wish = store.get(KEYS.wish, []);
   ["ws-001", "ws-004", "cl-001", "ws-005", "ex-001"].forEach(id => !wish.includes(id) && wish.push(id));

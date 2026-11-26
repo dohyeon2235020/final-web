@@ -220,7 +220,7 @@ if (!P) {
     + `<div class="flex items-start justify-between py-2 pt-space-sm"><span class="font-label-lg text-label-lg text-on-surface font-bold flex items-center gap-1.5"><span class="icon text-[18px] text-primary">payments</span>최종 결제 금액</span><div class="text-right"><span class="font-headline-sm text-headline-sm text-primary font-bold">${won2(O.total)}</span><p class="font-body-sm text-body-sm text-outline">(수업료 ${won2(O.base)}${O.option ? " + 옵션 " + won2(O.option) : ""}${O.discount ? " - 할인 " + won2(O.discount) : ""})</p></div></div>`;
   $("c-place").textContent = `${placeOf(P)} · ${P.shop}`;
   $("c-map").href = "https://map.kakao.com/?q=" + encodeURIComponent(`${P.sido} ${P.sigungu}`);
-  $("c-photo").innerHTML = photo(P, "absolute inset-0 w-full h-full object-cover");
+  $("c-photo").innerHTML = photo(Object.assign({}, P, { id: "x", imageRemote: P.photos[1] || P.photos[0] }), "absolute inset-0 w-full h-full object-cover");
   $("c-store").textContent = `${P.shop} · ${P.region}`;
   $("c-lead").innerHTML = `${esc(P.shop)} ${esc(P.host)} 선생님이 예약하신 <strong class="text-primary font-bold">${withLabel(O.with)} ${O.people}명</strong>${O.option ? ` · <strong class="text-on-surface font-semibold">${esc(P.option.name)}</strong>` : ""}에 맞춘 사전 안내를 준비하고 있어요.`;
   $("c-memo").textContent = `“${P.memo.common} ${P.memo.info}”`;

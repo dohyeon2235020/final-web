@@ -153,6 +153,7 @@ function renderFooter() {
       </div>
       <div class="footer-bottom">
         <span>© 2026 누구랑 (Nugurang) · 웹사이트 기획 구축 과제용 예시 사이트</span>
+        <span>상품 사진: 처음 9개는 디자인 시안, 나머지는 <a href="https://openverse.org" target="_blank" rel="noopener" style="text-decoration:underline">Openverse</a> CC 라이선스 사진 (상품 상세에 출처 표시)</span>
         <span>제작 2235020_이도현</span>
       </div>
     </div>`;
